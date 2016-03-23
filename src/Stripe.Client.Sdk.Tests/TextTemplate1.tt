@@ -1,0 +1,118 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".txt" #>
+
+
+using System.Threading;
+using System.Threading.Tasks;
+using Jefwork.Stripe.Models;
+using Jefwork.Stripe.Models.Arguments;
+using Jefwork.Stripe.Models.Filters;
+
+namespace Jefwork.Stripe.Clients
+{
+<# 
+var names = new [] 
+{ 
+	"Account",
+	"AlipayAccount",
+	"ApplicationFee",
+	"ApplicationFeeRefund",
+	"Balance",
+	"BankAccount",
+	"BitcoinReceiver",
+	"Card",
+	"Charge",
+	"Coupon",
+	"Customer",
+	"Discount",
+	"Dispute",
+	"Event",
+	"FileUpload",
+	"Invoice",
+	"InvoiceItem",
+	"Order",
+	"OrderItem",
+	"Plan",
+	"Product",
+	"Recipient",
+	"Refund",
+	"SKU",
+	"Subscription",
+	"Token",
+	"Transfer",
+	"TransferReversal"
+};
+foreach(var name in names) {#>
+    public interface I<#=name#>Client
+    {
+        Task<StripeResponse<<#=name#>>> Get<#=name#>(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<<#=name#>>>> Get<#=name#>s(<#=name#>ListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<<#=name#>>> Create<#=name#>(<#=name#>CreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<<#=name#>>> Update<#=name#>(<#=name#>UpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class <#=name#>Client : I<#=name#>Client
+    {
+        private readonly string _path = "<#=name.ToLower()#>s";
+
+        private readonly IStripeClient _client;
+
+        public <#=name#>Client(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<<#=name#>>> Get<#=name#>(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, <#=name#>>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<<#=name#>>>> Get<#=name#>s(<#=name#>ListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<<#=name#>ListFilter, Pagination<<#=name#>>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<<#=name#>>> Create<#=name#>(<#=name#>CreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<<#=name#>CreateArguments, <#=name#>>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<<#=name#>>> Update<#=name#>(<#=name#>UpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<<#=name#>UpdateArguments, <#=name#>>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+<# } #>
+}
+
+<#+
+ string ToCamelCase(string str)
+ {
+	return str.Substring(0,1).ToLower() + str.Substring(1);
+ }
+#>
