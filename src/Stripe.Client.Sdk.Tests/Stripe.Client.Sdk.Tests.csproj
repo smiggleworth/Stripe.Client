@@ -147,7 +147,7 @@
     <Compile Include="Models\Arguments\OrderCreateArgumentsTests.cs" />
     <Compile Include="Models\Arguments\OrderPayArgumentsTests.cs" />
     <Compile Include="Models\Arguments\OrderUpdateArgumentsTests.cs" />
-    <Compile Include="Models\Arguments\PackageDimensionArgumentsTests.cs" />
+    <Compile Include="Models\Arguments\PackageDimensionsTests.cs" />
     <Compile Include="Models\Arguments\PiiTokenCreateArgumentsTests.cs" />
     <Compile Include="Models\Arguments\PlanCreateArgumentsTests.cs" />
     <Compile Include="Models\Arguments\PlanUpdateArgumentsTests.cs" />
@@ -198,7 +198,7 @@
     <Compile Include="Models\Filters\TransferListFilterTests.cs" />
     <Compile Include="Models\Filters\TransferReversalListFilterTests.cs" />
     <Compile Include="Models\Arguments\UpcomingInvoiceArgumentsTests.cs" />
-    <Compile Include="Models\UnitTest1.cs" />
+    <Compile Include="Models\EventTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +241,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="JSON\event.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>

@@ -31,7 +31,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public List<string> Images { get; set; }
 
         [ChildModel]
-        public PackageDimensionArguments PackageDimensions { get; set; }
+        public PackageDimensions PackageDimensions { get; set; }
 
         public string Caption { get; set; }
 

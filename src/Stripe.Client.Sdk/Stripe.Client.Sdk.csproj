@@ -71,7 +71,7 @@
     <Compile Include="Models\Arguments\DeclineChargeOnArguments.cs" />
     <Compile Include="Models\Arguments\InventoryArguments.cs" />
     <Compile Include="Models\Arguments\IPaymentTypeArguments.cs" />
-    <Compile Include="Models\Arguments\PackageDimensionArguments.cs" />
+    <Compile Include="Models\Arguments\PackageDimensions.cs" />
     <Compile Include="Models\Arguments\PiiArguments.cs" />
     <Compile Include="Models\Arguments\PiiTokenCreateArguments.cs" />
     <Compile Include="Models\Arguments\ShippingArguments.cs" />
@@ -111,7 +111,6 @@
     <Compile Include="Models\Filters\CouponListFilter.cs" />
     <Compile Include="Models\Arguments\DiscountCreateArguments.cs" />
     <Compile Include="Models\Arguments\DiscountUpdateArguments.cs" />
-    <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\InvoiceItem.cs" />
     <Compile Include="Models\Filters\ActiveSubscriptionListFilter.cs" />
     <Compile Include="Models\Arguments\CardCreateArguments.cs" />
@@ -191,6 +190,7 @@
     <Compile Include="Models\Filters\TransferReversalListFilter.cs" />
     <Compile Include="Models\StripeRequest.cs" />
     <Compile Include="Models\TermsOfServiceAcceptance.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resolvers\SnakeCaseContractResolver.cs" />
     <Compile Include="Extensions\SnakeCaseExtension.cs" />
@@ -218,7 +218,7 @@
     <Compile Include="Models\EventData.cs" />
     <Compile Include="Models\FeeModel.cs" />
     <Compile Include="Models\FileUpload.cs" />
-    <Compile Include="Models\InvoiceModel.cs" />
+    <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\InvoiceLineItem.cs" />
     <Compile Include="Models\LegalEntity.cs" />
     <Compile Include="Models\LegalEntityVerification.cs" />
@@ -226,7 +226,7 @@
     <Compile Include="Models\Filters\ListFilter.cs" />
     <Compile Include="Models\OAuthToken.cs" />
     <Compile Include="Models\IStripeModel.cs" />
-    <Compile Include="Models\PeriodModel.cs" />
+    <Compile Include="Models\Period.cs" />
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Recipient.cs" />
     <Compile Include="Models\RecipientActiveAccount.cs" />

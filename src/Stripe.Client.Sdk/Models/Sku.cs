@@ -31,6 +31,6 @@ namespace Stripe.Client.Sdk.Models
         public Dictionary<string, string> Metadata { get; set; }
 
         [ChildModel]
-        public PackageDimensionArguments PackageDimensions { get; set; }
+        public PackageDimensions PackageDimensions { get; set; }
     }
 }

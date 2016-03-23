@@ -15,7 +15,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public FileUpload DocumentModel { get; set; }
 
-        internal object Document
+        public object Document
         {
             set { Expandable<FileUpload>.Deserialize(value, s => DocumentId = s, o => DocumentModel = o); }
         }

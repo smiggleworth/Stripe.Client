@@ -22,7 +22,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public BalanceTransaction BalanceTransactionModel { get; set; }
 
-        internal object BalanceTransaction
+        public object BalanceTransaction
         {
             set
             {

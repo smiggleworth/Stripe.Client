@@ -18,7 +18,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public Customer CustomerModel { get; set; }
 
-        internal object Customer
+        public object Customer
         {
             set { Expandable<Customer>.Deserialize(value, s => CustomerId = s, o => CustomerModel = o); }
         }

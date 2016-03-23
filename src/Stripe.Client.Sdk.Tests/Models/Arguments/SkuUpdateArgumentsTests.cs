@@ -39,7 +39,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
         {
             // Arrange 
             _args.Metadata = Data.Metadata;
-            _args.PackageDimensions = GenFu.GenFu.New<PackageDimensionArguments>();
+            _args.PackageDimensions = GenFu.GenFu.New<PackageDimensions>();
             _args.Active = true;
 
             // Act

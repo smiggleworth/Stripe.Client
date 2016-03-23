@@ -10,13 +10,13 @@ using Stripe.Client.Sdk.Models.Arguments;
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
     [TestClass]
-    public class PackageDimensionArgumentsTests
+    public class PackageDimensionsTests
     {
         [TestMethod]
         public void PackageDimensionArguments_GetAllKeys()
         {
             // Arrange 
-            var args = new PackageDimensionArguments();
+            var args = new PackageDimensions();
             // Act
             var keyValuePairs = StripeClient.GetKeyValuePairs(args).ToList();
 

@@ -37,7 +37,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
         public void ProductCreateArguments_PackageDimension()
         {
             // Arrange 
-            _args.PackageDimensions = GenFu.GenFu.New<PackageDimensionArguments>();
+            _args.PackageDimensions = GenFu.GenFu.New<PackageDimensions>();
 
             // Act
             var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();

@@ -27,7 +27,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public Card DefaultCard { get; set; }
 
-        internal object DefaultSource
+        public object DefaultSource
         {
             set { Expandable<Card>.Deserialize(value, s => DefaultCardId = s, o => DefaultCard = o); }
         }
