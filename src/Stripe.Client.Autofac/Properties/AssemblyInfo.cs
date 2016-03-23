@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("Stripe.Client.Autofac")]
-[assembly: AssemblyDescription("Stripe.Client.Autofac")]
+[assembly: AssemblyDescription("Stripe Autofac Module Setup DI for Stripe.Client.Sdk")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("smiggleworth")]
 [assembly: AssemblyProduct("Stripe.Client.Autofac")]
