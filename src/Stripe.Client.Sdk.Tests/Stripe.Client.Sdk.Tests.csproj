@@ -147,7 +147,7 @@
     <Compile Include="Models\Arguments\OrderCreateArgumentsTests.cs" />
     <Compile Include="Models\Arguments\OrderPayArgumentsTests.cs" />
     <Compile Include="Models\Arguments\OrderUpdateArgumentsTests.cs" />
-    <Compile Include="Models\Arguments\PackageDimensionArgumentsTests.cs" />
+    <Compile Include="Models\Arguments\PackageDimensionsTests.cs" />
     <Compile Include="Models\Arguments\PiiTokenCreateArgumentsTests.cs" />
     <Compile Include="Models\Arguments\PlanCreateArgumentsTests.cs" />
     <Compile Include="Models\Arguments\PlanUpdateArgumentsTests.cs" />

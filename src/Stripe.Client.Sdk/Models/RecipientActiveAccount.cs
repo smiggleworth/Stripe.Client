@@ -4,6 +4,8 @@ namespace Stripe.Client.Sdk.Models
 {
     public class RecipientActiveAccount : IStripeModel
     {
+        public string Id { get; set; }
+
         public string Object { get; set; }
 
         public string Country { get; set; }
@@ -27,6 +29,5 @@ namespace Stripe.Client.Sdk.Models
         public Dictionary<string, string> Metadata { get; set; }
 
         public bool? Validated { get; set; }
-        public string Id { get; set; }
     }
 }

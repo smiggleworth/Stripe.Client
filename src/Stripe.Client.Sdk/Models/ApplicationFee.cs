@@ -19,7 +19,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public Account AccountModel { get; set; }
 
-        internal object Account
+        public object Account
         {
             set { Expandable<Account>.Deserialize(value, s => AccountId = s, o => AccountModel = o); }
         }
@@ -34,7 +34,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public BalanceTransaction BalanceTransactionModel { get; set; }
 
-        internal object BalanceTransaction
+        public object BalanceTransaction
         {
             set
             {
@@ -49,7 +49,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public Card CardModel { get; set; }
 
-        internal object Card
+        public object Card
         {
             set { Expandable<Card>.Deserialize(value, s => CardId = s, o => CardModel = o); }
         }
@@ -60,7 +60,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public Charge ChargeModel { get; set; }
 
-        internal object Charge
+        public object Charge
         {
             set { Expandable<Charge>.Deserialize(value, s => ChargeId = s, o => ChargeModel = o); }
         }

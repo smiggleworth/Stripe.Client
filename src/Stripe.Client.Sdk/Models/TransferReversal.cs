@@ -23,7 +23,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public BalanceTransaction BalanceTransactionModel { get; set; }
 
-        internal object BalanceTransaction
+        public object BalanceTransaction
         {
             set
             {
@@ -40,7 +40,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public Transfer TransferModel { get; set; }
 
-        internal object Transfer
+        public object Transfer
         {
             set { Expandable<Transfer>.Deserialize(value, s => TransferId = s, o => TransferModel = o); }
         }

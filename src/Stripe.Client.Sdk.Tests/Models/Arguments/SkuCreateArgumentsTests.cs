@@ -69,7 +69,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             // Arrange 
             _args.Metadata = Data.Metadata;
             _args.Inventory = GenFu.GenFu.New<InventoryArguments>();
-            _args.PackageDimensions = GenFu.GenFu.New<PackageDimensionArguments>();
+            _args.PackageDimensions = GenFu.GenFu.New<PackageDimensions>();
 
             // Act
             var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();

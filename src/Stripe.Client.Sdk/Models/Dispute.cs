@@ -22,8 +22,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public Charge ChargeModel { get; set; }
 
-        [JsonProperty("charge")]
-        internal object Charge
+        public object Charge
         {
             set { Expandable<Charge>.Deserialize(value, s => ChargeId = s, o => ChargeModel = o); }
         }

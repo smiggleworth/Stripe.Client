@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
-    public class PackageDimensionArguments
+    public class PackageDimensions
     {
         /// <summary>
         /// Height, in inches. Maximum precision is 2 decimal places.

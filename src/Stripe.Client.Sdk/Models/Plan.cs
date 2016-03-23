@@ -7,9 +7,11 @@ namespace Stripe.Client.Sdk.Models
 {
     public class Plan : IStripeModel
     {
+        public string Id { get; set; }
+
         public string Object { get; set; }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime Created { get; set; }
 
         public string Currency { get; set; }
@@ -29,6 +31,5 @@ namespace Stripe.Client.Sdk.Models
         public int? TrialPeriodDays { get; set; }
 
         public Dictionary<string, string> Metadata { get; set; }
-        public string Id { get; set; }
     }
 }

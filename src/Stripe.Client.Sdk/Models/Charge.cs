@@ -41,7 +41,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public BalanceTransaction BalanceTransactionModel { get; set; }
 
-        internal object BalanceTransaction
+        public object BalanceTransaction
         {
             set
             {
@@ -56,7 +56,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public Customer CustomerModel { get; set; }
 
-        internal object Customer
+        public object Customer
         {
             set { Expandable<Customer>.Deserialize(value, s => CustomerId = s, o => CustomerModel = o); }
         }
@@ -75,11 +75,11 @@ namespace Stripe.Client.Sdk.Models
         public string InvoiceId { get; set; }
 
         [JsonIgnore]
-        public InvoiceModel InvoiceModel { get; set; }
+        public Invoice InvoiceModel { get; set; }
 
-        internal object Invoice
+        public object Invoice
         {
-            set { Expandable<InvoiceModel>.Deserialize(value, s => InvoiceId = s, o => InvoiceModel = o); }
+            set { Expandable<Invoice>.Deserialize(value, s => InvoiceId = s, o => InvoiceModel = o); }
         }
 
         public Dictionary<string, string> Metadata { get; set; }

@@ -56,7 +56,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public Recipient RecipientModel { get; set; }
 
-        internal object Recipient
+        public object Recipient
         {
             set { Expandable<Recipient>.Deserialize(value, s => RecipientId = s, o => RecipientModel = o); }
         }
@@ -67,7 +67,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public Customer CustomerModel { get; set; }
 
-        internal object Customer
+        public object Customer
         {
             set { Expandable<Customer>.Deserialize(value, s => CustomerId = s, o => CustomerModel = o); }
         }
@@ -78,7 +78,7 @@ namespace Stripe.Client.Sdk.Models
         [JsonIgnore]
         public Account AccountModel { get; set; }
 
-        internal object Account
+        public object Account
         {
             set { Expandable<Account>.Deserialize(value, s => AccountId = s, o => AccountModel = o); }
         }
