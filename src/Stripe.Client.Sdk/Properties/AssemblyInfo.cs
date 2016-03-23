@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("Stripe.Client.Sdk")]
-[assembly: AssemblyDescription("Stripe.Client.Sdk")]
+[assembly: AssemblyDescription("Async Stripe Client for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("smiggleworth")]
 [assembly: AssemblyProduct("Stripe.Client.Sdk")]
