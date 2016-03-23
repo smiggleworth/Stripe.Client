@@ -4,7 +4,7 @@ using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
 
-namespace Stripe.Client.Sdk.Clients.Subscription
+namespace Stripe.Client.Sdk.Clients.Subscriptions
 {
     public interface ICouponClient
     {

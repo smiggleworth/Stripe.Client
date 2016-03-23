@@ -6,66 +6,66 @@ using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
 
-namespace Stripe.Client.Sdk.Clients.Subscription
+namespace Stripe.Client.Sdk.Clients.Subscriptions
 {
-    public class PlanClient : IPlanClient
+    public class CouponClient : ICouponClient
     {
         private readonly IStripeClient _client;
 
-        public PlanClient(IStripeClient client)
+        public CouponClient(IStripeClient client)
         {
             _client = client;
         }
 
-        public async Task<StripeResponse<Plan>> GetPlan(string planId,
+        public async Task<StripeResponse<Coupon>> GetCoupon(string couponId,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<Plan>
+            var request = new StripeRequest<Coupon>
             {
-                UrlPath = PathHelper.GetPath(Paths.Plans, planId)
+                UrlPath = PathHelper.GetPath(Paths.Coupons, couponId)
             };
             return await _client.Get(request, cancellationToken);
         }
 
-        public async Task<StripeResponse<Pagination<Plan>>> GetPlans(PlanListFilter filter,
+        public async Task<StripeResponse<Pagination<Coupon>>> GetCoupons(CouponListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<PlanListFilter, Pagination<Plan>>
+            var request = new StripeRequest<CouponListFilter, Pagination<Coupon>>
             {
-                UrlPath = Paths.Plans,
+                UrlPath = Paths.Coupons,
                 Model = filter
             };
             return await _client.Get(request, cancellationToken);
         }
 
-        public async Task<StripeResponse<Plan>> CreatePlan(PlanCreateArguments arguments,
+        public async Task<StripeResponse<Coupon>> CreateCoupon(CouponCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<PlanCreateArguments, Plan>
+            var request = new StripeRequest<CouponCreateArguments, Coupon>
             {
-                UrlPath = Paths.Plans,
+                UrlPath = Paths.Coupons,
                 Model = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
 
-        public async Task<StripeResponse<Plan>> UpdatePlan(PlanUpdateArguments arguments,
+        public async Task<StripeResponse<Coupon>> UpdateCoupon(CouponUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<PlanUpdateArguments, Plan>
+            var request = new StripeRequest<CouponUpdateArguments, Coupon>
             {
-                UrlPath = PathHelper.GetPath(Paths.Plans, arguments.PlanId),
+                UrlPath = PathHelper.GetPath(Paths.Coupons, arguments.CouponId),
                 Model = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
 
-        public async Task<StripeResponse<DeletedObject>> DeletePlan(string planId,
+        public async Task<StripeResponse<DeletedObject>> DeleteCoupon(string couponId,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var request = new StripeRequest<DeletedObject>
             {
-                UrlPath = PathHelper.GetPath(Paths.Plans, planId)
+                UrlPath = PathHelper.GetPath(Paths.Coupons, couponId)
             };
             return await _client.Delete(request, cancellationToken);
         }
