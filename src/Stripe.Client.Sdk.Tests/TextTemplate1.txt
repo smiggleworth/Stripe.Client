@@ -1,0 +1,1692 @@
+﻿
+
+using System.Threading;
+using System.Threading.Tasks;
+using Jefwork.Stripe.Models;
+using Jefwork.Stripe.Models.Arguments;
+using Jefwork.Stripe.Models.Filters;
+
+namespace Jefwork.Stripe.Clients
+{
+    public interface IAccountClient
+    {
+        Task<StripeResponse<Account>> GetAccount(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Account>>> GetAccounts(AccountListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Account>> CreateAccount(AccountCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Account>> UpdateAccount(AccountUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class AccountClient : IAccountClient
+    {
+        private readonly string _path = "accounts";
+
+        private readonly IStripeClient _client;
+
+        public AccountClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Account>> GetAccount(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Account>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Account>>> GetAccounts(AccountListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<AccountListFilter, Pagination<Account>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Account>> CreateAccount(AccountCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<AccountCreateArguments, Account>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Account>> UpdateAccount(AccountUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<AccountUpdateArguments, Account>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IAlipayAccountClient
+    {
+        Task<StripeResponse<AlipayAccount>> GetAlipayAccount(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<AlipayAccount>>> GetAlipayAccounts(AlipayAccountListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<AlipayAccount>> CreateAlipayAccount(AlipayAccountCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<AlipayAccount>> UpdateAlipayAccount(AlipayAccountUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class AlipayAccountClient : IAlipayAccountClient
+    {
+        private readonly string _path = "alipayaccounts";
+
+        private readonly IStripeClient _client;
+
+        public AlipayAccountClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<AlipayAccount>> GetAlipayAccount(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, AlipayAccount>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<AlipayAccount>>> GetAlipayAccounts(AlipayAccountListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<AlipayAccountListFilter, Pagination<AlipayAccount>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<AlipayAccount>> CreateAlipayAccount(AlipayAccountCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<AlipayAccountCreateArguments, AlipayAccount>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<AlipayAccount>> UpdateAlipayAccount(AlipayAccountUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<AlipayAccountUpdateArguments, AlipayAccount>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IApplicationFeeClient
+    {
+        Task<StripeResponse<ApplicationFee>> GetApplicationFee(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<ApplicationFee>>> GetApplicationFees(ApplicationFeeListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<ApplicationFee>> CreateApplicationFee(ApplicationFeeCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<ApplicationFee>> UpdateApplicationFee(ApplicationFeeUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class ApplicationFeeClient : IApplicationFeeClient
+    {
+        private readonly string _path = "applicationfees";
+
+        private readonly IStripeClient _client;
+
+        public ApplicationFeeClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<ApplicationFee>> GetApplicationFee(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, ApplicationFee>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<ApplicationFee>>> GetApplicationFees(ApplicationFeeListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<ApplicationFeeListFilter, Pagination<ApplicationFee>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<ApplicationFee>> CreateApplicationFee(ApplicationFeeCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<ApplicationFeeCreateArguments, ApplicationFee>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<ApplicationFee>> UpdateApplicationFee(ApplicationFeeUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<ApplicationFeeUpdateArguments, ApplicationFee>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IApplicationFeeRefundClient
+    {
+        Task<StripeResponse<ApplicationFeeRefund>> GetApplicationFeeRefund(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<ApplicationFeeRefund>>> GetApplicationFeeRefunds(ApplicationFeeRefundListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<ApplicationFeeRefund>> CreateApplicationFeeRefund(ApplicationFeeRefundCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<ApplicationFeeRefund>> UpdateApplicationFeeRefund(ApplicationFeeRefundUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class ApplicationFeeRefundClient : IApplicationFeeRefundClient
+    {
+        private readonly string _path = "applicationfeerefunds";
+
+        private readonly IStripeClient _client;
+
+        public ApplicationFeeRefundClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<ApplicationFeeRefund>> GetApplicationFeeRefund(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, ApplicationFeeRefund>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<ApplicationFeeRefund>>> GetApplicationFeeRefunds(ApplicationFeeRefundListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<ApplicationFeeRefundListFilter, Pagination<ApplicationFeeRefund>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<ApplicationFeeRefund>> CreateApplicationFeeRefund(ApplicationFeeRefundCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<ApplicationFeeRefundCreateArguments, ApplicationFeeRefund>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<ApplicationFeeRefund>> UpdateApplicationFeeRefund(ApplicationFeeRefundUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<ApplicationFeeRefundUpdateArguments, ApplicationFeeRefund>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IBalanceClient
+    {
+        Task<StripeResponse<Balance>> GetBalance(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Balance>>> GetBalances(BalanceListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Balance>> CreateBalance(BalanceCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Balance>> UpdateBalance(BalanceUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class BalanceClient : IBalanceClient
+    {
+        private readonly string _path = "balances";
+
+        private readonly IStripeClient _client;
+
+        public BalanceClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Balance>> GetBalance(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Balance>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Balance>>> GetBalances(BalanceListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<BalanceListFilter, Pagination<Balance>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Balance>> CreateBalance(BalanceCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<BalanceCreateArguments, Balance>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Balance>> UpdateBalance(BalanceUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<BalanceUpdateArguments, Balance>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IBankAccountClient
+    {
+        Task<StripeResponse<BankAccount>> GetBankAccount(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<BankAccount>>> GetBankAccounts(BankAccountListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<BankAccount>> CreateBankAccount(BankAccountCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<BankAccount>> UpdateBankAccount(BankAccountUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class BankAccountClient : IBankAccountClient
+    {
+        private readonly string _path = "bankaccounts";
+
+        private readonly IStripeClient _client;
+
+        public BankAccountClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<BankAccount>> GetBankAccount(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, BankAccount>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<BankAccount>>> GetBankAccounts(BankAccountListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<BankAccountListFilter, Pagination<BankAccount>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<BankAccount>> CreateBankAccount(BankAccountCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<BankAccountCreateArguments, BankAccount>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<BankAccount>> UpdateBankAccount(BankAccountUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<BankAccountUpdateArguments, BankAccount>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IBitcoinReceiverClient
+    {
+        Task<StripeResponse<BitcoinReceiver>> GetBitcoinReceiver(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<BitcoinReceiver>>> GetBitcoinReceivers(BitcoinReceiverListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<BitcoinReceiver>> CreateBitcoinReceiver(BitcoinReceiverCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<BitcoinReceiver>> UpdateBitcoinReceiver(BitcoinReceiverUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class BitcoinReceiverClient : IBitcoinReceiverClient
+    {
+        private readonly string _path = "bitcoinreceivers";
+
+        private readonly IStripeClient _client;
+
+        public BitcoinReceiverClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<BitcoinReceiver>> GetBitcoinReceiver(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, BitcoinReceiver>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<BitcoinReceiver>>> GetBitcoinReceivers(BitcoinReceiverListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<BitcoinReceiverListFilter, Pagination<BitcoinReceiver>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<BitcoinReceiver>> CreateBitcoinReceiver(BitcoinReceiverCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<BitcoinReceiverCreateArguments, BitcoinReceiver>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<BitcoinReceiver>> UpdateBitcoinReceiver(BitcoinReceiverUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<BitcoinReceiverUpdateArguments, BitcoinReceiver>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface ICardClient
+    {
+        Task<StripeResponse<Card>> GetCard(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Card>>> GetCards(CardListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Card>> CreateCard(CardCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Card>> UpdateCard(CardUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class CardClient : ICardClient
+    {
+        private readonly string _path = "cards";
+
+        private readonly IStripeClient _client;
+
+        public CardClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Card>> GetCard(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Card>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Card>>> GetCards(CardListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<CardListFilter, Pagination<Card>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Card>> CreateCard(CardCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<CardCreateArguments, Card>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Card>> UpdateCard(CardUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<CardUpdateArguments, Card>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IChargeClient
+    {
+        Task<StripeResponse<Charge>> GetCharge(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Charge>>> GetCharges(ChargeListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Charge>> CreateCharge(ChargeCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Charge>> UpdateCharge(ChargeUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class ChargeClient : IChargeClient
+    {
+        private readonly string _path = "charges";
+
+        private readonly IStripeClient _client;
+
+        public ChargeClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Charge>> GetCharge(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Charge>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Charge>>> GetCharges(ChargeListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<ChargeListFilter, Pagination<Charge>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Charge>> CreateCharge(ChargeCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<ChargeCreateArguments, Charge>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Charge>> UpdateCharge(ChargeUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<ChargeUpdateArguments, Charge>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface ICouponClient
+    {
+        Task<StripeResponse<Coupon>> GetCoupon(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Coupon>>> GetCoupons(CouponListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Coupon>> CreateCoupon(CouponCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Coupon>> UpdateCoupon(CouponUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class CouponClient : ICouponClient
+    {
+        private readonly string _path = "coupons";
+
+        private readonly IStripeClient _client;
+
+        public CouponClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Coupon>> GetCoupon(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Coupon>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Coupon>>> GetCoupons(CouponListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<CouponListFilter, Pagination<Coupon>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Coupon>> CreateCoupon(CouponCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<CouponCreateArguments, Coupon>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Coupon>> UpdateCoupon(CouponUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<CouponUpdateArguments, Coupon>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface ICustomerClient
+    {
+        Task<StripeResponse<Customer>> GetCustomer(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Customer>>> GetCustomers(CustomerListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Customer>> CreateCustomer(CustomerCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Customer>> UpdateCustomer(CustomerUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class CustomerClient : ICustomerClient
+    {
+        private readonly string _path = "customers";
+
+        private readonly IStripeClient _client;
+
+        public CustomerClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Customer>> GetCustomer(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Customer>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Customer>>> GetCustomers(CustomerListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<CustomerListFilter, Pagination<Customer>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Customer>> CreateCustomer(CustomerCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<CustomerCreateArguments, Customer>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Customer>> UpdateCustomer(CustomerUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<CustomerUpdateArguments, Customer>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IDiscountClient
+    {
+        Task<StripeResponse<Discount>> GetDiscount(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Discount>>> GetDiscounts(DiscountListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Discount>> CreateDiscount(DiscountCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Discount>> UpdateDiscount(DiscountUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class DiscountClient : IDiscountClient
+    {
+        private readonly string _path = "discounts";
+
+        private readonly IStripeClient _client;
+
+        public DiscountClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Discount>> GetDiscount(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Discount>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Discount>>> GetDiscounts(DiscountListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<DiscountListFilter, Pagination<Discount>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Discount>> CreateDiscount(DiscountCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<DiscountCreateArguments, Discount>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Discount>> UpdateDiscount(DiscountUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<DiscountUpdateArguments, Discount>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IDisputeClient
+    {
+        Task<StripeResponse<Dispute>> GetDispute(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Dispute>>> GetDisputes(DisputeListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Dispute>> CreateDispute(DisputeCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Dispute>> UpdateDispute(DisputeUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class DisputeClient : IDisputeClient
+    {
+        private readonly string _path = "disputes";
+
+        private readonly IStripeClient _client;
+
+        public DisputeClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Dispute>> GetDispute(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Dispute>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Dispute>>> GetDisputes(DisputeListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<DisputeListFilter, Pagination<Dispute>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Dispute>> CreateDispute(DisputeCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<DisputeCreateArguments, Dispute>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Dispute>> UpdateDispute(DisputeUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<DisputeUpdateArguments, Dispute>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IEventClient
+    {
+        Task<StripeResponse<Event>> GetEvent(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Event>>> GetEvents(EventListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Event>> CreateEvent(EventCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Event>> UpdateEvent(EventUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class EventClient : IEventClient
+    {
+        private readonly string _path = "events";
+
+        private readonly IStripeClient _client;
+
+        public EventClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Event>> GetEvent(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Event>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Event>>> GetEvents(EventListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<EventListFilter, Pagination<Event>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Event>> CreateEvent(EventCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<EventCreateArguments, Event>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Event>> UpdateEvent(EventUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<EventUpdateArguments, Event>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IFileUploadClient
+    {
+        Task<StripeResponse<FileUpload>> GetFileUpload(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<FileUpload>>> GetFileUploads(FileUploadListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<FileUpload>> CreateFileUpload(FileUploadCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<FileUpload>> UpdateFileUpload(FileUploadUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class FileUploadClient : IFileUploadClient
+    {
+        private readonly string _path = "fileuploads";
+
+        private readonly IStripeClient _client;
+
+        public FileUploadClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<FileUpload>> GetFileUpload(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, FileUpload>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<FileUpload>>> GetFileUploads(FileUploadListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<FileUploadListFilter, Pagination<FileUpload>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<FileUpload>> CreateFileUpload(FileUploadCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<FileUploadCreateArguments, FileUpload>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<FileUpload>> UpdateFileUpload(FileUploadUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<FileUploadUpdateArguments, FileUpload>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IInvoiceClient
+    {
+        Task<StripeResponse<Invoice>> GetInvoice(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Invoice>>> GetInvoices(InvoiceListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Invoice>> CreateInvoice(InvoiceCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Invoice>> UpdateInvoice(InvoiceUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class InvoiceClient : IInvoiceClient
+    {
+        private readonly string _path = "invoices";
+
+        private readonly IStripeClient _client;
+
+        public InvoiceClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Invoice>> GetInvoice(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Invoice>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Invoice>>> GetInvoices(InvoiceListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<InvoiceListFilter, Pagination<Invoice>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Invoice>> CreateInvoice(InvoiceCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<InvoiceCreateArguments, Invoice>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Invoice>> UpdateInvoice(InvoiceUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<InvoiceUpdateArguments, Invoice>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IInvoiceItemClient
+    {
+        Task<StripeResponse<InvoiceItem>> GetInvoiceItem(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<InvoiceItem>>> GetInvoiceItems(InvoiceItemListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<InvoiceItem>> CreateInvoiceItem(InvoiceItemCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<InvoiceItem>> UpdateInvoiceItem(InvoiceItemUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class InvoiceItemClient : IInvoiceItemClient
+    {
+        private readonly string _path = "invoiceitems";
+
+        private readonly IStripeClient _client;
+
+        public InvoiceItemClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<InvoiceItem>> GetInvoiceItem(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, InvoiceItem>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<InvoiceItem>>> GetInvoiceItems(InvoiceItemListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<InvoiceItemListFilter, Pagination<InvoiceItem>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<InvoiceItem>> CreateInvoiceItem(InvoiceItemCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<InvoiceItemCreateArguments, InvoiceItem>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<InvoiceItem>> UpdateInvoiceItem(InvoiceItemUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<InvoiceItemUpdateArguments, InvoiceItem>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IOrderClient
+    {
+        Task<StripeResponse<Order>> GetOrder(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Order>>> GetOrders(OrderListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Order>> CreateOrder(OrderCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Order>> UpdateOrder(OrderUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class OrderClient : IOrderClient
+    {
+        private readonly string _path = "orders";
+
+        private readonly IStripeClient _client;
+
+        public OrderClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Order>> GetOrder(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Order>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Order>>> GetOrders(OrderListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<OrderListFilter, Pagination<Order>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Order>> CreateOrder(OrderCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<OrderCreateArguments, Order>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Order>> UpdateOrder(OrderUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<OrderUpdateArguments, Order>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IOrderItemClient
+    {
+        Task<StripeResponse<OrderItem>> GetOrderItem(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<OrderItem>>> GetOrderItems(OrderItemListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<OrderItem>> CreateOrderItem(OrderItemCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<OrderItem>> UpdateOrderItem(OrderItemUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class OrderItemClient : IOrderItemClient
+    {
+        private readonly string _path = "orderitems";
+
+        private readonly IStripeClient _client;
+
+        public OrderItemClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<OrderItem>> GetOrderItem(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, OrderItem>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<OrderItem>>> GetOrderItems(OrderItemListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<OrderItemListFilter, Pagination<OrderItem>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<OrderItem>> CreateOrderItem(OrderItemCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<OrderItemCreateArguments, OrderItem>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<OrderItem>> UpdateOrderItem(OrderItemUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<OrderItemUpdateArguments, OrderItem>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IPlanClient
+    {
+        Task<StripeResponse<Plan>> GetPlan(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Plan>>> GetPlans(PlanListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Plan>> CreatePlan(PlanCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Plan>> UpdatePlan(PlanUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class PlanClient : IPlanClient
+    {
+        private readonly string _path = "plans";
+
+        private readonly IStripeClient _client;
+
+        public PlanClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Plan>> GetPlan(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Plan>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Plan>>> GetPlans(PlanListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<PlanListFilter, Pagination<Plan>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Plan>> CreatePlan(PlanCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<PlanCreateArguments, Plan>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Plan>> UpdatePlan(PlanUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<PlanUpdateArguments, Plan>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IProductClient
+    {
+        Task<StripeResponse<Product>> GetProduct(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Product>>> GetProducts(ProductListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Product>> CreateProduct(ProductCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Product>> UpdateProduct(ProductUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class ProductClient : IProductClient
+    {
+        private readonly string _path = "products";
+
+        private readonly IStripeClient _client;
+
+        public ProductClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Product>> GetProduct(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Product>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Product>>> GetProducts(ProductListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<ProductListFilter, Pagination<Product>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Product>> CreateProduct(ProductCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<ProductCreateArguments, Product>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Product>> UpdateProduct(ProductUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<ProductUpdateArguments, Product>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IRecipientClient
+    {
+        Task<StripeResponse<Recipient>> GetRecipient(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Recipient>>> GetRecipients(RecipientListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Recipient>> CreateRecipient(RecipientCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Recipient>> UpdateRecipient(RecipientUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class RecipientClient : IRecipientClient
+    {
+        private readonly string _path = "recipients";
+
+        private readonly IStripeClient _client;
+
+        public RecipientClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Recipient>> GetRecipient(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Recipient>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Recipient>>> GetRecipients(RecipientListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<RecipientListFilter, Pagination<Recipient>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Recipient>> CreateRecipient(RecipientCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<RecipientCreateArguments, Recipient>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Recipient>> UpdateRecipient(RecipientUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<RecipientUpdateArguments, Recipient>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface IRefundClient
+    {
+        Task<StripeResponse<Refund>> GetRefund(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Refund>>> GetRefunds(RefundListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Refund>> CreateRefund(RefundCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Refund>> UpdateRefund(RefundUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class RefundClient : IRefundClient
+    {
+        private readonly string _path = "refunds";
+
+        private readonly IStripeClient _client;
+
+        public RefundClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Refund>> GetRefund(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Refund>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Refund>>> GetRefunds(RefundListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<RefundListFilter, Pagination<Refund>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Refund>> CreateRefund(RefundCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<RefundCreateArguments, Refund>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Refund>> UpdateRefund(RefundUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<RefundUpdateArguments, Refund>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface ISKUClient
+    {
+        Task<StripeResponse<SKU>> GetSKU(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<SKU>>> GetSKUs(SKUListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<SKU>> CreateSKU(SKUCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<SKU>> UpdateSKU(SKUUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class SKUClient : ISKUClient
+    {
+        private readonly string _path = "skus";
+
+        private readonly IStripeClient _client;
+
+        public SKUClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<SKU>> GetSKU(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, SKU>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<SKU>>> GetSKUs(SKUListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<SKUListFilter, Pagination<SKU>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<SKU>> CreateSKU(SKUCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<SKUCreateArguments, SKU>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<SKU>> UpdateSKU(SKUUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<SKUUpdateArguments, SKU>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface ISubscriptionClient
+    {
+        Task<StripeResponse<Subscription>> GetSubscription(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Subscription>>> GetSubscriptions(SubscriptionListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Subscription>> CreateSubscription(SubscriptionCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Subscription>> UpdateSubscription(SubscriptionUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class SubscriptionClient : ISubscriptionClient
+    {
+        private readonly string _path = "subscriptions";
+
+        private readonly IStripeClient _client;
+
+        public SubscriptionClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Subscription>> GetSubscription(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Subscription>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Subscription>>> GetSubscriptions(SubscriptionListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<SubscriptionListFilter, Pagination<Subscription>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Subscription>> CreateSubscription(SubscriptionCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<SubscriptionCreateArguments, Subscription>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Subscription>> UpdateSubscription(SubscriptionUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<SubscriptionUpdateArguments, Subscription>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface ITokenClient
+    {
+        Task<StripeResponse<Token>> GetToken(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Token>>> GetTokens(TokenListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Token>> CreateToken(TokenCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Token>> UpdateToken(TokenUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class TokenClient : ITokenClient
+    {
+        private readonly string _path = "tokens";
+
+        private readonly IStripeClient _client;
+
+        public TokenClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Token>> GetToken(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Token>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Token>>> GetTokens(TokenListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<TokenListFilter, Pagination<Token>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Token>> CreateToken(TokenCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<TokenCreateArguments, Token>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Token>> UpdateToken(TokenUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<TokenUpdateArguments, Token>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface ITransferClient
+    {
+        Task<StripeResponse<Transfer>> GetTransfer(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<Transfer>>> GetTransfers(TransferListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Transfer>> CreateTransfer(TransferCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Transfer>> UpdateTransfer(TransferUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class TransferClient : ITransferClient
+    {
+        private readonly string _path = "transfers";
+
+        private readonly IStripeClient _client;
+
+        public TransferClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<Transfer>> GetTransfer(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, Transfer>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<Transfer>>> GetTransfers(TransferListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<TransferListFilter, Pagination<Transfer>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Transfer>> CreateTransfer(TransferCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<TransferCreateArguments, Transfer>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Transfer>> UpdateTransfer(TransferUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<TransferUpdateArguments, Transfer>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+    public interface ITransferReversalClient
+    {
+        Task<StripeResponse<TransferReversal>> GetTransferReversal(string id, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<Pagination<TransferReversal>>> GetTransferReversals(TransferReversalListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<TransferReversal>> CreateTransferReversal(TransferReversalCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<TransferReversal>> UpdateTransferReversal(TransferReversalUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken));
+    }
+
+    public class TransferReversalClient : ITransferReversalClient
+    {
+        private readonly string _path = "transferreversals";
+
+        private readonly IStripeClient _client;
+
+        public TransferReversalClient(IStripeClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<StripeResponse<TransferReversal>> GetTransferReversal(string id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<string, TransferReversal>
+            {
+                UrlPath = _path + "/" + id,
+                Model = id,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<Pagination<TransferReversal>>> GetTransferReversals(TransferReversalListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<TransferReversalListFilter, Pagination<TransferReversal>>
+            {
+                UrlPath = _path,
+                Model = filter,
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<TransferReversal>> CreateTransferReversal(TransferReversalCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<TransferReversalCreateArguments, TransferReversal>
+            {
+                UrlPath = _path,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<TransferReversal>> UpdateTransferReversal(TransferReversalUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<TransferReversalUpdateArguments, TransferReversal>
+            {
+                UrlPath = _path + "/" + arguments.Id,
+                Model = arguments,
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+    }
+
+}
+
