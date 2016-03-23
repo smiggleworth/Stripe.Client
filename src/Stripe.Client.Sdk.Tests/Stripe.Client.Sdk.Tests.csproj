@@ -198,7 +198,7 @@
     <Compile Include="Models\Filters\TransferListFilterTests.cs" />
     <Compile Include="Models\Filters\TransferReversalListFilterTests.cs" />
     <Compile Include="Models\Arguments\UpcomingInvoiceArgumentsTests.cs" />
-    <Compile Include="Models\UnitTest1.cs" />
+    <Compile Include="Models\EventTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +241,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="JSON\event.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>
