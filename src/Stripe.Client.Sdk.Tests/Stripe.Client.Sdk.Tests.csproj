@@ -210,35 +210,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\Filters\_filters.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>_filters.txt</LastGenOutput>
-    </Content>
-    <Content Include="Models\Filters\_filters.txt">
-      <DependentUpon>_filters.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Content>
-    <Content Include="Models\_models.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>_models.txt</LastGenOutput>
-    </Content>
-    <Content Include="Models\_models.txt">
-      <DependentUpon>_models.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Content>
-    <Content Include="TextTemplate1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TextTemplate1.txt</LastGenOutput>
-    </Content>
-    <Content Include="TextTemplate1.txt">
-      <DependentUpon>TextTemplate1.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
