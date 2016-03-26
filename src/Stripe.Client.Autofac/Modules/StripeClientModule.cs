@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using System.Net.Http;
+using Autofac;
 using Stripe.Client.Sdk.Clients;
 
 namespace Stripe.Client.Autofac.Modules
@@ -7,7 +8,10 @@ namespace Stripe.Client.Autofac.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            var sdk = typeof (IStripeClient).Assembly;
+            var sdk = typeof(IStripeClient).Assembly;
+
+            builder.RegisterType<HttpClient>().AsSelf();
+
             builder.RegisterAssemblyTypes(sdk)
                 .Where(t => t.Name.EndsWith("Client"))
                 .AsImplementedInterfaces();

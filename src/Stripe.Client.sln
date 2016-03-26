@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stripe.Client.Sdk.Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stripe.Client.Autofac", "Stripe.Client.Autofac\Stripe.Client.Autofac.csproj", "{A4206B9B-C796-45D4-9A7F-6C89D02F5FF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stripe.Client.Autofac.Tests", "Stripe.Client.Autofac.Tests\Stripe.Client.Autofac.Tests.csproj", "{FC0C8DF6-32D2-4008-B11A-F26FA6EC1144}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,11 +31,16 @@ Global
 		{A4206B9B-C796-45D4-9A7F-6C89D02F5FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4206B9B-C796-45D4-9A7F-6C89D02F5FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4206B9B-C796-45D4-9A7F-6C89D02F5FF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC0C8DF6-32D2-4008-B11A-F26FA6EC1144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC0C8DF6-32D2-4008-B11A-F26FA6EC1144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC0C8DF6-32D2-4008-B11A-F26FA6EC1144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC0C8DF6-32D2-4008-B11A-F26FA6EC1144}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{54DB0C12-F32F-4F2E-9E33-41EA33A7D35D} = {F138351F-EDDA-4AFC-86DD-976B72937A3C}
+		{FC0C8DF6-32D2-4008-B11A-F26FA6EC1144} = {F138351F-EDDA-4AFC-86DD-976B72937A3C}
 	EndGlobalSection
 EndGlobal
