@@ -101,6 +101,7 @@
     <Compile Include="Clients\Relay\ProductClientTests.cs" />
     <Compile Include="Clients\Relay\SkuClientTests.cs" />
     <Compile Include="Clients\StripeClientTests.cs" />
+    <Compile Include="Clients\Subscriptions\InvoiceItemClientTests.cs" />
     <Compile Include="Clients\Subscriptions\CouponClientTests.cs" />
     <Compile Include="Clients\Subscriptions\InvoiceClientTests.cs" />
     <Compile Include="Clients\Subscriptions\PlanClientTests.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Models\Arguments\UpcomingInvoiceArgumentsTests.cs" />
     <Compile Include="Models\EventTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resolvers\SnakeCaseContractResolverTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Stripe.Client.Sdk\Stripe.Client.Sdk.csproj">

@@ -16,6 +16,7 @@
         public const string Events = "events";
         public const string ExternalAccounts = "external_accounts";
         public const string History = "history";
+        public const string InvoiceItems = "invoiceitems";
         public const string Invoices = "invoices";
         public const string Lines = "lines";
         public const string Orders = "orders";
