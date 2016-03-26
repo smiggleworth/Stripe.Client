@@ -36,7 +36,7 @@ namespace Stripe.Client.Sdk.Tests.Resolvers
         public void ResolvePropertyName_ShouldDeserialize()
         {
             // Arrange
-            var json = "{\"some_prop\":\"Marsha!\",\"prop_with_number1\":\"Marsha!!\",\"justprop\":\"Marsha!!!\"}";
+            var json = "{\"a\":\"It's always...\", \"some_prop\":\"Marsha!\",\"prop_with_number1\":\"Marsha!!\",\"justprop\":\"Marsha!!!\"}";
 
             // Act
             var model = JsonConvert.DeserializeObject<Sample>(json, new JsonSerializerSettings
@@ -45,6 +45,7 @@ namespace Stripe.Client.Sdk.Tests.Resolvers
             });
 
             // Assert
+            model.A.Should().Be("It's always...");
             model.SomeProp.Should().Be("Marsha!");
             model.PropWithNumber1.Should().Be("Marsha!!");
             model.Justprop.Should().Be("Marsha!!!");
@@ -52,6 +53,7 @@ namespace Stripe.Client.Sdk.Tests.Resolvers
 
         private class Sample
         {
+            public string A { get; set; }
             public string SomeProp { get; set; }
             public string PropWithNumber1 { get; set; }
             public string Justprop { get; set; }
