@@ -10,11 +10,11 @@ namespace Stripe.Client.Autofac.Modules
         {
             var sdk = typeof(IStripeClient).Assembly;
 
-            builder.RegisterType<HttpClient>().AsSelf();
+            builder.RegisterType<HttpClient>().AsSelf().InstancePerDependency();
 
             builder.RegisterAssemblyTypes(sdk)
                 .Where(t => t.Name.EndsWith("Client"))
-                .AsImplementedInterfaces();
+                .AsImplementedInterfaces().InstancePerDependency();
         }
     }
 }
