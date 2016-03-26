@@ -8,7 +8,7 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
 {
     public interface IInvoiceItemClient
     {
-        Task<StripeResponse<InvoiceItem>> GetInvoiceItem(string id,
+        Task<StripeResponse<InvoiceItem>> GetInvoiceItem(string invoiceItemId,
             CancellationToken cancellationToken = default(CancellationToken));
 
         Task<StripeResponse<Pagination<InvoiceItem>>> GetInvoiceItems(InvoiceItemListFilter filter,
@@ -18,6 +18,9 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
             CancellationToken cancellationToken = default(CancellationToken));
 
         Task<StripeResponse<InvoiceItem>> UpdateInvoiceItem(InvoiceItemUpdateArguments arguments,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        Task<StripeResponse<DeletedObject>> DeleteInvoiceItem(string couponId,
             CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -101,6 +101,7 @@
     <Compile Include="Clients\Relay\ProductClientTests.cs" />
     <Compile Include="Clients\Relay\SkuClientTests.cs" />
     <Compile Include="Clients\StripeClientTests.cs" />
+    <Compile Include="Clients\Subscriptions\InvoiceItemClientTests.cs" />
     <Compile Include="Clients\Subscriptions\CouponClientTests.cs" />
     <Compile Include="Clients\Subscriptions\InvoiceClientTests.cs" />
     <Compile Include="Clients\Subscriptions\PlanClientTests.cs" />
