@@ -6,9 +6,6 @@
 
         public StripeError Error { get; set; }
 
-        public bool Success
-        {
-            get { return Error == null; }
-        }
+        public bool Success => Error == null;
     }
 }

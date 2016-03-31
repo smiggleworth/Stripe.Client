@@ -18,13 +18,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
 
         [Required]
         [ChildModel]
-        public object ExternalAccount
-        {
-            get
-            {
-                return !string.IsNullOrWhiteSpace(BankAccountToken) ? (object)BankAccountToken : BankAccountCreateArguments;
-            }
-        }
+        public object ExternalAccount => !string.IsNullOrWhiteSpace(BankAccountToken) ? (object)BankAccountToken : BankAccountCreateArguments;
 
         public bool? DefaultForCurrency { get; set; }
 

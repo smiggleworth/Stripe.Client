@@ -8,10 +8,7 @@ namespace Stripe.Client.Sdk.Models
     {
         public string Id { get; set; }
 
-        public string Object
-        {
-            get { return "transaction"; }
-        }
+        public string Object => "transaction";
         public int Amount { get; set; }
 
         public int BitcoinAmount { get; set; }

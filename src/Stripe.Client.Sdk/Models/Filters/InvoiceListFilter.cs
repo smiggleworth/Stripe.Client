@@ -16,9 +16,6 @@ namespace Stripe.Client.Sdk.Models.Filters
         public DateFilter InvoiceDateFilter { get; set; }
 
         [ChildModel]
-        public object Date
-        {
-            get { return InvoiceDateTime.HasValue ? (object)InvoiceDateTime.Value.ToEpoch() : InvoiceDateFilter; }
-        }
+        public object Date => InvoiceDateTime.HasValue ? (object)InvoiceDateTime.Value.ToEpoch() : InvoiceDateFilter;
     }
 }

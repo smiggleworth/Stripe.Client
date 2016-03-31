@@ -10,10 +10,7 @@ namespace Stripe.Client.Sdk.Configuration
         /// <value>
         ///     The secret key.
         /// </value>
-        public string SecretKey
-        {
-            get { return ConfigurationManager.AppSettings["Stripe.SecretKey"]; }
-        }
+        public string SecretKey => ConfigurationManager.AppSettings["Stripe.SecretKey"];
 
         /// <summary>
         ///     Gets the publishable key from AppSetting StripePublishableKey.
@@ -21,10 +18,7 @@ namespace Stripe.Client.Sdk.Configuration
         /// <value>
         ///     The publishable key.
         /// </value>
-        public string PublishableKey
-        {
-            get { return ConfigurationManager.AppSettings["Stripe.PublishableKey"]; }
-        }
+        public string PublishableKey => ConfigurationManager.AppSettings["Stripe.PublishableKey"];
 
         /// <summary>
         ///     Gets the account id from AppSetting StripeAccountId.
@@ -32,9 +26,6 @@ namespace Stripe.Client.Sdk.Configuration
         /// <value>
         ///     The account identifier.
         /// </value>
-        public string AccountId
-        {
-            get { return ConfigurationManager.AppSettings["Stripe.AccountId"]; }
-        }
+        public string AccountId => ConfigurationManager.AppSettings["Stripe.AccountId"];
     }
 }

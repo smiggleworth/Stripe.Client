@@ -9,7 +9,6 @@ namespace Stripe.Client.Sdk.Models.Filters
         [JsonIgnore]
         public string AccountId { get; set; }
 
-
         [Required]
         public string Reason { get; set; }
     }

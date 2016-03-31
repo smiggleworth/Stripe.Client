@@ -8,10 +8,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
 {
     public class CardCreateArguments : IPaymentTypeArguments
     {
-        public virtual string Object
-        {
-            get { return "card"; }
-        }
+        public virtual string Object => "card";
 
         [Required]
         [Range(1, 12)]

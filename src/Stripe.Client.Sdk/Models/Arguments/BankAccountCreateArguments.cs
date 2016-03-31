@@ -5,10 +5,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
     public class BankAccountCreateArguments : IPaymentTypeArguments
     {
         [Required]
-        public string Object
-        {
-            get { return "bank_account"; }
-        }
+        public string Object => "bank_account";
 
         [Required]
         public string AccountNumber { get; set; }

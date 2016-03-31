@@ -14,9 +14,6 @@ namespace Stripe.Client.Sdk.Models.Filters
         public DateFilter CreatedFilter { get; set; }
 
         [ChildModel]
-        public object Created
-        {
-            get { return CreatedDateTime.HasValue ? (object)CreatedDateTime.Value.ToEpoch() : CreatedFilter; }
-        }
+        public object Created => CreatedDateTime.HasValue ? (object)CreatedDateTime.Value.ToEpoch() : CreatedFilter;
     }
 }

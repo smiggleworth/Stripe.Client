@@ -81,10 +81,7 @@ namespace Stripe.Client.Sdk.Tests.Clients
             public TestModel TestChildModel { get; set; }
 
             [ChildModel]
-            public object TestChild
-            {
-                get { return !string.IsNullOrWhiteSpace(TestChildString) ? TestChildString : (object)TestChildModel; }
-            }
+            public object TestChild => !string.IsNullOrWhiteSpace(TestChildString) ? TestChildString : (object)TestChildModel;
 
             [ChildModel]
             public List<TestModel> Children { get; set; }

@@ -14,10 +14,7 @@ namespace Stripe.Client.Sdk.Models.Filters
         public DateFilter CreatedFilter { get; set; }
 
         [ChildModel]
-        public object Created
-        {
-            get { return CreatedDateTime.HasValue ? (object)CreatedDateTime.Value.ToEpoch() : CreatedFilter; }
-        }
+        public object Created => CreatedDateTime.HasValue ? (object)CreatedDateTime.Value.ToEpoch() : CreatedFilter;
 
         [JsonIgnore]
         public DateTime? TransferDateTime { get; set; }
@@ -26,10 +23,7 @@ namespace Stripe.Client.Sdk.Models.Filters
         public DateFilter TransferDateFilter { get; set; }
 
         [ChildModel]
-        public object Date
-        {
-            get { return TransferDateTime.HasValue ? (object)TransferDateTime.Value.ToEpoch() : TransferDateFilter; }
-        }
+        public object Date => TransferDateTime.HasValue ? (object)TransferDateTime.Value.ToEpoch() : TransferDateFilter;
 
         /// <summary>
         /// Only return transfers for the destination specified by this account OrderId.

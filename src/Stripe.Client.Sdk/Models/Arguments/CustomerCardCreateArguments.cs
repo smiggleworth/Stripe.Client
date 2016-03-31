@@ -19,10 +19,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
 
         [Required]
         [ChildModel]
-        public object Source
-        {
-            get { return !string.IsNullOrWhiteSpace(CardToken) ? CardToken : (object)CardCreateArguments; }
-        }
+        public object Source => !string.IsNullOrWhiteSpace(CardToken) ? CardToken : (object)CardCreateArguments;
 
         public Dictionary<string, string> Metadata { get; set; }
     }

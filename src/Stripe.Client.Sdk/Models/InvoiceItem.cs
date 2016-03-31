@@ -10,10 +10,7 @@ namespace Stripe.Client.Sdk.Models
 
         public string Id { get; set; }
 
-        public string Object
-        {
-            get { return "invoiceitem"; }
-        }
+        public string Object => "invoiceitem";
         public int Amount { get; set; }
 
         public string Currency { get; set; }
