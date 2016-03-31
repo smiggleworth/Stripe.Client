@@ -266,7 +266,7 @@ namespace Stripe.Client.Sdk.Clients
                 if (converterType == typeof(EpochConverter))
                 {
                     var dateTime = propertyValue as DateTime?;
-                    return dateTime.HasValue ? dateTime.Value.ToEpoch().ToString() : string.Empty;
+                    return dateTime?.ToEpoch().ToString() ?? string.Empty;
                 }
             }
             return propertyValue.ToString();
