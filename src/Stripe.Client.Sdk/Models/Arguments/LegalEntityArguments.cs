@@ -1,6 +1,5 @@
-using System.Collections.Generic;
-using System.Reflection.Emit;
 using Stripe.Client.Sdk.Attributes;
+using System.Collections.Generic;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {

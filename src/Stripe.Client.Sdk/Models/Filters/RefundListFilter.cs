@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Stripe.Client.Sdk.Models.Filters
+﻿namespace Stripe.Client.Sdk.Models.Filters
 {
     public class RefundListFilter : ListFilter
     {

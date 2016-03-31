@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Serialization;
 using Stripe.Client.Sdk.Extensions;
 

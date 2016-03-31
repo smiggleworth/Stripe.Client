@@ -1,7 +1,7 @@
-using System.Threading;
-using System.Threading.Tasks;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Core
 {

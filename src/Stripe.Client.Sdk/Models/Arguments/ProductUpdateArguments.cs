@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Client.Sdk.Attributes;
+using System.Collections.Generic;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {

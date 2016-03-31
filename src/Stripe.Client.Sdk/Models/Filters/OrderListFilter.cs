@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Client.Sdk.Attributes;
 using Stripe.Client.Sdk.Extensions;
+using System;
+using System.Collections.Generic;
 
 namespace Stripe.Client.Sdk.Models.Filters
 {
