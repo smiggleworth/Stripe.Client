@@ -8,7 +8,7 @@
 
         public bool Success
         {
-            get { return Error != null; }
+            get { return Error == null; }
         }
     }
 }
