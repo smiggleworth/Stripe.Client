@@ -117,7 +117,8 @@ namespace Stripe.Client.Sdk.Clients
                 }
                 else
                 {
-                    stripeResponse.Error = Deserialize<StripeError>(content);
+                    var errorEnvelope = Deserialize<StripeErrorEnvelope>(content);
+                    stripeResponse.Error = errorEnvelope.Error;
                 }
                 return stripeResponse;
             }
