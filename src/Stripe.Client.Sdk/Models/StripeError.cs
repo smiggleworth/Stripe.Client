@@ -18,9 +18,4 @@
 
         public string DeclineCode { get; set; }
     }
-
-    public class StripeErrorEnvelope
-    {
-        public StripeError Error { get; set; }
-    }
 }
