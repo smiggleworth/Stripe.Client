@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using Stripe.Client.Sdk.Attributes;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
@@ -20,10 +20,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public CardCreateArguments CardCreateArguments { get; set; }
 
         [ChildModel]
-        public object Source
-        {
-            get { return !string.IsNullOrWhiteSpace(CardToken) ? (object)CardToken : CardCreateArguments; }
-        }
+        public object Source => !string.IsNullOrWhiteSpace(CardToken) ? (object)CardToken : CardCreateArguments;
 
         public int? ApplicationFee { get; set; }
 

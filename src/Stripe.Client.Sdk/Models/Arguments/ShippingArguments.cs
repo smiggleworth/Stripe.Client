@@ -1,5 +1,5 @@
-using System.ComponentModel.DataAnnotations;
 using Stripe.Client.Sdk.Attributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {

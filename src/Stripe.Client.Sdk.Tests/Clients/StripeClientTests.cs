@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stripe.Client.Sdk.Attributes;
 using Stripe.Client.Sdk.Clients;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Models;
 
 namespace Stripe.Client.Sdk.Tests.Clients
 {
@@ -81,10 +84,7 @@ namespace Stripe.Client.Sdk.Tests.Clients
             public TestModel TestChildModel { get; set; }
 
             [ChildModel]
-            public object TestChild
-            {
-                get { return !string.IsNullOrWhiteSpace(TestChildString) ? TestChildString : (object)TestChildModel; }
-            }
+            public object TestChild => !string.IsNullOrWhiteSpace(TestChildString) ? TestChildString : (object)TestChildModel;
 
             [ChildModel]
             public List<TestModel> Children { get; set; }
@@ -119,6 +119,22 @@ namespace Stripe.Client.Sdk.Tests.Clients
 
             path.Should().Be("/v1/test");
             match.Should().HaveCount(_expected.Count());
+        }
+
+        [TestMethod]
+        public void DeserializeErrorTest()
+        {
+            // Arrange
+            var json = File.ReadAllText("JSON/error.json");
+
+            // Act
+            var obj = StripeClient.Deserialize<StripeErrorEnvelope>(json);
+
+            // Assert
+            obj.Should().BeAssignableTo<StripeErrorEnvelope>();
+            obj.Error.Should().BeAssignableTo<StripeError>();
+            obj.Error.Type.Should().Be("some type");
+            obj.Error.Message.Should().Be("I am a message");
         }
     }
 }

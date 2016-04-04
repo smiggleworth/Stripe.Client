@@ -1,0 +1,6 @@
+﻿{
+  "error": {
+    "type": "some type",
+    "message": "I am a message"
+  }
+}

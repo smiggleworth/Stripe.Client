@@ -1,17 +1,14 @@
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Converters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
-using Stripe.Client.Sdk.Converters;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
     public class CardCreateArguments : IPaymentTypeArguments
     {
-        public virtual string Object
-        {
-            get { return "card"; }
-        }
+        public virtual string Object => "card";
 
         [Required]
         [Range(1, 12)]

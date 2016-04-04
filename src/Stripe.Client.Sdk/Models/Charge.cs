@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
+using Stripe.Client.Sdk.Helpers;
 using System;
 using System.Collections.Generic;
-using Stripe.Client.Sdk.Helpers;
 
 namespace Stripe.Client.Sdk.Models
 {

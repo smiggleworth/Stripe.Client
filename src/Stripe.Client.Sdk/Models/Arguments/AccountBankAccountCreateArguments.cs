@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography.X509Certificates;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Stripe.Client.Sdk.Attributes;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
@@ -19,13 +18,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
 
         [Required]
         [ChildModel]
-        public object ExternalAccount
-        {
-            get
-            {
-                return !string.IsNullOrWhiteSpace(BankAccountToken) ? (object)BankAccountToken : BankAccountCreateArguments;
-            }
-        }
+        public object ExternalAccount => !string.IsNullOrWhiteSpace(BankAccountToken) ? (object)BankAccountToken : BankAccountCreateArguments;
 
         public bool? DefaultForCurrency { get; set; }
 

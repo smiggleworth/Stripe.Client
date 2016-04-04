@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Stripe.Client.Sdk.Attributes;
 using Stripe.Client.Sdk.Configuration;
 using Stripe.Client.Sdk.Converters;
@@ -18,6 +6,17 @@ using Stripe.Client.Sdk.Extensions;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Resolvers;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Reflection;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients
 {
@@ -118,7 +117,8 @@ namespace Stripe.Client.Sdk.Clients
                 }
                 else
                 {
-                    stripeResponse.Error = Deserialize<StripeError>(content);
+                    var errorEnvelope = Deserialize<StripeErrorEnvelope>(content);
+                    stripeResponse.Error = errorEnvelope.Error;
                 }
                 return stripeResponse;
             }
@@ -267,7 +267,7 @@ namespace Stripe.Client.Sdk.Clients
                 if (converterType == typeof(EpochConverter))
                 {
                     var dateTime = propertyValue as DateTime?;
-                    return dateTime.HasValue ? dateTime.Value.ToEpoch().ToString() : string.Empty;
+                    return dateTime?.ToEpoch().ToString() ?? string.Empty;
                 }
             }
             return propertyValue.ToString();

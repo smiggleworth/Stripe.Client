@@ -67,12 +67,6 @@ namespace Stripe.Client.Sdk.Models.Arguments
 
         [ChildModel]
         [Required]
-        public object ExternalAccount
-        {
-            get
-            {
-                return !string.IsNullOrWhiteSpace(Token) ? (object)Token : ExternalAccountCreateArguments;
-            }
-        }
+        public object ExternalAccount => !string.IsNullOrWhiteSpace(Token) ? (object)Token : ExternalAccountCreateArguments;
     }
 }

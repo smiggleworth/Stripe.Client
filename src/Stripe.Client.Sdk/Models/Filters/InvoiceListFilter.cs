@@ -1,7 +1,7 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Stripe.Client.Sdk.Attributes;
 using Stripe.Client.Sdk.Extensions;
+using System;
 
 namespace Stripe.Client.Sdk.Models.Filters
 {
@@ -16,9 +16,6 @@ namespace Stripe.Client.Sdk.Models.Filters
         public DateFilter InvoiceDateFilter { get; set; }
 
         [ChildModel]
-        public object Date
-        {
-            get { return InvoiceDateTime.HasValue ? (object)InvoiceDateTime.Value.ToEpoch() : InvoiceDateFilter; }
-        }
+        public object Date => InvoiceDateTime.HasValue ? (object)InvoiceDateTime.Value.ToEpoch() : InvoiceDateFilter;
     }
 }

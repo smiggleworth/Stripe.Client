@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Stripe.Client.Sdk.Models.Filters;
+using System;
 using System.Collections.Generic;
-using Stripe.Client.Sdk.Models.Filters;
 
 namespace Stripe.Client.Sdk.Tests
 {

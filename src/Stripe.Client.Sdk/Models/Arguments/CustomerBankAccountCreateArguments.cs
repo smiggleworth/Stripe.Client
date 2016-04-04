@@ -19,10 +19,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
 
         [Required]
         [ChildModel]
-        public object Source
-        {
-            get { return !string.IsNullOrWhiteSpace(BankAccountToken) ? (object)BankAccountToken : BankAccountCreateArguments; }
-        }
+        public object Source => !string.IsNullOrWhiteSpace(BankAccountToken) ? (object)BankAccountToken : BankAccountCreateArguments;
 
         public bool DefaultForCurrency { get; set; }
 

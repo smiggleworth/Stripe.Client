@@ -188,6 +188,7 @@
     <Compile Include="Helpers\Expandable.cs" />
     <Compile Include="Models\AdditionalOwner.cs" />
     <Compile Include="Models\Filters\TransferReversalListFilter.cs" />
+    <Compile Include="Models\StripeErrorEnvelope.cs" />
     <Compile Include="Models\StripeRequest.cs" />
     <Compile Include="Models\TermsOfServiceAcceptance.cs" />
     <Compile Include="Models\Transaction.cs" />

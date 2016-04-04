@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
 using Stripe.Client.Sdk.Models.Arguments;
+using System;
+using System.Collections.Generic;
 
 namespace Stripe.Client.Sdk.Models
 {
@@ -10,10 +10,7 @@ namespace Stripe.Client.Sdk.Models
     {
         public string Id { get; set; }
 
-        public string Object
-        {
-            get { return "product"; }
-        }
+        public string Object => "product";
 
         public bool Active { get; set; }
 

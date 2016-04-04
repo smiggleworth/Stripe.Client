@@ -1,6 +1,6 @@
-﻿using System;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Stripe.Client.Sdk.Models;
+using System;
 
 namespace Stripe.Client.Sdk.Helpers
 {
