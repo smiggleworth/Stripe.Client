@@ -24,7 +24,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter = new BitcoinReceiverListFilter();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(0);
@@ -39,7 +39,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter.Filled = true;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(5)

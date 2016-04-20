@@ -27,7 +27,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.InvoiceId = null;
 
             // Act
-            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetKeyValuePairs(_args);
+            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(_args);
 
             // Assert
             func.Enumerating().ShouldThrow<ValidationException>();
@@ -43,7 +43,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.TaxPercent = 16;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(7)

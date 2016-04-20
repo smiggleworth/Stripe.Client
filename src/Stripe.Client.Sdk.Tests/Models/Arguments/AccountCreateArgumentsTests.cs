@@ -27,7 +27,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args = new AccountCreateArguments();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(0);
@@ -41,7 +41,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
                 Email = "notvalidemail"
             };
 
-            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetKeyValuePairs(args);
+            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(args);
             func.Enumerating().ShouldThrow<ValidationException>();
         }
 
@@ -52,7 +52,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Managed = false;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(3)

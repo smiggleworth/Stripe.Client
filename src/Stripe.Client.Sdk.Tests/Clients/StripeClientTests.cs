@@ -8,7 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json;
+using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Models;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Clients
 {
@@ -135,6 +137,20 @@ namespace Stripe.Client.Sdk.Tests.Clients
             obj.Error.Should().BeAssignableTo<StripeError>();
             obj.Error.Type.Should().Be("some type");
             obj.Error.Message.Should().Be("I am a message");
+        }
+
+        [TestMethod]
+        public void ExpandablesTest()
+        {
+            // Arrange
+            var stripeClient = new StripeClient(null,null);
+            stripeClient.Expandables = new List<string> {Expandables.Invoice, Expandables.Customer, Expandables.Charge};
+
+            // Act
+            var keys = stripeClient.GetAllKeyValuePairs<object>(null);
+
+            // Assert
+            keys.Should().Contain(x => x.Key == "expand[]" && x.Value == "invoice.customer.charge");
         }
     }
 }

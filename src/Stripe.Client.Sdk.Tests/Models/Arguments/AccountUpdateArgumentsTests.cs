@@ -38,7 +38,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.AccountId = null;
 
             // Act
-            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetKeyValuePairs(_args);
+            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(_args);
 
             // Assert
             func.Enumerating().ShouldThrow<ValidationException>();
@@ -55,7 +55,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             };
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "decline_charge_on[avs_failure]")
@@ -85,7 +85,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             };
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "legal_entity[additional_owners][0][first_name]")
@@ -142,7 +142,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Metadata = Data.Metadata;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "metadata[key1]")
@@ -156,7 +156,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.TosAcceptance = GenFu.GenFu.New<TermsOfServiceAcceptanceArguments>();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "tos_acceptance[date]")
@@ -171,7 +171,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.TransferSchedule = GenFu.GenFu.New<TransferScheduleArguments>();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "transfer_schedule[delay_days]")
@@ -186,7 +186,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             // Arrange 
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(12)

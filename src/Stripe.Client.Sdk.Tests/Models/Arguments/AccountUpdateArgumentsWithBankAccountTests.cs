@@ -24,7 +24,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.ExternalAccountCreateArguments = GenFu.GenFu.New<BankAccountCreateArguments>();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "external_account" && x.Value == _args.Token);
@@ -38,7 +38,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.ExternalAccountCreateArguments = GenFu.GenFu.New<BankAccountCreateArguments>();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "external_account")

@@ -27,7 +27,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Pii = null;
 
             // Act
-            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetKeyValuePairs(_args);
+            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(_args);
 
             // Assert
             func.Enumerating().ShouldThrow<ValidationException>();
@@ -40,7 +40,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Pii = GenFu.GenFu.New<PiiArguments>();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(1).And.NotContain(x => x.Key == "pii[personal_id_number]");

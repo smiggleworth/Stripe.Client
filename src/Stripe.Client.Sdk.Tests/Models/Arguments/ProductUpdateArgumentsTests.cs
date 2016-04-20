@@ -24,7 +24,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args = new ProductUpdateArguments();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(0);
@@ -37,7 +37,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.PackageDimensions = GenFu.GenFu.New<PackageDimensions>();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "package_dimensions[height]")
@@ -56,7 +56,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Active = true;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(9)

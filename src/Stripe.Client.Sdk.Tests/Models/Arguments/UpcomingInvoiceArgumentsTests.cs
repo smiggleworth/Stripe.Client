@@ -25,7 +25,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args = new UpcomingInvoiceArguments();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(0);
@@ -40,7 +40,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.SubscriptionTrialEnd = DateTime.UtcNow;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(7)

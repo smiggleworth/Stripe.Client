@@ -60,6 +60,7 @@
     <Compile Include="Configuration\AppSettingsConfiguration.cs" />
     <Compile Include="Configuration\IStripeConfiguration.cs" />
     <Compile Include="Configuration\StripeConfiguration.cs" />
+    <Compile Include="Constants\Expandables.cs" />
     <Compile Include="Constants\Paths.cs" />
     <Compile Include="Helpers\PathHelper.cs" />
     <Compile Include="Models\Arguments\AccountCardUpdateArguments.cs" />

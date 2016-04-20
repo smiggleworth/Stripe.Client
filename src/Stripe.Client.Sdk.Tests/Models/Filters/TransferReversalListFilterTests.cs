@@ -27,7 +27,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter.TransferId = null;
 
             // Act
-            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetKeyValuePairs(_filter);
+            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(_filter);
 
             // Assert
             func.Enumerating().ShouldThrow<ValidationException>();
@@ -40,7 +40,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter.Limit = 10;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "ending_before")
