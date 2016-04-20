@@ -77,6 +77,21 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
         }
 
         [TestMethod]
+        public void SubscriptionCreateArguments_SourceNotRequired()
+        {
+            // Arrange 
+            _args.CardToken = null;
+            _args.CardCreateArguments = null;
+
+            // Act
+            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+
+            // Assert
+            keyValuePairs.Should().NotContain(x => x.Key == "source")
+                .And.NotContain(x => x.Key == "source[object]");
+        }
+
+        [TestMethod]
         public void SubscriptionCreateArguments_GetAllKeys()
         {
             // Arrange 

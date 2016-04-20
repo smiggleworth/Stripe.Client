@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
@@ -8,6 +9,8 @@ namespace Stripe.Client.Sdk.Clients.Relay
 {
     public interface ISkuClient
     {
+        List<string> Expandables { get; set; }
+
         Task<StripeResponse<Sku>> GetSku(string skuId, CancellationToken cancellationToken = default(CancellationToken));
 
         Task<StripeResponse<Pagination<Sku>>> GetSkus(SkuListFilter filter,

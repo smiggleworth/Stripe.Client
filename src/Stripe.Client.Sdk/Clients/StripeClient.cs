@@ -30,6 +30,8 @@ namespace Stripe.Client.Sdk.Clients
         private readonly HttpClient _httpClient;
         private readonly string _stripeVersion = "2016-02-29";
 
+        public List<string> Expandables { get; set; } 
+
         public StripeClient(HttpClient httpClient, IStripeConfiguration configuration)
         {
             _configuration = configuration;
@@ -153,9 +155,17 @@ namespace Stripe.Client.Sdk.Clients
 
         internal FormUrlEncodedContent GetFormUrlEncodedContent<T>(T model)
         {
-            var keyValuePairs = GetKeyValuePairs(model);
+            var keyValuePairs = GetKeyValuePairs(model).Union(GetExpandableKeyValue());
             var content = new FormUrlEncodedContent(keyValuePairs);
             return content;
+        }
+
+        internal IEnumerable<KeyValuePair<string, string>> GetExpandableKeyValue()
+        {
+            if(Expandables != null && Expandables.Any())
+            {
+                yield return new KeyValuePair<string, string>("expand[]", string.Join(".", Expandables));
+            }
         }
 
         internal MultipartFormDataContent GetMultipartFormDataContent<T>(T model) where T : IFileUpload

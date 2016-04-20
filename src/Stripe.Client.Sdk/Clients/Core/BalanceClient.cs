@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Helpers;
 using Stripe.Client.Sdk.Models;
@@ -14,7 +15,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public BalanceClient(IStripeClient client)
         {
             _client = client;
+            _client.Expandables = Expandables = new List<string>();
         }
+
+        public List<string> Expandables { get; set; }
 
         public async Task<StripeResponse<Balance>> GetBalance(
             CancellationToken cancellationToken = default(CancellationToken))

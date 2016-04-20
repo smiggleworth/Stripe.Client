@@ -1,4 +1,5 @@
-﻿using Stripe.Client.Sdk.Constants;
+﻿using System.Collections.Generic;
+using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Helpers;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
@@ -15,7 +16,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public CustomerClient(IStripeClient client)
         {
             _client = client;
+            _client.Expandables = Expandables = new List<string>();
         }
+
+        public List<string> Expandables { get; set; }
 
         public async Task<StripeResponse<Customer>> GetCustomer(string id,
             CancellationToken cancellationToken = default(CancellationToken))

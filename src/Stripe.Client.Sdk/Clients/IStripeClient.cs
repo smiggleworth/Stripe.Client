@@ -1,6 +1,7 @@
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,6 +9,8 @@ namespace Stripe.Client.Sdk.Clients
 {
     public interface IStripeClient : IDisposable
     {
+        List<string> Expandables { get; set; }
+
         Task<StripeResponse<TResponse>> Get<TResponse>(StripeRequest<TResponse> stripeRequest,
             CancellationToken cancellationToken);
 
