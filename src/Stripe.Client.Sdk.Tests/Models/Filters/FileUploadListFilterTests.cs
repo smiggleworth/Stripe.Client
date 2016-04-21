@@ -28,7 +28,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             // _filter.TheField = null;
 
             // Act
-            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetKeyValuePairs(_filter);
+            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(_filter);
 
             // Assert
             func.Enumerating().ShouldThrow<ValidationException>();
@@ -41,7 +41,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter = new FileUploadListFilter();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(0);
@@ -53,7 +53,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             // Arrange
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(3)

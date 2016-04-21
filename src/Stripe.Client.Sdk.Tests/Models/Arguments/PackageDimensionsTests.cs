@@ -15,7 +15,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             // Arrange 
             var args = new PackageDimensions();
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(4)

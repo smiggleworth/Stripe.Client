@@ -24,7 +24,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args = new RecipientUpdateArguments();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(0);
@@ -37,7 +37,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.RecipientBankAccountArguments = GenFu.GenFu.New<RecipientBankAccountArguments>();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "bank_account" && x.Value == _args.BankAccountToken);
@@ -51,7 +51,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.RecipientBankAccountArguments = GenFu.GenFu.New<RecipientBankAccountArguments>();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "bank_account")
@@ -67,7 +67,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.CardCreateArguments = GenFu.GenFu.New<CardCreateArguments>();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "card" && x.Value == _args.CardToken);
@@ -83,7 +83,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.CardCreateArguments.ExpYear = 2012;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "card")
@@ -97,7 +97,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Metadata = Data.Metadata;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(8)

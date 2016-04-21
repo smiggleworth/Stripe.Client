@@ -25,7 +25,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter = new SkuListFilter();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(0);
@@ -45,7 +45,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             };
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "active")

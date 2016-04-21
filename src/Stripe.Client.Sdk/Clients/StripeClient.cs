@@ -30,6 +30,8 @@ namespace Stripe.Client.Sdk.Clients
         private readonly HttpClient _httpClient;
         private readonly string _stripeVersion = "2016-02-29";
 
+        public List<string> Expandables { get; set; }
+
         public StripeClient(HttpClient httpClient, IStripeConfiguration configuration)
         {
             _configuration = configuration;
@@ -153,7 +155,11 @@ namespace Stripe.Client.Sdk.Clients
 
         internal FormUrlEncodedContent GetFormUrlEncodedContent<T>(T model)
         {
-            var keyValuePairs = GetKeyValuePairs(model);
+            var keyValuePairs = GetAllKeyValuePairs(model).ToList();
+            if (!keyValuePairs.Any())
+            {
+                return null;
+            }
             var content = new FormUrlEncodedContent(keyValuePairs);
             return content;
         }
@@ -177,16 +183,36 @@ namespace Stripe.Client.Sdk.Clients
             {
                 Path = "v1/" + urlPath
             };
-            if (model == null)
+            if (model == null && !Expandables.Any())
             {
                 return uriBuilder.Uri;
             }
-            var content = await GetFormUrlEncodedContent(model).ReadAsStringAsync();
-            uriBuilder.Query = content;
+            var content = GetFormUrlEncodedContent(model);
+            if (content == null)
+            {
+                return uriBuilder.Uri;
+            }
+            uriBuilder.Query = await content.ReadAsStringAsync();
             return uriBuilder.Uri;
         }
 
-        internal static IEnumerable<KeyValuePair<string, string>> GetKeyValuePairs<T>(T model, string parent = null)
+        internal IEnumerable<KeyValuePair<string, string>> GetAllKeyValuePairs<T>(T model)
+        {
+            return model == null ? GetExpandableKeyValue() : GetModelKeyValuePairs(model).Union(GetExpandableKeyValue());
+        }
+
+        internal IEnumerable<KeyValuePair<string, string>> GetExpandableKeyValue()
+        {
+            if (Expandables != null && Expandables.Any())
+            {
+                foreach (var item in Expandables)
+                {
+                    yield return new KeyValuePair<string, string>("expand[]", item);
+                }
+            }
+        }
+
+        internal static IEnumerable<KeyValuePair<string, string>> GetModelKeyValuePairs<T>(T model, string parent = null)
         {
             // At this point data should be validated by the calling business layer
             // If validation fails just let it blow up
@@ -222,7 +248,7 @@ namespace Stripe.Client.Sdk.Clients
                             foreach (var item in enumerable)
                             {
                                 var keyi = key + "[" + i + "]";
-                                foreach (var child in GetKeyValuePairs(item, keyi))
+                                foreach (var child in GetModelKeyValuePairs(item, keyi))
                                 {
                                     yield return child;
                                 }
@@ -230,7 +256,7 @@ namespace Stripe.Client.Sdk.Clients
                             }
                             continue;
                         }
-                        foreach (var child in GetKeyValuePairs(propertyValue, key))
+                        foreach (var child in GetModelKeyValuePairs(propertyValue, key))
                         {
                             yield return child;
                         }

@@ -25,7 +25,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter = new DisputeListFilter();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(0);
@@ -39,7 +39,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter.CreatedFilter = Data.DateFilter;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "created")
@@ -58,7 +58,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter.CreatedFilter = Data.DateFilter;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "created")
@@ -75,7 +75,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter.Limit = 10;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "ending_before")

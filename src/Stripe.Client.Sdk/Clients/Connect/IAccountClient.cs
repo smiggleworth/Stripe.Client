@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
@@ -8,6 +10,8 @@ namespace Stripe.Client.Sdk.Clients.Connect
 {
     public interface IAccountClient
     {
+        List<string> Expandables { get; set; }
+
         Task<StripeResponse<Account>> GetAccount(string id,
             CancellationToken cancellationToken = default(CancellationToken));
 

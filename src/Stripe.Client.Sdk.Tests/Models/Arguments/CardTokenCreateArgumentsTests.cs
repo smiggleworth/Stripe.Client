@@ -19,7 +19,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args = new CardTokenCreateArguments();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(0);
@@ -32,7 +32,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Customer = "customer 1";
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(1).And.Contain(x => x.Key == "customer");
@@ -47,7 +47,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Card.ExpYear = DateTime.UtcNow.Year;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(13)

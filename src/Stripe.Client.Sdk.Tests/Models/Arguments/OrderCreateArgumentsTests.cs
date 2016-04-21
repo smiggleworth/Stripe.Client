@@ -29,7 +29,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Currency = null;
 
             // Act
-            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetKeyValuePairs(_args);
+            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(_args);
 
             // Assert
             func.Enumerating().ShouldThrow<ValidationException>();
@@ -45,7 +45,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Metadata = Data.Metadata;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(27)

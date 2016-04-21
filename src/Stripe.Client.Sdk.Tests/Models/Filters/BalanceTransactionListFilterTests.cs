@@ -25,7 +25,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter = new BalanceTransactionListFilter();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(0);
@@ -40,7 +40,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter.AvailableOnFilter = Data.DateFilter;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(7, string.Join("\r\n", keyValuePairs.Select(x => x.Key + " : " + x.Value)))
@@ -61,7 +61,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter.CreatedFilter = Data.DateFilter;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(7, string.Join("\r\n", keyValuePairs.Select(x => x.Key + " : " + x.Value)))
@@ -86,7 +86,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(11, string.Join("\r\n", keyValuePairs.Select(x => x.Key + " : " + x.Value)))

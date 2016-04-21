@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
@@ -14,7 +15,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public FileUploadClient(IStripeClient client)
         {
             _client = client;
+            _client.Expandables = Expandables = new List<string>();
         }
+
+        public List<string> Expandables { get; set; }
 
         public async Task<StripeResponse<FileUpload>> GetFileUpload(string id,
             CancellationToken cancellationToken = default(CancellationToken))

@@ -28,7 +28,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.BankAccountCreateArguments = null;
 
             // Act
-            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetKeyValuePairs(_args);
+            Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(_args);
 
             // Assert
             func.Enumerating().ShouldThrow<ValidationException>();
@@ -41,7 +41,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.BankAccountCreateArguments = GenFu.GenFu.New<BankAccountCreateArguments>();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "external_account" && x.Value == _args.BankAccountToken);
@@ -55,7 +55,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.BankAccountCreateArguments = GenFu.GenFu.New<BankAccountCreateArguments>();
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "external_account")
@@ -70,7 +70,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Metadata = Data.Metadata;
 
             // Act
-            var keyValuePairs = StripeClient.GetKeyValuePairs(_args).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(4)

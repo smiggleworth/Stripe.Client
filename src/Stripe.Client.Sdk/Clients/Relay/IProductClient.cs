@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
@@ -8,6 +9,8 @@ namespace Stripe.Client.Sdk.Clients.Relay
 {
     public interface IProductClient
     {
+        List<string> Expandables { get; set; }
+
         Task<StripeResponse<Product>> GetProduct(string id,
             CancellationToken cancellationToken = default(CancellationToken));
 
