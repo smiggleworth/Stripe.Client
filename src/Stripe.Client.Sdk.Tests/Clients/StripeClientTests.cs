@@ -150,7 +150,10 @@ namespace Stripe.Client.Sdk.Tests.Clients
             var keys = stripeClient.GetAllKeyValuePairs<object>(null);
 
             // Assert
-            keys.Should().Contain(x => x.Key == "expand[]" && x.Value == "invoice.customer.charge");
+            keys.Should()
+                .Contain(x => x.Key == "expand[]" && x.Value == "invoice")
+                .And.Contain(x => x.Key == "expand[]" && x.Value == "customer")
+                .And.Contain(x => x.Key == "expand[]" && x.Value == "charge");
         }
     }
 }

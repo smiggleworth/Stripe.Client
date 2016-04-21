@@ -205,7 +205,10 @@ namespace Stripe.Client.Sdk.Clients
         {
             if (Expandables != null && Expandables.Any())
             {
-                yield return new KeyValuePair<string, string>("expand[]", string.Join(".", Expandables));
+                foreach (var item in Expandables)
+                {
+                    yield return new KeyValuePair<string, string>("expand[]", item);
+                }
             }
         }
 

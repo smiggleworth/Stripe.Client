@@ -11,6 +11,7 @@
         public const string Customer = "customer";
         public const string CustomerCommunication = "customer_communication";
         public const string CustomerSignature = "customer_signature";
+        public const string Data = "data";
         public const string DefaultCard = "default_card";
         public const string DefaultSource = "default_source";
         public const string Destination = "destination";
