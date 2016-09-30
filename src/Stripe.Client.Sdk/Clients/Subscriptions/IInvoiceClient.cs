@@ -14,8 +14,11 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         Task<StripeResponse<Invoice>> GetInvoice(string invoiceId,
             CancellationToken cancellationToken = default(CancellationToken));
 
-        Task<StripeResponse<Pagination<InvoiceLineItem>>> GetInvoiceLineItems(InvoiceLineItemListFilter filter,
+        Task<StripeResponse<Pagination<Invoice>>> GetInvoices(InvoiceListFilter filter, 
             CancellationToken cancellationToken = default(CancellationToken));
+
+        Task<StripeResponse<Pagination<InvoiceLineItem>>> GetInvoiceLineItems(
+            InvoiceLineItemListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
 
         Task<StripeResponse<Pagination<Invoice>>> GetUpcomingInvoices(UpcomingInvoiceArguments filter,
             CancellationToken cancellationToken = default(CancellationToken));
