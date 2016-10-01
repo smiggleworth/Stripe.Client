@@ -41,6 +41,23 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
         }
 
         [TestMethod]
+        public async Task GetInvoicesTest()
+        {
+            // Arrange
+            var filter = new InvoiceListFilter();
+            _stripe.Get(
+                Arg.Is<StripeRequest<InvoiceListFilter, Pagination<Invoice>>>(
+                    a => a.UrlPath == "invoices" && a.Model == filter), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Pagination<Invoice>>()));
+
+            // Act
+            var response = await _client.GetInvoices(filter, _cancellationToken);
+
+            // Assert
+            response.Should().NotBeNull();
+        }
+
+        [TestMethod]
         public async Task GetInvoiceLineItemsTest()
         {
             // Arrange

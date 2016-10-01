@@ -31,6 +31,17 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
             return await _client.Get(request, cancellationToken);
         }
 
+        public async Task<StripeResponse<Pagination<Invoice>>> GetInvoices(InvoiceListFilter filter, 
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<InvoiceListFilter, Pagination<Invoice>>
+            {
+                UrlPath = Paths.Invoices,
+                Model = filter
+            };
+            return await _client.Get(request, cancellationToken);
+        }
+
         public async Task<StripeResponse<Pagination<InvoiceLineItem>>> GetInvoiceLineItems(
             InvoiceLineItemListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
         {
