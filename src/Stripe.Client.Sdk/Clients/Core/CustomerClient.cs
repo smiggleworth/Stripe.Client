@@ -161,6 +161,17 @@ namespace Stripe.Client.Sdk.Clients.Core
             return await _client.Post(request, cancellationToken);
         }
 
+        public async Task<StripeResponse<DeletedObject>> DeleteCard(string id, string customerId,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<DeletedObject>
+            {
+                UrlPath = PathHelper.GetPath(Paths.Customers, customerId, Paths.Sources, id)
+            };
+            return await _client.Delete(request, cancellationToken);
+        }
+
+
         public async Task<StripeResponse<Models.Subscription>> GetSubscription(string subscriptionId, string customerId,
             CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -205,7 +216,7 @@ namespace Stripe.Client.Sdk.Clients.Core
             return await _client.Post(request, cancellationToken);
         }
 
-        public async Task<StripeResponse<Models.Subscription>> CancelSubscription(SubscriptionCancelArguments arguments,CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<StripeResponse<Models.Subscription>> CancelSubscription(SubscriptionCancelArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
         {
             var request = new StripeRequest<Models.Subscription>
             {
