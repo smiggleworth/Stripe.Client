@@ -75,6 +75,19 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
         }
 
         [TestMethod]
+        public async Task DeleteRecipientTest()
+        {
+            var id = "ID_VALUE";
+
+            _stripe.Delete(Arg.Is<StripeRequest<DeletedObject>>(a => a.UrlPath == "recipients/" + id), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
+
+            var response = await _client.DeleteRecipient(id, _cancellationToken);
+
+            response.Should().NotBeNull();
+        }
+
+        [TestMethod]
         public async Task GetCardTest()
         {
             var recipientId = "ACC_1234";
@@ -128,6 +141,23 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
                     a => a.UrlPath == "recipients/" + args.RecipientId + "/cards/" + args.CardId && a.Model == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Card>()));
             var response = await _client.UpdateCard(args, _cancellationToken);
+            response.Should().NotBeNull();
+        }
+
+
+        [TestMethod]
+        public async Task DeleteCardTest()
+        {
+            // Arrange
+            var recipientId = "ACC_1234";
+            var id = "ID_VALUE";
+            _stripe.Delete(Arg.Is<StripeRequest<DeletedObject>>(a => a.UrlPath == "recipients/" + recipientId + "/cards/" + id),
+                _cancellationToken).Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
+
+            // Act
+            var response = await _client.DeleteCard(id, recipientId, _cancellationToken);
+
+            // Assert
             response.Should().NotBeNull();
         }
     }
