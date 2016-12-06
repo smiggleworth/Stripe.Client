@@ -265,6 +265,22 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
         }
 
         [TestMethod]
+        public async Task DeleteCardTest()
+        {
+            // Arrange
+            var customerId = "ACC_1234";
+            var id = "ID_VALUE";
+            _stripe.Delete(Arg.Is<StripeRequest<DeletedObject>>(a => a.UrlPath == "customers/" + customerId + "/sources/" + id),
+                _cancellationToken).Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
+
+            // Act
+            var response = await _client.DeleteCard(id, customerId, _cancellationToken);
+
+            // Assert
+            response.Should().NotBeNull();
+        }
+
+        [TestMethod]
         public async Task GetSubscriptionTest()
         {
             // Arrange

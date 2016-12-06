@@ -67,5 +67,8 @@ namespace Stripe.Client.Sdk.Clients.Core
 
         Task<StripeResponse<DeletedObject>> DeleteDiscount(string id,
             CancellationToken cancellationToken = default(CancellationToken));
+
+        Task<StripeResponse<DeletedObject>> DeleteCard(string id, string customerId,
+            CancellationToken cancellationToken = default(CancellationToken));
     }
 }
