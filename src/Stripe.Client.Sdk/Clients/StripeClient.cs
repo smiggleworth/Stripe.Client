@@ -276,7 +276,7 @@ namespace Stripe.Client.Sdk.Clients
                 }
 
                 var value = GetValue(propertyValue, attributes);
-                if (string.IsNullOrWhiteSpace(value))
+                if (value == null)
                 {
                     continue;
                 }
