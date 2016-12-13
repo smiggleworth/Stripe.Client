@@ -29,7 +29,10 @@ namespace Stripe.Client.Sdk.Models
 
         public object DefaultSource
         {
-            set { Expandable<Card>.Deserialize(value, s => DefaultCardId = s, o => DefaultCard = o); }
+            set
+            {
+                Expandable<Card>.Deserialize(value, s => DefaultCardId = s, o => DefaultCard = o);
+            }
         }
 
         public bool Delinquent { get; set; }
