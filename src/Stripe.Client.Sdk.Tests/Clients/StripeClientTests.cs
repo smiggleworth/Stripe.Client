@@ -185,8 +185,15 @@ namespace Stripe.Client.Sdk.Tests.Clients
         public void ExpandablesTest()
         {
             // Arrange
-            var stripeClient = new StripeClient(null, null);
-            stripeClient.Expandables = new List<string> { Expandables.Invoice, Expandables.Customer, Expandables.Charge };
+            var stripeClient = new StripeClient(null, null)
+            {
+                Expandables = new List<string>
+                {
+                    Expandables.Invoice,
+                    Expandables.Customer,
+                    Expandables.Charge
+                }
+            };
 
             // Act
             var keys = stripeClient.GetAllKeyValuePairs<object>(null);
@@ -211,6 +218,8 @@ namespace Stripe.Client.Sdk.Tests.Clients
 
             obj.Should().NotBeNull();
             obj.DefaultCard.Should().NotBeNull();
+            obj.DefaultCard.AddressLine1.Should().Be("test", obj.DefaultCard.AddressLine1);
+            obj.DefaultCard.CustomerId.Should().Be("cus_9iMkevoQCYMIzC", obj.DefaultCard.CustomerId);
 
         }
     }
