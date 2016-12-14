@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using Stripe.Client.Sdk.Models;
 using System;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Resolvers;
 
 namespace Stripe.Client.Sdk.Helpers
 {
@@ -11,15 +13,20 @@ namespace Stripe.Client.Sdk.Helpers
             var o = value as JObject;
             if (o != null)
             {
-                var item = o.ToObject<T>();
+                var item = o.ToObject<T>(SnakeCaseJsonSerializer.Value);
                 updateId(item.Id);
                 updateObject(item);
             }
             else if (value is string)
             {
-                updateId((string) value);
+                updateId((string)value);
                 updateObject(default(T));
             }
         }
+
+        private static Lazy<JsonSerializer> SnakeCaseJsonSerializer => new Lazy<JsonSerializer>(() =>JsonSerializer.CreateDefault(new JsonSerializerSettings
+        {
+            ContractResolver = new SnakeCaseContractResolver()
+        }));
     }
 }
