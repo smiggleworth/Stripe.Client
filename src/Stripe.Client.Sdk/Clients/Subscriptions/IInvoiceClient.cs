@@ -20,7 +20,7 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         Task<StripeResponse<Pagination<InvoiceLineItem>>> GetInvoiceLineItems(
             InvoiceLineItemListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
 
-        Task<StripeResponse<Pagination<Invoice>>> GetUpcomingInvoices(UpcomingInvoiceArguments filter,
+        Task<StripeResponse<Invoice>> GetUpcomingInvoices(UpcomingInvoiceArguments filter,
             CancellationToken cancellationToken = default(CancellationToken));
 
         Task<StripeResponse<Invoice>> CreateInvoice(InvoiceCreateArguments arguments,
