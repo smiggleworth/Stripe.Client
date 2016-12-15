@@ -53,10 +53,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
             return await _client.Get(request, cancellationToken);
         }
 
-        public async Task<StripeResponse<Pagination<Invoice>>> GetUpcomingInvoices(UpcomingInvoiceArguments filter,
+        public async Task<StripeResponse<Invoice>> GetUpcomingInvoices(UpcomingInvoiceArguments filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<UpcomingInvoiceArguments, Pagination<Invoice>>
+            var request = new StripeRequest<UpcomingInvoiceArguments, Invoice>
             {
                 UrlPath = PathHelper.GetPath(Paths.Invoices, Paths.Upcoming),
                 Model = filter
