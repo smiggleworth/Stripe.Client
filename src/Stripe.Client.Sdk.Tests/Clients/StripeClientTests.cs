@@ -124,6 +124,48 @@ namespace Stripe.Client.Sdk.Tests.Clients
         }
 
         [TestMethod]
+        public void GetModelKeyValuePairs_WhenValuesAreSet_ShouldReturnAllPropertiesAsKeyValuePairs()
+        {
+            // Arrange 
+            var model = GenFu.GenFu.New<TestModel>();
+
+            // Act
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(model).ToList();
+
+            // Assert
+            keyValuePairs.Should().HaveCount(5);
+        }
+
+        [TestMethod]
+        public void GetModelKeyValuePairs_WhenValuesAreNull_ShouldNotReturnInKeyValuePairs()
+        {
+            // Arrange 
+            var model = GenFu.GenFu.New<TestModel>();
+            model.BigName = null;
+
+            // Act
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(model).ToList();
+
+            // Assert
+            keyValuePairs.Should().HaveCount(4);
+        }
+
+        [TestMethod]
+        public void GetModelKeyValuePairs_WhenValuesAreEmptyString_ShouldReturnIncludeInKeyValuePairs()
+        {
+            // Arrange 
+            var model = GenFu.GenFu.New<TestModel>();
+            model.BigName = string.Empty;
+
+            // Act
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(model).ToList();
+
+            // Assert
+            keyValuePairs.Should().HaveCount(5);
+        }
+
+
+        [TestMethod]
         public void DeserializeErrorTest()
         {
             // Arrange
@@ -143,8 +185,15 @@ namespace Stripe.Client.Sdk.Tests.Clients
         public void ExpandablesTest()
         {
             // Arrange
-            var stripeClient = new StripeClient(null,null);
-            stripeClient.Expandables = new List<string> {Expandables.Invoice, Expandables.Customer, Expandables.Charge};
+            var stripeClient = new StripeClient(null, null)
+            {
+                Expandables = new List<string>
+                {
+                    Expandables.Invoice,
+                    Expandables.Customer,
+                    Expandables.Charge
+                }
+            };
 
             // Act
             var keys = stripeClient.GetAllKeyValuePairs<object>(null);
@@ -154,6 +203,24 @@ namespace Stripe.Client.Sdk.Tests.Clients
                 .Contain(x => x.Key == "expand[]" && x.Value == "invoice")
                 .And.Contain(x => x.Key == "expand[]" && x.Value == "customer")
                 .And.Contain(x => x.Key == "expand[]" && x.Value == "charge");
+        }
+
+
+        [TestMethod]
+        public void DeserializeExpandable()
+        {
+            // Arrange
+            var json = File.ReadAllText("JSON/expandable.json");
+
+            // Act
+            var obj = StripeClient.Deserialize<Customer>(json);
+
+
+            obj.Should().NotBeNull();
+            obj.DefaultCard.Should().NotBeNull();
+            obj.DefaultCard.AddressLine1.Should().Be("test", obj.DefaultCard.AddressLine1);
+            obj.DefaultCard.CustomerId.Should().Be("cus_9iMkevoQCYMIzC", obj.DefaultCard.CustomerId);
+
         }
     }
 }

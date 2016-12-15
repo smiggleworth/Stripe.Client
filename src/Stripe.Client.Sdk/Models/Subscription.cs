@@ -40,10 +40,10 @@ namespace Stripe.Client.Sdk.Models
         public DateTime? CanceledAt { get; set; }
 
         [JsonConverter(typeof (EpochConverter))]
-        public DateTime? PeriodEnd { get; set; }
+        public DateTime? CurrentPeriodEnd { get; set; }
 
         [JsonConverter(typeof (EpochConverter))]
-        public DateTime? PeriodStart { get; set; }
+        public DateTime? CurrentPeriodStart { get; set; }
 
         public Discount Discount { get; set; }
 

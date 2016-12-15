@@ -86,9 +86,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
                 Customer = "customer-id"
             };
             _stripe.Get(
-                Arg.Is<StripeRequest<UpcomingInvoiceArguments, Pagination<Invoice>>>(
+                Arg.Is<StripeRequest<UpcomingInvoiceArguments, Invoice>>(
                     a => a.UrlPath == "invoices/upcoming" && a.Model == filter), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Pagination<Invoice>>()));
+                .Returns(Task.FromResult(new StripeResponse<Invoice>()));
 
             // Act
             var response = await _client.GetUpcomingInvoices(filter, _cancellationToken);
