@@ -85,14 +85,17 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Quantity = 1;
             _args.TaxPercent = 8.2m;
             _args.TrialEnd = DateTime.UtcNow;
+            _args.ProrateDate = DateTime.UtcNow;
 
             // Act
             var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
 
             // Assert
-            keyValuePairs.Should().HaveCount(9)
+            keyValuePairs.Should().HaveCount(11)
                 .And.Contain(x => x.Key == "application_fee_percent")
                 .And.Contain(x => x.Key == "coupon")
+                .And.Contain(x => x.Key == "prorate")
+                .And.Contain(x => x.Key == "prorate_date")
                 .And.Contain(x => x.Key == "metadata[key1]")
                 .And.Contain(x => x.Key == "metadata[key2]")
                 .And.Contain(x => x.Key == "plan")

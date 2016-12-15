@@ -17,12 +17,14 @@ namespace Stripe.Client.Sdk.Models.Arguments
         [Required]
         public string SubscriptionId { get; set; }
 
-        public string Plan { get; set; }
-
         public string Coupon { get; set; }
 
+        public string Plan { get; set; }
+
+        public bool Prorate { get; set; }
+
         [JsonConverter(typeof(EpochConverter))]
-        public DateTime? TrialEnd { get; set; }
+        public DateTime? ProrateDate { get; set; }
 
         [JsonIgnore]
         public string CardToken { get; set; }
@@ -33,12 +35,15 @@ namespace Stripe.Client.Sdk.Models.Arguments
         [ChildModel]
         public object Source => !string.IsNullOrWhiteSpace(CardToken) ? CardToken : (object)CardCreateArguments;
 
-        public int? Quantity { get; set; }
-
         public decimal? ApplicationFeePercent { get; set; }
 
         public decimal? TaxPercent { get; set; }
 
         public Dictionary<string, string> Metadata { get; set; }
+
+        public int? Quantity { get; set; }
+
+        [JsonConverter(typeof(EpochConverter))]
+        public DateTime? TrialEnd { get; set; }
     }
 }
