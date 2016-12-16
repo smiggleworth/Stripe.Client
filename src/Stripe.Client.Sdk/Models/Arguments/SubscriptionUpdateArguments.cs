@@ -24,7 +24,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public bool Prorate { get; set; }
 
         [JsonConverter(typeof(EpochConverter))]
-        public DateTime? ProrateDate { get; set; }
+        public DateTime? ProrationDate { get; set; }
 
         [JsonIgnore]
         public string CardToken { get; set; }
