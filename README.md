@@ -53,3 +53,7 @@ Some properties are nicely handled for you. For example dates are serialized/des
             }
         }
     }
+
+## Credits
+
+- Several strategies and classes courtesy of [stripe.net](https://github.com/jaymedavis/stripe.net)

@@ -9,7 +9,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
         /// </summary>
         public string City { get; set; }
 
-        [MaxLength(2)]
+        [StringLength(2)]
         public string Country { get; set; }
 
         /// <summary>

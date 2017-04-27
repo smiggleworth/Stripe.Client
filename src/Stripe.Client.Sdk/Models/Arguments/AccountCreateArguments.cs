@@ -6,7 +6,6 @@ namespace Stripe.Client.Sdk.Models.Arguments
     {
         public string Country { get; set; }
 
-        [EmailAddress]
         public string Email { get; set; }
 
         public bool? Managed { get; set; }

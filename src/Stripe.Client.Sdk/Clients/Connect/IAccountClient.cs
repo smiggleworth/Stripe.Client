@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
