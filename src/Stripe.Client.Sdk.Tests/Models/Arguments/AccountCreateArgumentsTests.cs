@@ -33,6 +33,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             keyValuePairs.Should().HaveCount(0);
         }
 
+        [Ignore]
         [TestMethod]
         public void CrateAccountArguments_RequiresValidEmail()
         {

@@ -22,7 +22,7 @@ namespace Stripe.Client.Sdk.Clients
 {
     public class StripeClient : IStripeClient
     {
-        private static readonly Version StripeClientVersion = Assembly.GetExecutingAssembly().GetName().Version;
+        private static readonly string StripeClientVersion = "2.0.0";
 
         private readonly string _apiEndpoint = "https://api.stripe.com";
         private readonly IStripeConfiguration _configuration;
@@ -217,7 +217,7 @@ namespace Stripe.Client.Sdk.Clients
 
             var hasParent = !string.IsNullOrWhiteSpace(parent);
 
-            foreach (var propertyInfo in model.GetType().GetProperties())
+            foreach (var propertyInfo in model.GetType().GetRuntimeProperties())
             {
                 var attributes = propertyInfo.GetCustomAttributes().ToList();
                 if (attributes.OfType<JsonIgnoreAttribute>().Any())
@@ -306,29 +306,40 @@ namespace Stripe.Client.Sdk.Clients
 
         private static bool IsValidChildModel(object obj)
         {
-            switch (Type.GetTypeCode(obj.GetType()))
+            var type = obj.GetType();
+            var typeInfo = type.GetTypeInfo();
+            if (typeInfo.IsGenericType && typeInfo.GetGenericTypeDefinition() == typeof(Nullable<>))
             {
-                case TypeCode.Boolean:
-                case TypeCode.Byte:
-                case TypeCode.Char:
-                case TypeCode.DateTime:
-                case TypeCode.DBNull:
-                case TypeCode.Decimal:
-                case TypeCode.Double:
-                case TypeCode.Empty:
-                case TypeCode.Int16:
-                case TypeCode.Int32:
-                case TypeCode.Int64:
-                case TypeCode.SByte:
-                case TypeCode.Single:
-                case TypeCode.String:
-                case TypeCode.UInt16:
-                case TypeCode.UInt32:
-                case TypeCode.UInt64:
-                    return false;
-                default:
-                    return true;
+                typeInfo = Nullable.GetUnderlyingType(type).GetTypeInfo();
             }
+
+            return !(typeInfo == null || typeInfo.IsNotPublic || typeInfo.IsPointer || typeInfo.IsPrimitive
+                     || typeof(Action<>).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(bool).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(byte).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(byte[]).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(char).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(char[]).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(DateTime).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(decimal).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(double).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(Exception).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(float).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(Func<>).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(Guid).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(int).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(long).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(MulticastDelegate).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(sbyte).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(short).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(string).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(Task).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(Type).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(uint).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(ulong).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(ushort).GetTypeInfo().IsAssignableFrom(typeInfo)
+                     || typeof(void).GetTypeInfo().IsAssignableFrom(typeInfo)
+            );
         }
     }
 }
