@@ -93,7 +93,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
 
         public string PhoneNumber { get; set; }
 
-        public string SsnLast_4 { get; set; }
+        public string SsnLast4 { get; set; }
 
         public string Type { get; set; }
 

@@ -60,6 +60,8 @@
     <Compile Include="Configuration\AppSettingsConfiguration.cs" />
     <Compile Include="Configuration\IStripeConfiguration.cs" />
     <Compile Include="Configuration\StripeConfiguration.cs" />
+    <Compile Include="Constants\ErrorCodes.cs" />
+    <Compile Include="Constants\ErrorTypes.cs" />
     <Compile Include="Constants\Expandables.cs" />
     <Compile Include="Constants\Paths.cs" />
     <Compile Include="Helpers\PathHelper.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Models\Arguments\ProductCreateArguments.cs" />
     <Compile Include="Models\Filters\ProductListFilter.cs" />
     <Compile Include="Models\Arguments\ProductUpdateArguments.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Sku.cs" />
     <Compile Include="Models\Arguments\SkuCreateArguments.cs" />
     <Compile Include="Models\Filters\SkuListFilter.cs" />
