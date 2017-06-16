@@ -6,11 +6,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
-using Newtonsoft.Json;
 using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Models;
-using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Clients
 {
@@ -104,14 +101,14 @@ namespace Stripe.Client.Sdk.Tests.Clients
             // Act
             var path = uri.PathAndQuery.Split('?')[0];
 
-            var queryString = HttpUtility.ParseQueryString(uri.Query);
+            var queryString = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
 
             // Assert
-            var match = (from key in queryString.AllKeys
+            var match = (from key in queryString.Select(x => x.Key)
                          join e in _expected on new
                          {
                              Key = key,
-                             Value = queryString[key]
+                             Value = queryString[key][0]
                          } equals new
                          {
                              e.Key,
