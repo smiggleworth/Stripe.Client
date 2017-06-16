@@ -97,10 +97,7 @@ namespace Stripe.Client.Sdk.Clients
 
         public void Dispose()
         {
-            if (_httpClient != null)
-            {
-                _httpClient.Dispose();
-            }
+            _httpClient?.Dispose();
         }
 
         internal async Task<StripeResponse<T>> GetStripeResponse<T>(HttpRequestMessage httpRequestMessage,
