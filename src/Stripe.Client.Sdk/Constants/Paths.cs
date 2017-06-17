@@ -26,6 +26,7 @@
         public const string Receivers = "receivers";
         public const string Recipients = "recipients";
         public const string Refunds = "refunds";
+        public const string Reject = "reject";
         public const string Reversals = "reversals";
         public const string Skus = "skus";
         public const string Sources = "sources";

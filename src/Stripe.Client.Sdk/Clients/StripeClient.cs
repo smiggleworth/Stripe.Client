@@ -28,7 +28,7 @@ namespace Stripe.Client.Sdk.Clients
         private readonly IStripeConfiguration _configuration;
 
         private readonly HttpClient _httpClient;
-        private readonly string _stripeVersion = "2016-02-29";
+        private readonly string _stripeVersion = "2017-06-05";
 
         public List<string> Expandables { get; set; }
 
@@ -231,7 +231,8 @@ namespace Stripe.Client.Sdk.Clients
                     continue;
                 }
 
-                var propertyName = propertyInfo.Name.ToSnakeCase();
+                var jsonProperty = attributes.OfType<JsonPropertyAttribute>().FirstOrDefault();
+                var propertyName = jsonProperty != null ? jsonProperty.PropertyName : propertyInfo.Name.ToSnakeCase();
                 var key = hasParent ? parent + "[" + propertyName + "]" : propertyName;
 
                 if (attributes.OfType<ChildModelAttribute>().Any())

@@ -64,6 +64,17 @@ namespace Stripe.Client.Sdk.Clients.Connect
             return await _client.Post(request, cancellationToken);
         }
 
+        public async Task<StripeResponse<Account>> RejectAccount(AccountRejectArguments arguments,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<AccountRejectArguments, Account>
+            {
+                UrlPath = PathHelper.GetPath(Paths.Accounts, arguments.AccountId, Paths.Reject),
+                Model = arguments
+            };
+            return await _client.Post(request, cancellationToken);
+        }
+
         public async Task<StripeResponse<BankAccount>> GetBankAccount(string id, string accountId,
             CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -148,6 +159,16 @@ namespace Stripe.Client.Sdk.Clients.Connect
                 Model = arguments
             };
             return await _client.Post(request, cancellationToken);
+        }
+
+        public async Task<StripeResponse<DeletedObject>> DeleteAccount(string id,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var request = new StripeRequest<DeletedObject>
+            {
+                UrlPath = PathHelper.GetPath(Paths.Accounts, id)
+            };
+            return await _client.Delete(request, cancellationToken);
         }
     }
 }

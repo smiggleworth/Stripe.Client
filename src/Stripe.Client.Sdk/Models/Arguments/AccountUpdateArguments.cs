@@ -31,6 +31,12 @@ namespace Stripe.Client.Sdk.Models.Arguments
         [ChildModel]
         public LegalEntityArguments LegalEntity { get; set; }
 
+        /// <summary>
+        /// Details on when this account will make funds from charges available, and when they will be paid out to the account holder’s bank account. See our Connect account bank transfer guide for more information.
+        /// </summary>
+        [ChildModel]
+        public PayoutScheduleArguments PayoutSchedule { get; set; }
+
         public Dictionary<string, string> Metadata { get; set; }
 
         public string ProductDescription { get; set; }

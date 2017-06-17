@@ -94,10 +94,13 @@ namespace Stripe.Client.Sdk.Models.Arguments
 
         public string PhoneNumber { get; set; }
 
+        [JsonProperty("ssn_last_4")]
         public string SsnLast4 { get; set; }
 
         public string Type { get; set; }
 
         public string Verification { get; set; }
+
+        public  string TaxIdRegistrar { get; set; }
     }
 }

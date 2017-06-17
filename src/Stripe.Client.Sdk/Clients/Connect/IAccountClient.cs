@@ -46,5 +46,11 @@ namespace Stripe.Client.Sdk.Clients.Connect
 
         Task<StripeResponse<Card>> UpdateCard(AccountCardUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken));
+
+        Task<StripeResponse<DeletedObject>> DeleteAccount(string id,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        Task<StripeResponse<Account>> RejectAccount(AccountRejectArguments arguments,
+            CancellationToken cancellationToken = default(CancellationToken));
     }
 }

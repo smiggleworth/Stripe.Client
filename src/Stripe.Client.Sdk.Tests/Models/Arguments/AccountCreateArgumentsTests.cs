@@ -50,7 +50,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
         public void AccountCreateArguments_GetAllKeys()
         {
             // Arrange 
-            _args.Managed = false;
+            _args.Type = "standard";
 
             // Act
             var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
@@ -59,7 +59,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             keyValuePairs.Should().HaveCount(3)
                 .And.Contain(x => x.Key == "country")
                 .And.Contain(x => x.Key == "email")
-                .And.Contain(x => x.Key == "managed");
+                .And.Contain(x => x.Key == "type");
         }
     }
 }

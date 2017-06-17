@@ -94,6 +94,27 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
         }
 
         [TestMethod]
+        public async Task RejectAccountTest()
+        {
+            // Arrange
+            var args = new AccountRejectArguments()
+            {
+                AccountId = "account-id",
+                Reason = "fraud"
+            };
+            _stripe.Post(
+                       Arg.Is<StripeRequest<AccountRejectArguments, Account>>(
+                           a => a.UrlPath == $"accounts/{ args.AccountId}/reject" && a.Model == args), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<Account>()));
+
+            // Act
+            var response = await _client.RejectAccount(args, _cancellationToken);
+
+            // Assert
+            response.Should().NotBeNull();
+        }
+
+        [TestMethod]
         public async Task GetBankAccountTest()
         {
             // Arrange
@@ -245,6 +266,22 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
 
             // Act
             var response = await _client.UpdateCard(args, _cancellationToken);
+
+            // Assert
+            response.Should().NotBeNull();
+        }
+
+
+        [TestMethod]
+        public async Task DeleteAccountTest()
+        {
+            // Arrange
+            var id = "account-id";
+            _stripe.Delete(Arg.Is<StripeRequest<DeletedObject>>(a => a.UrlPath == "accounts/" + id), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
+
+            // Act
+            var response = await _client.DeleteAccount(id, _cancellationToken);
 
             // Assert
             response.Should().NotBeNull();
