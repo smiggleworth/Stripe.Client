@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Stripe.Client.Sdk.Models
 {
@@ -15,8 +16,6 @@ namespace Stripe.Client.Sdk.Models
         public bool ChargesEnabled { get; set; }
 
         public string Country { get; set; }
-
-        public string[] CurrenciesSupported { get; set; }
 
         public bool DebitNegativeBalances { get; set; }
 

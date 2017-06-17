@@ -9,6 +9,7 @@
         public const string Capture = "capture";
         public const string Cards = "cards";
         public const string Charges = "charges";
+        public const string CountrySpecs = "country_specs";
         public const string Coupons = "coupons";
         public const string Customers = "customers";
         public const string Discount = "discount";
