@@ -7,7 +7,7 @@ using Stripe.Client.Sdk.Models.Filters;
 
 namespace Stripe.Client.Sdk.Clients.Connect
 {
-    public class CountrySpecClient
+    public class CountrySpecClient : ICountrySpecClient
     {
         private readonly IStripeClient _client;
 
