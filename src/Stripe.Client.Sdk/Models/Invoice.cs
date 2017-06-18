@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
 using Stripe.Client.Sdk.Helpers;
-using System;
-using System.Collections.Generic;
 
 namespace Stripe.Client.Sdk.Models
 {
@@ -33,7 +33,7 @@ namespace Stripe.Client.Sdk.Models
             set { Expandable<Customer>.Deserialize(value, s => CustomerId = s, o => CustomerModel = o); }
         }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime? Date { get; set; }
 
         public bool? Forgiven { get; set; }
@@ -42,10 +42,10 @@ namespace Stripe.Client.Sdk.Models
 
         public bool Paid { get; set; }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime PeriodEnd { get; set; }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime PeriodStart { get; set; }
 
         public int StartingBalance { get; set; }
@@ -73,7 +73,7 @@ namespace Stripe.Client.Sdk.Models
 
         public int? EndingBalance { get; set; }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime? NextPaymentAttempt { get; set; }
 
         public string ReceiptNumber { get; set; }
@@ -82,7 +82,7 @@ namespace Stripe.Client.Sdk.Models
 
         public string Subscription { get; set; }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime? WebhooksDeliveredAt { get; set; }
 
         public Dictionary<string, string> Metadata { get; set; }

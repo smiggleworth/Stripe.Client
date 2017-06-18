@@ -1,11 +1,11 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -70,12 +70,12 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(6)
-                .And.Contain(x => x.Key == "account_number")
-                .And.Contain(x => x.Key == "country")
-                .And.Contain(x => x.Key == "currency")
-                .And.Contain(x => x.Key == "account_holder_name")
-                .And.Contain(x => x.Key == "account_holder_type")
-                .And.Contain(x => x.Key == "routing_number");
+                         .And.Contain(x => x.Key == "account_number")
+                         .And.Contain(x => x.Key == "country")
+                         .And.Contain(x => x.Key == "currency")
+                         .And.Contain(x => x.Key == "account_holder_name")
+                         .And.Contain(x => x.Key == "account_holder_type")
+                         .And.Contain(x => x.Key == "routing_number");
         }
     }
 }

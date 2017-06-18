@@ -22,6 +22,7 @@
         public const string Lines = "lines";
         public const string Orders = "orders";
         public const string Pay = "pay";
+        public const string Payouts = "payouts";
         public const string Plans = "plans";
         public const string Products = "products";
         public const string Receivers = "receivers";
@@ -31,6 +32,7 @@
         public const string Reversals = "reversals";
         public const string Skus = "skus";
         public const string Sources = "sources";
+        public const string SubscriptionItems = "subscription_items";
         public const string Subscriptions = "subscriptions";
         public const string Tokens = "tokens";
         public const string Transfers = "transfers";

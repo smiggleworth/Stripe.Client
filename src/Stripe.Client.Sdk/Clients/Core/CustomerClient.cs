@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Helpers;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Core
 {
@@ -170,61 +170,6 @@ namespace Stripe.Client.Sdk.Clients.Core
             };
             return await _client.Delete(request, cancellationToken);
         }
-
-
-        public async Task<StripeResponse<Models.Subscription>> GetSubscription(string subscriptionId, string customerId,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var request = new StripeRequest<Models.Subscription>
-            {
-                UrlPath = PathHelper.GetPath(Paths.Customers, customerId, Paths.Subscriptions, subscriptionId)
-            };
-            return await _client.Get(request, cancellationToken);
-        }
-
-        public async Task<StripeResponse<Pagination<Models.Subscription>>> GetActiveSubscriptions(
-            ActiveSubscriptionListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var request = new StripeRequest<ActiveSubscriptionListFilter, Pagination<Models.Subscription>>
-            {
-                UrlPath = PathHelper.GetPath(Paths.Customers, filter.CustomerId, Paths.Subscriptions),
-                Model = filter
-            };
-            return await _client.Get(request, cancellationToken);
-        }
-
-        public async Task<StripeResponse<Models.Subscription>> CreateSubscription(SubscriptionCreateArguments arguments,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var request = new StripeRequest<SubscriptionCreateArguments, Models.Subscription>
-            {
-                UrlPath = PathHelper.GetPath(Paths.Customers, arguments.CustomerId, Paths.Subscriptions),
-                Model = arguments
-            };
-            return await _client.Post(request, cancellationToken);
-        }
-
-        public async Task<StripeResponse<Models.Subscription>> UpdateSubscription(SubscriptionUpdateArguments arguments,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var request = new StripeRequest<SubscriptionUpdateArguments, Models.Subscription>
-            {
-                UrlPath =
-                    PathHelper.GetPath(Paths.Customers, arguments.CustomerId, Paths.Subscriptions, arguments.SubscriptionId),
-                Model = arguments
-            };
-            return await _client.Post(request, cancellationToken);
-        }
-
-        public async Task<StripeResponse<Models.Subscription>> CancelSubscription(SubscriptionCancelArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var request = new StripeRequest<Models.Subscription>
-            {
-                UrlPath = PathHelper.GetPath(Paths.Customers, arguments.CustomerId, Paths.Subscriptions, arguments.SubscriptionId)
-            };
-            return await _client.Delete(request, cancellationToken);
-        }
-
 
         public async Task<StripeResponse<DeletedObject>> DeleteDiscount(string id,
             CancellationToken cancellationToken = default(CancellationToken))

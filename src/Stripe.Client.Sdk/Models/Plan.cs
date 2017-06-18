@@ -1,14 +1,12 @@
-﻿using Newtonsoft.Json;
-using Stripe.Client.Sdk.Converters;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Converters;
 
 namespace Stripe.Client.Sdk.Models
 {
     public class Plan : IStripeModel
     {
-        public string Id { get; set; }
-
         public string Object { get; set; }
 
         [JsonConverter(typeof(EpochConverter))]
@@ -31,5 +29,6 @@ namespace Stripe.Client.Sdk.Models
         public int? TrialPeriodDays { get; set; }
 
         public Dictionary<string, string> Metadata { get; set; }
+        public string Id { get; set; }
     }
 }

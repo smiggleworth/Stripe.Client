@@ -1,11 +1,11 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Helpers;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Subscriptions
 {
@@ -31,7 +31,7 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
             return await _client.Get(request, cancellationToken);
         }
 
-        public async Task<StripeResponse<Pagination<Invoice>>> GetInvoices(InvoiceListFilter filter, 
+        public async Task<StripeResponse<Pagination<Invoice>>> GetInvoices(InvoiceListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var request = new StripeRequest<InvoiceListFilter, Pagination<Invoice>>

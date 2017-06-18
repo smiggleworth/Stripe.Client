@@ -7,9 +7,9 @@ namespace Stripe.Client.Sdk.Models.Filters
         public bool? Active { get; set; }
 
         /// <summary>
-        /// List of Product Ids
+        ///     List of Product Ids
         /// </summary>
-        public List<string > Ids { get; set; }
+        public List<string> Ids { get; set; }
 
         public bool? Shippable { get; set; }
 

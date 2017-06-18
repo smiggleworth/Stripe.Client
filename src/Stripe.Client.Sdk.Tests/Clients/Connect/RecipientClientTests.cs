@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Connect;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Connect
 {
@@ -30,7 +30,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
         {
             var id = "ID_VALUE";
             _stripe.Get(Arg.Is<StripeRequest<Recipient>>(a => a.UrlPath == "recipients/" + id), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Recipient>()));
+                   .Returns(Task.FromResult(new StripeResponse<Recipient>()));
             var response = await _client.GetRecipient(id, _cancellationToken);
             response.Should().NotBeNull();
         }
@@ -40,9 +40,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
         {
             var filter = new RecipientListFilter();
             _stripe.Get(
-                Arg.Is<StripeRequest<RecipientListFilter, Pagination<Recipient>>>(
-                    a => a.UrlPath == "recipients" && a.Model == filter), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Pagination<Recipient>>()));
+                       Arg.Is<StripeRequest<RecipientListFilter, Pagination<Recipient>>>(
+                           a => a.UrlPath == "recipients" && a.Model == filter), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<Pagination<Recipient>>()));
             var response = await _client.GetRecipients(filter, _cancellationToken);
             response.Should().NotBeNull();
         }
@@ -52,9 +52,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
         {
             var args = new RecipientCreateArguments();
             _stripe.Post(
-                Arg.Is<StripeRequest<RecipientCreateArguments, Recipient>>(
-                    a => a.UrlPath == "recipients" && a.Model == args), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Recipient>()));
+                       Arg.Is<StripeRequest<RecipientCreateArguments, Recipient>>(
+                           a => a.UrlPath == "recipients" && a.Model == args), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<Recipient>()));
             var response = await _client.CreateRecipient(args, _cancellationToken);
             response.Should().NotBeNull();
         }
@@ -67,9 +67,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
                 Id = "some-value"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<RecipientUpdateArguments, Recipient>>(
-                    a => a.UrlPath == "recipients/" + args.Id && a.Model == args), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Recipient>()));
+                       Arg.Is<StripeRequest<RecipientUpdateArguments, Recipient>>(
+                           a => a.UrlPath == "recipients/" + args.Id && a.Model == args), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<Recipient>()));
             var response = await _client.UpdateRecipient(args, _cancellationToken);
             response.Should().NotBeNull();
         }
@@ -80,7 +80,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             var id = "ID_VALUE";
 
             _stripe.Delete(Arg.Is<StripeRequest<DeletedObject>>(a => a.UrlPath == "recipients/" + id), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
+                   .Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
 
             var response = await _client.DeleteRecipient(id, _cancellationToken);
 

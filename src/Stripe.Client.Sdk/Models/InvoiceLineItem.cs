@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
 using Stripe.Client.Sdk.Helpers;
-using System;
-using System.Collections.Generic;
 
 namespace Stripe.Client.Sdk.Models
 {
@@ -28,7 +28,7 @@ namespace Stripe.Client.Sdk.Models
             set { Expandable<Customer>.Deserialize(value, s => CustomerId = s, o => CustomerModel = o); }
         }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime Date { get; set; }
 
         public bool Proration { get; set; }

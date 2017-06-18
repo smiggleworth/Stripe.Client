@@ -1,6 +1,6 @@
-using Stripe.Client.Sdk.Attributes;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Stripe.Client.Sdk.Attributes;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
@@ -26,7 +26,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public Dictionary<string, string> Attributes { get; set; }
 
         /// <summary>
-        /// The URL of an image for this SKU, meant to be displayable to the customer.
+        ///     The URL of an image for this SKU, meant to be displayable to the customer.
         /// </summary>
         public string Image { get; set; }
 

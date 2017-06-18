@@ -34,7 +34,4 @@ namespace Stripe.Client.Sdk.Tests.Helpers
             Assert.AreEqual("a/b/c", path);
         }
     }
-
-
-
 }

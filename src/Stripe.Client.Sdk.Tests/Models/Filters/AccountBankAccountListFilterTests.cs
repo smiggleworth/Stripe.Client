@@ -1,11 +1,11 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Filters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Filters;
 
 namespace Stripe.Client.Sdk.Tests.Models.Filters
 {
@@ -24,7 +24,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
         public void AccountBankAccountListFilter_AccountIdIsRequired()
         {
             // Arrange 
-             _filter.AccountId = null;
+            _filter.AccountId = null;
 
             // Act
             Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(_filter);
@@ -44,10 +44,9 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().HaveCount(3)
-                .And.Contain(x => x.Key == "ending_before")
-                .And.Contain(x => x.Key == "starting_after")
-                .And.Contain(x => x.Key == "limit");
+                         .And.Contain(x => x.Key == "ending_before")
+                         .And.Contain(x => x.Key == "starting_after")
+                         .And.Contain(x => x.Key == "limit");
         }
     }
 }
-

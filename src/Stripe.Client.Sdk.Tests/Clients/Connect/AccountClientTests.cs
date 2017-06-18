@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Connect;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Connect
 {
@@ -31,7 +31,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             // Arrange
             var id = "account-id";
             _stripe.Get(Arg.Is<StripeRequest<Account>>(a => a.UrlPath == "accounts/" + id), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Account>()));
+                   .Returns(Task.FromResult(new StripeResponse<Account>()));
 
             // Act
             var response = await _client.GetAccount(id, _cancellationToken);
@@ -46,9 +46,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             // Arrange
             var filter = new AccountListFilter();
             _stripe.Get(
-                Arg.Is<StripeRequest<AccountListFilter, Pagination<Account>>>(
-                    a => a.UrlPath == "accounts" && a.Model == filter), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Pagination<Account>>()));
+                       Arg.Is<StripeRequest<AccountListFilter, Pagination<Account>>>(
+                           a => a.UrlPath == "accounts" && a.Model == filter), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<Pagination<Account>>()));
 
             // Act
             var response = await _client.GetAccounts(filter, _cancellationToken);
@@ -82,9 +82,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
                 AccountId = "account-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<AccountUpdateArguments, Account>>(
-                    a => a.UrlPath == "accounts/" + args.AccountId && a.Model == args), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Account>()));
+                       Arg.Is<StripeRequest<AccountUpdateArguments, Account>>(
+                           a => a.UrlPath == "accounts/" + args.AccountId && a.Model == args), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<Account>()));
 
             // Act
             var response = await _client.UpdateAccount(args, _cancellationToken);
@@ -97,14 +97,14 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
         public async Task RejectAccountTest()
         {
             // Arrange
-            var args = new AccountRejectArguments()
+            var args = new AccountRejectArguments
             {
                 AccountId = "account-id",
                 Reason = "fraud"
             };
             _stripe.Post(
                        Arg.Is<StripeRequest<AccountRejectArguments, Account>>(
-                           a => a.UrlPath == $"accounts/{ args.AccountId}/reject" && a.Model == args), _cancellationToken)
+                           a => a.UrlPath == $"accounts/{args.AccountId}/reject" && a.Model == args), _cancellationToken)
                    .Returns(Task.FromResult(new StripeResponse<Account>()));
 
             // Act
@@ -121,9 +121,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             var accountId = "account-id";
             var id = "bank-account-id";
             _stripe.Get(
-                Arg.Is<StripeRequest<BankAccount>>(
-                    a => a.UrlPath == "accounts/" + accountId + "/external_accounts/" + id), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<BankAccount>()));
+                       Arg.Is<StripeRequest<BankAccount>>(
+                           a => a.UrlPath == "accounts/" + accountId + "/external_accounts/" + id), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<BankAccount>()));
 
             // Act
             var response = await _client.GetBankAccount(id, accountId, _cancellationToken);

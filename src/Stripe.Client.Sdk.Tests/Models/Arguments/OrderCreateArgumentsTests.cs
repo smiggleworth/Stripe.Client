@@ -1,11 +1,11 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -49,33 +49,33 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(27)
-                .And.Contain(x => x.Key == "coupon")
-                .And.Contain(x => x.Key == "currency")
-                .And.Contain(x => x.Key == "customer")
-                .And.Contain(x => x.Key == "email")
-                .And.Contain(x => x.Key == "items[0][amount]")
-                .And.Contain(x => x.Key == "items[0][currency]")
-                .And.Contain(x => x.Key == "items[0][description]")
-                .And.Contain(x => x.Key == "items[0][parent]")
-                .And.Contain(x => x.Key == "items[0][quantity]")
-                .And.Contain(x => x.Key == "items[0][type]")
-                .And.Contain(x => x.Key == "items[1][amount]")
-                .And.Contain(x => x.Key == "items[1][currency]")
-                .And.Contain(x => x.Key == "items[1][description]")
-                .And.Contain(x => x.Key == "items[1][parent]")
-                .And.Contain(x => x.Key == "items[1][quantity]")
-                .And.Contain(x => x.Key == "items[1][type]")
-                .And.Contain(x => x.Key == "metadata[key1]")
-                .And.Contain(x => x.Key == "metadata[key2]")
-                .And.Contain(x => x.Key == "shipping[address][city]")
-                .And.Contain(x => x.Key == "shipping[address][country]")
-                .And.Contain(x => x.Key == "shipping[address][line1]")
-                .And.Contain(x => x.Key == "shipping[address][line2]")
-                .And.Contain(x => x.Key == "shipping[address][postal_code]")
-                .And.Contain(x => x.Key == "shipping[address][state]")
-                .And.Contain(x => x.Key == "shipping[address][town]")
-                .And.Contain(x => x.Key == "shipping[name]")
-                .And.Contain(x => x.Key == "shipping[phone]");
+                         .And.Contain(x => x.Key == "coupon")
+                         .And.Contain(x => x.Key == "currency")
+                         .And.Contain(x => x.Key == "customer")
+                         .And.Contain(x => x.Key == "email")
+                         .And.Contain(x => x.Key == "items[0][amount]")
+                         .And.Contain(x => x.Key == "items[0][currency]")
+                         .And.Contain(x => x.Key == "items[0][description]")
+                         .And.Contain(x => x.Key == "items[0][parent]")
+                         .And.Contain(x => x.Key == "items[0][quantity]")
+                         .And.Contain(x => x.Key == "items[0][type]")
+                         .And.Contain(x => x.Key == "items[1][amount]")
+                         .And.Contain(x => x.Key == "items[1][currency]")
+                         .And.Contain(x => x.Key == "items[1][description]")
+                         .And.Contain(x => x.Key == "items[1][parent]")
+                         .And.Contain(x => x.Key == "items[1][quantity]")
+                         .And.Contain(x => x.Key == "items[1][type]")
+                         .And.Contain(x => x.Key == "metadata[key1]")
+                         .And.Contain(x => x.Key == "metadata[key2]")
+                         .And.Contain(x => x.Key == "shipping[address][city]")
+                         .And.Contain(x => x.Key == "shipping[address][country]")
+                         .And.Contain(x => x.Key == "shipping[address][line1]")
+                         .And.Contain(x => x.Key == "shipping[address][line2]")
+                         .And.Contain(x => x.Key == "shipping[address][postal_code]")
+                         .And.Contain(x => x.Key == "shipping[address][state]")
+                         .And.Contain(x => x.Key == "shipping[address][town]")
+                         .And.Contain(x => x.Key == "shipping[name]")
+                         .And.Contain(x => x.Key == "shipping[phone]");
         }
     }
 }

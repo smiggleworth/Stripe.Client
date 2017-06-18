@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Attributes;
 using Stripe.Client.Sdk.Extensions;
-using System;
 
 namespace Stripe.Client.Sdk.Models.Filters
 {

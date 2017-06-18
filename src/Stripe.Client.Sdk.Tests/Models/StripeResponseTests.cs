@@ -1,7 +1,5 @@
-﻿using System.IO;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 using Stripe.Client.Sdk.Models;
 
 namespace Stripe.Client.Sdk.Tests.Models

@@ -1,6 +1,6 @@
-using Stripe.Client.Sdk.Attributes;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Stripe.Client.Sdk.Attributes;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
@@ -18,7 +18,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
         [ChildModel]
         public List<OrderItemCreateArguments> Items { get; set; }
 
-        public Dictionary<string,string> Metadata { get; set; } 
+        public Dictionary<string, string> Metadata { get; set; }
 
         [ChildModel]
         public ShippingArguments Shipping { get; set; }

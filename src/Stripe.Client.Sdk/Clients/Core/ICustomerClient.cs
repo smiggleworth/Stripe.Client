@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Core
 {
@@ -48,21 +48,6 @@ namespace Stripe.Client.Sdk.Clients.Core
             CancellationToken cancellationToken = default(CancellationToken));
 
         Task<StripeResponse<Card>> UpdateCard(CustomerCardUpdateArguments arguments,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        Task<StripeResponse<Models.Subscription>> GetSubscription(string subscriptionId, string customerId,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        Task<StripeResponse<Pagination<Models.Subscription>>> GetActiveSubscriptions(
-            ActiveSubscriptionListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
-
-        Task<StripeResponse<Models.Subscription>> CreateSubscription(SubscriptionCreateArguments arguments,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        Task<StripeResponse<Models.Subscription>> UpdateSubscription(SubscriptionUpdateArguments arguments,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        Task<StripeResponse<Models.Subscription>> CancelSubscription(SubscriptionCancelArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken));
 
         Task<StripeResponse<DeletedObject>> DeleteDiscount(string id,

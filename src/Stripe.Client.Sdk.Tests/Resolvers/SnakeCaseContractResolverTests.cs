@@ -19,9 +19,8 @@ namespace Stripe.Client.Sdk.Tests.Resolvers
             var result = input.ToSnakeCase();
 
             // Assert
-            result.Should().Be(output,"the string should be formatted with underscores.");
+            result.Should().Be(output, "the string should be formatted with underscores.");
         }
-
 
 
         [TestMethod]

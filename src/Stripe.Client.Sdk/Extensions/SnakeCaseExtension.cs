@@ -1,5 +1,3 @@
-using System;
-
 namespace Stripe.Client.Sdk.Extensions
 {
     public static class SnakeCaseExtension
@@ -8,12 +6,11 @@ namespace Stripe.Client.Sdk.Extensions
         {
             for (var i = propertyName.Length - 1; i > 0; i--)
             {
-
                 if (i > 0)
                 {
                     var c = propertyName[i];
                     var p = propertyName[i - 1];
-                    if ((char.IsUpper(c) && !char.IsUpper(p)))
+                    if (char.IsUpper(c) && !char.IsUpper(p))
                     {
                         propertyName = propertyName.Insert(i, "_");
                     }

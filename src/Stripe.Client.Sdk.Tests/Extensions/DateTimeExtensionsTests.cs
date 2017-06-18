@@ -1,7 +1,7 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stripe.Client.Sdk.Extensions;
-using System;
 
 namespace Stripe.Client.Sdk.Tests.Extensions
 {
@@ -81,10 +81,10 @@ namespace Stripe.Client.Sdk.Tests.Extensions
 
             // Assert 
             date2.Should().HaveYear(date.Year)
-                .And.HaveMonth(date.Month)
-                .And.HaveDay(date.Day)
-                .And.HaveHour(date.Hour)
-                .And.HaveMinute(date.Minute);
+                 .And.HaveMonth(date.Month)
+                 .And.HaveDay(date.Day)
+                 .And.HaveHour(date.Hour)
+                 .And.HaveMinute(date.Minute);
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using Autofac;
-using Stripe.Client.Sdk.Clients;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Reflection;
+using Autofac;
+using Stripe.Client.Sdk.Clients;
 using Module = Autofac.Module;
 
 namespace Stripe.Client.Autofac.Modules
@@ -15,8 +15,8 @@ namespace Stripe.Client.Autofac.Modules
             builder.RegisterType<HttpClient>().AsSelf().InstancePerDependency();
 
             builder.RegisterAssemblyTypes(sdk)
-                .Where(t => t.Name.EndsWith("Client"))
-                .AsImplementedInterfaces().InstancePerDependency();
+                   .Where(t => t.Name.EndsWith("Client"))
+                   .AsImplementedInterfaces().InstancePerDependency();
         }
     }
 }

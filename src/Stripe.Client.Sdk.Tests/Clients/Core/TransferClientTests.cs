@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Core;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Core
 {
@@ -31,7 +31,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var id = "transfer-id";
             _stripe.Get(Arg.Is<StripeRequest<Transfer>>(a => a.UrlPath == "transfers/" + id), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Transfer>()));
+                   .Returns(Task.FromResult(new StripeResponse<Transfer>()));
 
             // Act
             var response = await _client.GetTransfer(id, _cancellationToken);
@@ -46,9 +46,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var filter = new TransferListFilter();
             _stripe.Get(
-                Arg.Is<StripeRequest<TransferListFilter, Pagination<Transfer>>>(
-                    a => a.UrlPath == "transfers" && a.Model == filter), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Pagination<Transfer>>()));
+                       Arg.Is<StripeRequest<TransferListFilter, Pagination<Transfer>>>(
+                           a => a.UrlPath == "transfers" && a.Model == filter), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<Pagination<Transfer>>()));
 
             // Act
             var response = await _client.GetTransfers(filter, _cancellationToken);
@@ -63,9 +63,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var args = new TransferCreateArguments();
             _stripe.Post(
-                Arg.Is<StripeRequest<TransferCreateArguments, Transfer>>(
-                    a => a.UrlPath == "transfers" && a.Model == args), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Transfer>()));
+                       Arg.Is<StripeRequest<TransferCreateArguments, Transfer>>(
+                           a => a.UrlPath == "transfers" && a.Model == args), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<Transfer>()));
 
             // Act
             var response = await _client.CreateTransfer(args, _cancellationToken);
@@ -83,9 +83,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 TransferId = "transfer-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<TransferUpdateArguments, Transfer>>(
-                    a => a.UrlPath == "transfers/" + args.TransferId && a.Model == args), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Transfer>()));
+                       Arg.Is<StripeRequest<TransferUpdateArguments, Transfer>>(
+                           a => a.UrlPath == "transfers/" + args.TransferId && a.Model == args), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<Transfer>()));
 
             // Act
             var response = await _client.UpdateTransfer(args, _cancellationToken);

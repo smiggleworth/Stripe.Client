@@ -1,18 +1,18 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
     [TestClass]
     public class PlanCreateArgumentsTests
     {
-        private PlanCreateArguments _args = new PlanCreateArguments();
+        private readonly PlanCreateArguments _args = new PlanCreateArguments();
 
         [TestMethod]
         public void PlanCreateArguments_IdIsRequired()
@@ -39,6 +39,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Amount = 1;
             _args.Currency = "USD";
             _args.Interval = "month";
+
             //_args.Name = "Generic Plan";
 
             // Act
@@ -55,6 +56,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Id = "Plan Id";
             _args.Amount = 1;
             _args.Currency = "USD";
+
             //_args.Interval = "month";
             _args.Name = "Generic Plan";
 
@@ -84,16 +86,16 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(10)
-                .And.Contain(x => x.Key == "amount")
-                .And.Contain(x => x.Key == "currency")
-                .And.Contain(x => x.Key == "id")
-                .And.Contain(x => x.Key == "interval")
-                .And.Contain(x => x.Key == "interval_count")
-                .And.Contain(x => x.Key == "metadata[key1]")
-                .And.Contain(x => x.Key == "metadata[key2]")
-                .And.Contain(x => x.Key == "name")
-                .And.Contain(x => x.Key == "statement_descriptor")
-                .And.Contain(x => x.Key == "trial_period_days");
+                         .And.Contain(x => x.Key == "amount")
+                         .And.Contain(x => x.Key == "currency")
+                         .And.Contain(x => x.Key == "id")
+                         .And.Contain(x => x.Key == "interval")
+                         .And.Contain(x => x.Key == "interval_count")
+                         .And.Contain(x => x.Key == "metadata[key1]")
+                         .And.Contain(x => x.Key == "metadata[key2]")
+                         .And.Contain(x => x.Key == "name")
+                         .And.Contain(x => x.Key == "statement_descriptor")
+                         .And.Contain(x => x.Key == "trial_period_days");
         }
     }
 }

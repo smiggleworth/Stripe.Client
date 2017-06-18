@@ -1,9 +1,9 @@
-using Stripe.Client.Sdk.Models;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Stripe.Client.Sdk.Models;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Clients
 {

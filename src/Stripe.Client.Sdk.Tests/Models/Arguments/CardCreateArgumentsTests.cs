@@ -1,11 +1,11 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -24,7 +24,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
         public void CardCreateArguments_ExpMonthIsLessThanOne()
         {
             // Arrange 
-             _args.ExpMonth = 0;
+            _args.ExpMonth = 0;
 
             // Act
             Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(_args);
@@ -86,20 +86,20 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(15)
-                .And.Contain(x => x.Key == "external_account[address_city]")
-                .And.Contain(x => x.Key == "external_account[address_line1]")
-                .And.Contain(x => x.Key == "external_account[address_line2]")
-                .And.Contain(x => x.Key == "external_account[address_state]")
-                .And.Contain(x => x.Key == "external_account[address_zip]")
-                .And.Contain(x => x.Key == "external_account[currency]")
-                .And.Contain(x => x.Key == "external_account[cvc]")
-                .And.Contain(x => x.Key == "external_account[exp_month]")
-                .And.Contain(x => x.Key == "external_account[exp_year]")
-                .And.Contain(x => x.Key == "external_account[metadata][key1]")
-                .And.Contain(x => x.Key == "external_account[metadata][key2]")
-                .And.Contain(x => x.Key == "external_account[name]")
-                .And.Contain(x => x.Key == "external_account[number]")
-                .And.Contain(x => x.Key == "external_account[object]");
+                         .And.Contain(x => x.Key == "external_account[address_city]")
+                         .And.Contain(x => x.Key == "external_account[address_line1]")
+                         .And.Contain(x => x.Key == "external_account[address_line2]")
+                         .And.Contain(x => x.Key == "external_account[address_state]")
+                         .And.Contain(x => x.Key == "external_account[address_zip]")
+                         .And.Contain(x => x.Key == "external_account[currency]")
+                         .And.Contain(x => x.Key == "external_account[cvc]")
+                         .And.Contain(x => x.Key == "external_account[exp_month]")
+                         .And.Contain(x => x.Key == "external_account[exp_year]")
+                         .And.Contain(x => x.Key == "external_account[metadata][key1]")
+                         .And.Contain(x => x.Key == "external_account[metadata][key2]")
+                         .And.Contain(x => x.Key == "external_account[name]")
+                         .And.Contain(x => x.Key == "external_account[number]")
+                         .And.Contain(x => x.Key == "external_account[object]");
         }
     }
 }

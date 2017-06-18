@@ -1,9 +1,9 @@
+using System;
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stripe.Client.Sdk.Clients;
 using Stripe.Client.Sdk.Models.Filters;
-using System;
-using System.Linq;
 
 namespace Stripe.Client.Sdk.Tests.Models.Filters
 {
@@ -43,10 +43,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "created")
-                .And.NotContain(x => x.Key == "created[gt]")
-                .And.NotContain(x => x.Key == "created[gte]")
-                .And.NotContain(x => x.Key == "created[lt]")
-                .And.NotContain(x => x.Key == "created[lte]");
+                         .And.NotContain(x => x.Key == "created[gt]")
+                         .And.NotContain(x => x.Key == "created[gte]")
+                         .And.NotContain(x => x.Key == "created[lt]")
+                         .And.NotContain(x => x.Key == "created[lte]");
         }
 
 
@@ -62,10 +62,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "created")
-                .And.Contain(x => x.Key == "created[gt]")
-                .And.Contain(x => x.Key == "created[gte]")
-                .And.Contain(x => x.Key == "created[lt]")
-                .And.Contain(x => x.Key == "created[lte]");
+                         .And.Contain(x => x.Key == "created[gt]")
+                         .And.Contain(x => x.Key == "created[gte]")
+                         .And.Contain(x => x.Key == "created[lt]")
+                         .And.Contain(x => x.Key == "created[lte]");
         }
 
         [TestMethod]
@@ -80,10 +80,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "date")
-                .And.NotContain(x => x.Key == "date[gt]")
-                .And.NotContain(x => x.Key == "date[gte]")
-                .And.NotContain(x => x.Key == "date[lt]")
-                .And.NotContain(x => x.Key == "date[lte]");
+                         .And.NotContain(x => x.Key == "date[gt]")
+                         .And.NotContain(x => x.Key == "date[gte]")
+                         .And.NotContain(x => x.Key == "date[lt]")
+                         .And.NotContain(x => x.Key == "date[lte]");
         }
 
 
@@ -99,10 +99,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "date")
-                .And.Contain(x => x.Key == "date[gt]")
-                .And.Contain(x => x.Key == "date[gte]")
-                .And.Contain(x => x.Key == "date[lt]")
-                .And.Contain(x => x.Key == "date[lte]");
+                         .And.Contain(x => x.Key == "date[gt]")
+                         .And.Contain(x => x.Key == "date[gte]")
+                         .And.Contain(x => x.Key == "date[lt]")
+                         .And.Contain(x => x.Key == "date[lte]");
         }
 
         [TestMethod]
@@ -116,12 +116,12 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "recipient")
-                .And.Contain(x => x.Key == "destination")
-                .And.Contain(x => x.Key == "status")
-                .And.Contain(x => x.Key == "ending_before")
-                .And.Contain(x => x.Key == "starting_after")
-                .And.Contain(x => x.Key == "limit")
-                .And.HaveCount(6);
+                         .And.Contain(x => x.Key == "destination")
+                         .And.Contain(x => x.Key == "status")
+                         .And.Contain(x => x.Key == "ending_before")
+                         .And.Contain(x => x.Key == "starting_after")
+                         .And.Contain(x => x.Key == "limit")
+                         .And.HaveCount(6);
         }
     }
 }

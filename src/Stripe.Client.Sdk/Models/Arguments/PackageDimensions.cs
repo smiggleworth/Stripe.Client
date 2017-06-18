@@ -5,28 +5,27 @@ namespace Stripe.Client.Sdk.Models.Arguments
     public class PackageDimensions
     {
         /// <summary>
-        /// Height, in inches. Maximum precision is 2 decimal places.
+        ///     Height, in inches. Maximum precision is 2 decimal places.
         /// </summary>
         [Required]
         public decimal Height { get; set; }
 
         /// <summary>
-        /// Length, in inches. Maximum precision is 2 decimal places.
+        ///     Length, in inches. Maximum precision is 2 decimal places.
         /// </summary>
         [Required]
         public decimal Length { get; set; }
 
         /// <summary>
-        /// Weight, in ounce. Maximum precision is 2 decimal places.
+        ///     Weight, in ounce. Maximum precision is 2 decimal places.
         /// </summary>
         [Required]
         public decimal Weight { get; set; }
 
         /// <summary>
-        /// Width, in inches. Maximum precision is 2 decimal places.
+        ///     Width, in inches. Maximum precision is 2 decimal places.
         /// </summary>
         [Required]
         public decimal Width { get; set; }
-
     }
 }

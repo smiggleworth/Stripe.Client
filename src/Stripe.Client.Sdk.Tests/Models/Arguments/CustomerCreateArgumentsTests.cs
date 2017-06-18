@@ -1,9 +1,9 @@
+using System;
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stripe.Client.Sdk.Clients;
 using Stripe.Client.Sdk.Models.Arguments;
-using System;
-using System.Linq;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -58,7 +58,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "source")
-                .And.Contain(x => x.Key == "source[object]" && x.Value == "card");
+                         .And.Contain(x => x.Key == "source[object]" && x.Value == "card");
         }
 
         [TestMethod]
@@ -74,13 +74,13 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "shipping[address][city]")
-                .And.Contain(x => x.Key == "shipping[address][country]")
-                .And.Contain(x => x.Key == "shipping[address][line1]")
-                .And.Contain(x => x.Key == "shipping[address][line2]")
-                .And.Contain(x => x.Key == "shipping[address][postal_code]")
-                .And.Contain(x => x.Key == "shipping[address][state]")
-                .And.Contain(x => x.Key == "shipping[name]")
-                .And.Contain(x => x.Key == "shipping[phone]");
+                         .And.Contain(x => x.Key == "shipping[address][country]")
+                         .And.Contain(x => x.Key == "shipping[address][line1]")
+                         .And.Contain(x => x.Key == "shipping[address][line2]")
+                         .And.Contain(x => x.Key == "shipping[address][postal_code]")
+                         .And.Contain(x => x.Key == "shipping[address][state]")
+                         .And.Contain(x => x.Key == "shipping[name]")
+                         .And.Contain(x => x.Key == "shipping[phone]");
         }
 
         [TestMethod]
@@ -97,16 +97,16 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(10)
-                .And.Contain(x => x.Key == "coupon")
-                .And.Contain(x => x.Key == "description")
-                .And.Contain(x => x.Key == "email")
-                .And.Contain(x => x.Key == "metadata[key1]")
-                .And.Contain(x => x.Key == "metadata[key2]")
-                .And.Contain(x => x.Key == "plan")
-                .And.Contain(x => x.Key == "quantity")
-                .And.Contain(x => x.Key == "source")
-                .And.Contain(x => x.Key == "tax_percent")
-                .And.Contain(x => x.Key == "trial_end");
+                         .And.Contain(x => x.Key == "coupon")
+                         .And.Contain(x => x.Key == "description")
+                         .And.Contain(x => x.Key == "email")
+                         .And.Contain(x => x.Key == "metadata[key1]")
+                         .And.Contain(x => x.Key == "metadata[key2]")
+                         .And.Contain(x => x.Key == "plan")
+                         .And.Contain(x => x.Key == "quantity")
+                         .And.Contain(x => x.Key == "source")
+                         .And.Contain(x => x.Key == "tax_percent")
+                         .And.Contain(x => x.Key == "trial_end");
         }
     }
 }

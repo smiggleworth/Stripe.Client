@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Stripe.Client.Sdk.Models;
-using Stripe.Client.Sdk.Models.Arguments;
 using System.Threading;
 using System.Threading.Tasks;
+using Stripe.Client.Sdk.Models;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Clients.Core
 {
@@ -10,7 +10,7 @@ namespace Stripe.Client.Sdk.Clients.Core
     {
         List<string> Expandables { get; set; }
 
-        Task<StripeResponse<Token>> GetToken(string id, 
+        Task<StripeResponse<Token>> GetToken(string id,
             CancellationToken cancellationToken = default(CancellationToken));
 
         Task<StripeResponse<Token>> CreateCardToken(CardTokenCreateArguments arguments,
@@ -19,7 +19,7 @@ namespace Stripe.Client.Sdk.Clients.Core
         Task<StripeResponse<Token>> CreateBankAccountToken(BankAccountTokenCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken));
 
-        Task<StripeResponse<Token>> CreatePiiToken(PiiTokenCreateArguments arguments, 
+        Task<StripeResponse<Token>> CreatePiiToken(PiiTokenCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken));
     }
 }

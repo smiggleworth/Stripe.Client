@@ -1,9 +1,9 @@
+using System;
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stripe.Client.Sdk.Clients;
 using Stripe.Client.Sdk.Models.Arguments;
-using System;
-using System.Linq;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -45,7 +45,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "external_account")
-                .And.Contain(x => x.Key == "external_account[object]" && x.Value == "card");
+                         .And.Contain(x => x.Key == "external_account[object]" && x.Value == "card");
         }
     }
 }

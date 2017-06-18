@@ -1,11 +1,11 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -25,7 +25,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
         public void SkuUpdateArguments_SkuIdIsRequired()
         {
             // Arrange 
-             _args.SkuId = null;
+            _args.SkuId = null;
 
             // Act
             Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(_args);
@@ -47,18 +47,18 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(12)
-                .And.Contain(x => x.Key == "active")
-                .And.Contain(x => x.Key == "currency")
-                .And.Contain(x => x.Key == "image")
-                .And.Contain(x => x.Key == "inventory")
-                .And.Contain(x => x.Key == "metadata[key1]")
-                .And.Contain(x => x.Key == "metadata[key2]")
-                .And.Contain(x => x.Key == "package_dimensions[height]")
-                .And.Contain(x => x.Key == "package_dimensions[length]")
-                .And.Contain(x => x.Key == "package_dimensions[weight]")
-                .And.Contain(x => x.Key == "package_dimensions[width]")
-                .And.Contain(x => x.Key == "price")
-                .And.Contain(x => x.Key == "product");
+                         .And.Contain(x => x.Key == "active")
+                         .And.Contain(x => x.Key == "currency")
+                         .And.Contain(x => x.Key == "image")
+                         .And.Contain(x => x.Key == "inventory")
+                         .And.Contain(x => x.Key == "metadata[key1]")
+                         .And.Contain(x => x.Key == "metadata[key2]")
+                         .And.Contain(x => x.Key == "package_dimensions[height]")
+                         .And.Contain(x => x.Key == "package_dimensions[length]")
+                         .And.Contain(x => x.Key == "package_dimensions[weight]")
+                         .And.Contain(x => x.Key == "package_dimensions[width]")
+                         .And.Contain(x => x.Key == "price")
+                         .And.Contain(x => x.Key == "product");
         }
     }
 }

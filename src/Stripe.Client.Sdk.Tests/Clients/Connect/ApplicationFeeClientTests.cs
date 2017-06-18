@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Connect;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Connect
 {
@@ -46,9 +46,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             // Arrange
             var filter = new ApplicationFeeListFilter();
             _stripe.Get(
-                Arg.Is<StripeRequest<ApplicationFeeListFilter, Pagination<ApplicationFee>>>(
-                    a => a.UrlPath == "application_fees"), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Pagination<ApplicationFee>>()));
+                       Arg.Is<StripeRequest<ApplicationFeeListFilter, Pagination<ApplicationFee>>>(
+                           a => a.UrlPath == "application_fees"), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<Pagination<ApplicationFee>>()));
 
             // Act
             var response = await _client.GetApplicationFees(filter, _cancellationToken);
@@ -64,9 +64,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             var id = "ID_VALUE";
             var applicationFeeId = "app-fee-id";
             _stripe.Get(
-                Arg.Is<StripeRequest<ApplicationFeeRefund>>(
-                    a => a.UrlPath == "application_fees/" + applicationFeeId + "/refunds/" + id), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<ApplicationFeeRefund>()));
+                       Arg.Is<StripeRequest<ApplicationFeeRefund>>(
+                           a => a.UrlPath == "application_fees/" + applicationFeeId + "/refunds/" + id), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<ApplicationFeeRefund>()));
 
             // Act
             var response = await _client.GetApplicationFeeRefund(id, applicationFeeId, _cancellationToken);
@@ -84,9 +84,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
                 ApplicationFeeId = "application-fee-id"
             };
             _stripe.Get(
-                Arg.Is<StripeRequest<ApplicationFeeRefundListFilter, Pagination<ApplicationFeeRefund>>>(
-                    a => a.UrlPath == "application_fees/" + filter.ApplicationFeeId + "/refunds"), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Pagination<ApplicationFeeRefund>>()));
+                       Arg.Is<StripeRequest<ApplicationFeeRefundListFilter, Pagination<ApplicationFeeRefund>>>(
+                           a => a.UrlPath == "application_fees/" + filter.ApplicationFeeId + "/refunds"), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<Pagination<ApplicationFeeRefund>>()));
 
             // Act
             var response = await _client.GetApplicationFeeRefunds(filter, _cancellationToken);
@@ -105,9 +105,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             };
 
             _stripe.Post(
-                Arg.Is<StripeRequest<ApplicationFeeRefundCreateArguments, ApplicationFeeRefund>>(
-                    a => a.UrlPath == "application_fees/" + args.ApplicationFeeId + "/refunds"), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<ApplicationFeeRefund>()));
+                       Arg.Is<StripeRequest<ApplicationFeeRefundCreateArguments, ApplicationFeeRefund>>(
+                           a => a.UrlPath == "application_fees/" + args.ApplicationFeeId + "/refunds"), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<ApplicationFeeRefund>()));
 
             // Act
             var response = await _client.CreateApplicationFeeRefund(args, _cancellationToken);

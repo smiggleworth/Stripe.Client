@@ -47,6 +47,5 @@ namespace Stripe.Client.Sdk.Tests.Configurations
             _configuration.SecretKey = "secret-key";
             _configuration.SecretKey.Should().Be("secret-key");
         }
-
     }
 }

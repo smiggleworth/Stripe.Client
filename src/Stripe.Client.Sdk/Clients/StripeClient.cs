@@ -1,12 +1,4 @@
-﻿using Newtonsoft.Json;
-using Stripe.Client.Sdk.Attributes;
-using Stripe.Client.Sdk.Configuration;
-using Stripe.Client.Sdk.Converters;
-using Stripe.Client.Sdk.Extensions;
-using Stripe.Client.Sdk.Models;
-using Stripe.Client.Sdk.Models.Arguments;
-using Stripe.Client.Sdk.Resolvers;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,6 +9,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Attributes;
+using Stripe.Client.Sdk.Configuration;
+using Stripe.Client.Sdk.Converters;
+using Stripe.Client.Sdk.Extensions;
+using Stripe.Client.Sdk.Models;
+using Stripe.Client.Sdk.Models.Arguments;
+using Stripe.Client.Sdk.Resolvers;
 
 namespace Stripe.Client.Sdk.Clients
 {
@@ -30,13 +30,13 @@ namespace Stripe.Client.Sdk.Clients
         private readonly HttpClient _httpClient;
         private readonly string _stripeVersion = "2017-06-05";
 
-        public List<string> Expandables { get; set; }
-
         public StripeClient(HttpClient httpClient, IStripeConfiguration configuration)
         {
             _configuration = configuration;
             _httpClient = httpClient;
         }
+
+        public List<string> Expandables { get; set; }
 
         public async Task<StripeResponse<TResponse>> Get<TResponse>(StripeRequest<TResponse> stripeRequest,
             CancellationToken cancellationToken)
@@ -143,7 +143,7 @@ namespace Stripe.Client.Sdk.Clients
                 request.Headers.Add("Idempotency-Key", idempotencyKey.Value.ToString());
             }
 
-            var version = StripeClientVersion.ToString();
+            var version = StripeClientVersion;
             request.Headers.UserAgent.Add(new ProductInfoHeaderValue("Stripe-Client", version));
             request.Headers.Add("Stripe-Version", _stripeVersion);
 
@@ -164,6 +164,7 @@ namespace Stripe.Client.Sdk.Clients
         internal MultipartFormDataContent GetMultipartFormDataContent<T>(T model) where T : IFileUpload
         {
             throw new NotImplementedException();
+
             //            var content = new MultipartFormDataContent();
             //            var byteConent = new ByteArrayContent(model.Content);
             //            content.Add(byteConent);

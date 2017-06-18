@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using Stripe.Client.Sdk.Attributes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Attributes;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
@@ -32,7 +32,8 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public LegalEntityArguments LegalEntity { get; set; }
 
         /// <summary>
-        /// Details on when this account will make funds from charges available, and when they will be paid out to the account holder’s bank account. See our Connect account bank transfer guide for more information.
+        ///     Details on when this account will make funds from charges available, and when they will be paid out to the account
+        ///     holder’s bank account. See our Connect account bank transfer guide for more information.
         /// </summary>
         [ChildModel]
         public PayoutScheduleArguments PayoutSchedule { get; set; }
@@ -66,7 +67,8 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public string Token { get; set; }
 
         /// <summary>
-        /// A card or bank account to attach to the account. You can provide either a token, like the ones returned by Stripe.js, or a dictionary as documented in the external_account parameter for either card or bank account creation
+        ///     A card or bank account to attach to the account. You can provide either a token, like the ones returned by
+        ///     Stripe.js, or a dictionary as documented in the external_account parameter for either card or bank account creation
         /// </summary>
         [JsonIgnore]
         public T ExternalAccountCreateArguments { get; set; }

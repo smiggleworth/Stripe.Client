@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
-using System;
 
 namespace Stripe.Client.Sdk.Models
 {
@@ -8,7 +8,7 @@ namespace Stripe.Client.Sdk.Models
     {
         public string DisabledReason { get; set; }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime DueBy { get; set; }
 
         public string[] FieldsNeeded { get; set; }

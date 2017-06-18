@@ -1,9 +1,9 @@
+using System;
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stripe.Client.Sdk.Clients;
 using Stripe.Client.Sdk.Models.Arguments;
-using System;
-using System.Linq;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -51,18 +51,18 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(13)
-                .And.Contain(x => x.Key == "card[address_city]")
-                .And.Contain(x => x.Key == "card[address_line1]")
-                .And.Contain(x => x.Key == "card[address_line2]")
-                .And.Contain(x => x.Key == "card[address_state]")
-                .And.Contain(x => x.Key == "card[address_zip]")
-                .And.Contain(x => x.Key == "card[currency]")
-                .And.Contain(x => x.Key == "card[cvc]")
-                .And.Contain(x => x.Key == "card[exp_month]")
-                .And.Contain(x => x.Key == "card[exp_year]")
-                .And.Contain(x => x.Key == "card[name]")
-                .And.Contain(x => x.Key == "card[number]")
-                .And.Contain(x => x.Key == "card[object]");
+                         .And.Contain(x => x.Key == "card[address_city]")
+                         .And.Contain(x => x.Key == "card[address_line1]")
+                         .And.Contain(x => x.Key == "card[address_line2]")
+                         .And.Contain(x => x.Key == "card[address_state]")
+                         .And.Contain(x => x.Key == "card[address_zip]")
+                         .And.Contain(x => x.Key == "card[currency]")
+                         .And.Contain(x => x.Key == "card[cvc]")
+                         .And.Contain(x => x.Key == "card[exp_month]")
+                         .And.Contain(x => x.Key == "card[exp_year]")
+                         .And.Contain(x => x.Key == "card[name]")
+                         .And.Contain(x => x.Key == "card[number]")
+                         .And.Contain(x => x.Key == "card[object]");
         }
     }
 }

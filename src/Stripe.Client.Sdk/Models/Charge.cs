@@ -1,15 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
 using Stripe.Client.Sdk.Helpers;
-using System;
-using System.Collections.Generic;
 
 namespace Stripe.Client.Sdk.Models
 {
     public class Charge : IStripeModel
     {
-        public string Id { get; set; }
-
         public string Object { get; set; }
 
         public bool LiveMode { get; set; }
@@ -65,7 +63,16 @@ namespace Stripe.Client.Sdk.Models
 
         public string StatementDescriptor { get; set; }
 
-        public Dispute Dispute { get; set; }
+        [JsonIgnore]
+        public string DisputeId { get; set; }
+
+        [JsonIgnore]
+        public Dispute DisputeModel { get; set; }
+
+        public object Dispute
+        {
+            set { Expandable<Dispute>.Deserialize(value, s => DisputeId = s, o => DisputeModel = o); }
+        }
 
         public string FailureCode { get; set; }
 
@@ -87,5 +94,6 @@ namespace Stripe.Client.Sdk.Models
         public string ReceiptEmail { get; set; }
 
         public string ReceiptNumber { get; set; }
+        public string Id { get; set; }
     }
 }

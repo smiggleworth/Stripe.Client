@@ -1,9 +1,9 @@
+using System;
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stripe.Client.Sdk.Clients;
 using Stripe.Client.Sdk.Models.Arguments;
-using System;
-using System.Linq;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -44,13 +44,13 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(7)
-                .And.Contain(x => x.Key == "customer")
-                .And.Contain(x => x.Key == "subscription")
-                .And.Contain(x => x.Key == "subscription_plan")
-                .And.Contain(x => x.Key == "subscription_prorate")
-                .And.Contain(x => x.Key == "subscription_proration_date")
-                .And.Contain(x => x.Key == "subscription_quantity")
-                .And.Contain(x => x.Key == "subscription_trial_end");
+                         .And.Contain(x => x.Key == "customer")
+                         .And.Contain(x => x.Key == "subscription")
+                         .And.Contain(x => x.Key == "subscription_plan")
+                         .And.Contain(x => x.Key == "subscription_prorate")
+                         .And.Contain(x => x.Key == "subscription_proration_date")
+                         .And.Contain(x => x.Key == "subscription_quantity")
+                         .And.Contain(x => x.Key == "subscription_trial_end");
         }
     }
 }

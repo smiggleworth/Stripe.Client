@@ -1,14 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
 using Stripe.Client.Sdk.Helpers;
-using System;
 
 namespace Stripe.Client.Sdk.Models
 {
     public class ApplicationFee : IStripeModel
     {
-        public string Id { get; set; }
-
         public string Object { get; set; }
 
         public bool LiveMode { get; set; }
@@ -75,5 +73,6 @@ namespace Stripe.Client.Sdk.Models
         public Pagination<ApplicationFeeRefund> Refunds { get; set; }
 
         public int AmountRefunded { get; set; }
+        public string Id { get; set; }
     }
 }

@@ -1,6 +1,6 @@
-using Stripe.Client.Sdk.Attributes;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Stripe.Client.Sdk.Attributes;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
@@ -13,13 +13,13 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public AddressArguments Address { get; set; }
 
         /// <summary>
-        /// The Kana variation of the address of this legal entity (Japan only)
+        ///     The Kana variation of the address of this legal entity (Japan only)
         /// </summary>
         [ChildModel]
         public AddressArguments AddressKana { get; set; }
 
         /// <summary>
-        /// The Kanji variation of the address of this legal entity (Japan only)
+        ///     The Kanji variation of the address of this legal entity (Japan only)
         /// </summary>
         [ChildModel]
         public AddressArguments AddressKanji { get; set; }
@@ -27,12 +27,12 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public string BusinessName { get; set; }
 
         /// <summary>
-        /// The Kana variation of the legal name of the company (Japan only)
+        ///     The Kana variation of the legal name of the company (Japan only)
         /// </summary>
         public string BusinessNameKana { get; set; }
 
         /// <summary>
-        /// The Kanji variation of the legal name of the company (Japan only)
+        ///     The Kanji variation of the legal name of the company (Japan only)
         /// </summary>
         public string BusinessNameKanji { get; set; }
 
@@ -46,30 +46,31 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public string FirstName { get; set; }
 
         /// <summary>
-        /// The Kana variation of the first name of the individual responsible for the account (Japan only)
+        ///     The Kana variation of the first name of the individual responsible for the account (Japan only)
         /// </summary>
         public string FirstNameKana { get; set; }
 
         /// <summary>
-        /// The Kanji variation of the first name of the individual responsible for the account (Japan only)
+        ///     The Kanji variation of the first name of the individual responsible for the account (Japan only)
         /// </summary>
         public string FirstNameKanji { get; set; }
 
         /// <summary>
-        /// The gender of the individual responsible for the account (International regulations require either “male” or “female”)
+        ///     The gender of the individual responsible for the account (International regulations require either “male” or
+        ///     “female”)
         /// </summary>
         public string Gender { get; set; }
 
         public string LastName { get; set; }
 
         /// <summary>
-        /// The Kana variation of the first name of the individual responsible for the account (Japan only)
+        ///     The Kana variation of the first name of the individual responsible for the account (Japan only)
         /// </summary>
         public string LastNameKana { get; set; }
 
 
         /// <summary>
-        /// The Kanji variation of the first name of the individual responsible for the account (Japan only)
+        ///     The Kanji variation of the first name of the individual responsible for the account (Japan only)
         /// </summary>
         public string LastNameKanji { get; set; }
 
@@ -79,13 +80,13 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public AddressArguments PersonalAddress { get; set; }
 
         /// <summary>
-        /// The Kana variation of the representative of this legal entity, used for verification (Japan only)
+        ///     The Kana variation of the representative of this legal entity, used for verification (Japan only)
         /// </summary>
         [ChildModel]
         public AddressArguments PersonalAddressKana { get; set; }
 
         /// <summary>
-        /// The Kanji variation of the representative of this legal entity, used for verification (Japan only)
+        ///     The Kanji variation of the representative of this legal entity, used for verification (Japan only)
         /// </summary>
         [ChildModel]
         public AddressArguments PersonalAddressKanji { get; set; }
@@ -101,6 +102,6 @@ namespace Stripe.Client.Sdk.Models.Arguments
 
         public string Verification { get; set; }
 
-        public  string TaxIdRegistrar { get; set; }
+        public string TaxIdRegistrar { get; set; }
     }
 }

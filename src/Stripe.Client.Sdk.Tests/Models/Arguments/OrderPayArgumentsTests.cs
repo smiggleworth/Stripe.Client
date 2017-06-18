@@ -1,11 +1,11 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -60,7 +60,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "source")
-                .And.Contain(x => x.Key == "source[object]" && x.Value == "card");
+                         .And.Contain(x => x.Key == "source[object]" && x.Value == "card");
         }
 
         [TestMethod]
@@ -87,11 +87,11 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(5)
-                .And.Contain(x => x.Key == "customer")
-                .And.Contain(x => x.Key == "source")
-                .And.Contain(x => x.Key == "email")
-                .And.Contain(x => x.Key == "metadata[key1]")
-                .And.Contain(x => x.Key == "metadata[key2]");
+                         .And.Contain(x => x.Key == "customer")
+                         .And.Contain(x => x.Key == "source")
+                         .And.Contain(x => x.Key == "email")
+                         .And.Contain(x => x.Key == "metadata[key1]")
+                         .And.Contain(x => x.Key == "metadata[key2]");
         }
     }
 }

@@ -1,13 +1,13 @@
-﻿using FluentAssertions;
+﻿using System.IO;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Stripe.Client.Sdk.Models;
-using System.IO;
 
 namespace Stripe.Client.Sdk.Tests.Models
 {
     /// <summary>
-    /// Summary description for UnitTest1
+    ///     Summary description for UnitTest1
     /// </summary>
     [TestClass]
     public class EventTests

@@ -1,8 +1,8 @@
+using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
 using Stripe.Client.Sdk.Helpers;
-using System;
-using System.Collections.Generic;
 
 namespace Stripe.Client.Sdk.Models
 {
@@ -12,7 +12,7 @@ namespace Stripe.Client.Sdk.Models
 
         public int Amount { get; set; }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime Created { get; set; }
 
         public string Currency { get; set; }

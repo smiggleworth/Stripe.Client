@@ -1,14 +1,12 @@
-﻿using Newtonsoft.Json;
-using Stripe.Client.Sdk.Converters;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Converters;
 
 namespace Stripe.Client.Sdk.Models
 {
     public class Coupon : IStripeModel
     {
-        public string Id { get; set; }
-
         public string Object { get; set; }
 
         public bool LiveMode { get; set; }
@@ -36,5 +34,6 @@ namespace Stripe.Client.Sdk.Models
         public int TimesRedeemed { get; private set; }
 
         public bool Valid { get; set; }
+        public string Id { get; set; }
     }
 }

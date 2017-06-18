@@ -1,3 +1,5 @@
+using System.Threading;
+using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Core;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Core
 {
@@ -59,9 +59,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 ChargeId = "some-value"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<RefundCreateArguments, Refund>>(
-                    a => a.UrlPath ==  "refunds" && a.Model == args), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Refund>()));
+                       Arg.Is<StripeRequest<RefundCreateArguments, Refund>>(
+                           a => a.UrlPath == "refunds" && a.Model == args), _cancellationToken)
+                   .Returns(Task.FromResult(new StripeResponse<Refund>()));
             var response = await _client.CreateRefund(args, _cancellationToken);
             response.Should().NotBeNull();
         }

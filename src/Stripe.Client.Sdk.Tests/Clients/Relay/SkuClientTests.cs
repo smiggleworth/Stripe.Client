@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Relay;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Relay
 {
@@ -31,7 +31,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
             // Arrange
             var id = "sku-id";
             _stripe.Get(Arg.Is<StripeRequest<Sku>>(a => a.UrlPath == "skus/" + id), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Sku>()));
+                   .Returns(Task.FromResult(new StripeResponse<Sku>()));
 
             // Act
             var response = await _client.GetSku(id, _cancellationToken);
@@ -96,7 +96,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
             // Arrange
             var id = "sku-id";
             _stripe.Delete(Arg.Is<StripeRequest<DeletedObject>>(a => a.UrlPath == "skus/" + id), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
+                   .Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
 
             // Act
             var response = await _client.DeleteSku(id, _cancellationToken);

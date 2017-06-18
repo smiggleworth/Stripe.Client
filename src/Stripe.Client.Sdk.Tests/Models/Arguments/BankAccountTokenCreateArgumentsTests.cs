@@ -1,15 +1,14 @@
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stripe.Client.Sdk.Clients;
 using Stripe.Client.Sdk.Models.Arguments;
-using System.Linq;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
     [TestClass]
     public class BankAccountTokenCreateArgumentsTests
     {
-
         private BankAccountTokenCreateArguments _args;
 
         [TestInitialize]
@@ -29,13 +28,13 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(7)
-                .And.Contain(x => x.Key == "bank_account[account_number]")
-                .And.Contain(x => x.Key == "bank_account[country]")
-                .And.Contain(x => x.Key == "bank_account[currency]")
-                .And.Contain(x => x.Key == "bank_account[account_holder_name]")
-                .And.Contain(x => x.Key == "bank_account[account_holder_type]")
-                .And.Contain(x => x.Key == "bank_account[routing_number]")
-                .And.Contain(x => x.Key == "customer");
+                         .And.Contain(x => x.Key == "bank_account[account_number]")
+                         .And.Contain(x => x.Key == "bank_account[country]")
+                         .And.Contain(x => x.Key == "bank_account[currency]")
+                         .And.Contain(x => x.Key == "bank_account[account_holder_name]")
+                         .And.Contain(x => x.Key == "bank_account[account_holder_type]")
+                         .And.Contain(x => x.Key == "bank_account[routing_number]")
+                         .And.Contain(x => x.Key == "customer");
         }
     }
 }

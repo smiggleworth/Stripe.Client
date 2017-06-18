@@ -1,11 +1,11 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Filters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Filters;
 
 namespace Stripe.Client.Sdk.Tests.Models.Filters
 {
@@ -44,9 +44,9 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "ending_before")
-                .And.Contain(x => x.Key == "starting_after")
-                .And.Contain(x => x.Key == "limit")
-                .And.HaveCount(3);
+                         .And.Contain(x => x.Key == "starting_after")
+                         .And.Contain(x => x.Key == "limit")
+                         .And.HaveCount(3);
         }
     }
 }

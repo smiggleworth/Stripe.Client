@@ -1,7 +1,7 @@
+using System;
 using Newtonsoft.Json;
 using Stripe.Client.Sdk.Attributes;
 using Stripe.Client.Sdk.Extensions;
-using System;
 
 namespace Stripe.Client.Sdk.Models.Filters
 {
@@ -14,6 +14,6 @@ namespace Stripe.Client.Sdk.Models.Filters
         public DateFilter CreatedFilter { get; set; }
 
         [ChildModel]
-        public object Created => CreatedDateTime.HasValue ? (object) CreatedDateTime.Value.ToEpoch() : CreatedFilter;
+        public object Created => CreatedDateTime.HasValue ? (object)CreatedDateTime.Value.ToEpoch() : CreatedFilter;
     }
 }

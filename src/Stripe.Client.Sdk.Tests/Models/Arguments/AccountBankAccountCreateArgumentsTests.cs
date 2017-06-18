@@ -1,11 +1,11 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -59,7 +59,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "external_account")
-                .And.Contain(x => x.Key == "external_account[object]" && x.Value == "bank_account");
+                         .And.Contain(x => x.Key == "external_account[object]" && x.Value == "bank_account");
         }
 
         [TestMethod]
@@ -74,10 +74,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(4)
-                .And.Contain(x => x.Key == "external_account")
-                .And.Contain(x => x.Key == "default_for_currency")
-                .And.Contain(x => x.Key == "metadata[key1]")
-                .And.Contain(x => x.Key == "metadata[key2]");
+                         .And.Contain(x => x.Key == "external_account")
+                         .And.Contain(x => x.Key == "default_for_currency")
+                         .And.Contain(x => x.Key == "metadata[key1]")
+                         .And.Contain(x => x.Key == "metadata[key2]");
         }
     }
 }
