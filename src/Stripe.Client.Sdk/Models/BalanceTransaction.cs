@@ -7,8 +7,6 @@ namespace Stripe.Client.Sdk.Models
 {
     public class BalanceTransaction : IStripeModel
     {
-
-
         public string Object { get; set; }
 
         public int Amount { get; set; }
@@ -30,7 +28,8 @@ namespace Stripe.Client.Sdk.Models
         public string Status { get; set; }
 
         /// <summary>
-        /// Transaction type: adjustment, application_fee, application_fee_refund, charge, payment, payment_failure_refund, payment_refund, refund, transfer, transfer_refund, payout, payout_cancel, payout_failure, or validation.
+        ///     Transaction type: adjustment, application_fee, application_fee_refund, charge, payment, payment_failure_refund,
+        ///     payment_refund, refund, transfer, transfer_refund, payout, payout_cancel, payout_failure, or validation.
         /// </summary>
         public string Type { get; set; }
 

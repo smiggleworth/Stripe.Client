@@ -47,18 +47,18 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(12)
-                         .And.Contain(x => x.Key == "active")
-                         .And.Contain(x => x.Key == "currency")
-                         .And.Contain(x => x.Key == "image")
-                         .And.Contain(x => x.Key == "inventory")
-                         .And.Contain(x => x.Key == "metadata[key1]")
-                         .And.Contain(x => x.Key == "metadata[key2]")
-                         .And.Contain(x => x.Key == "package_dimensions[height]")
-                         .And.Contain(x => x.Key == "package_dimensions[length]")
-                         .And.Contain(x => x.Key == "package_dimensions[weight]")
-                         .And.Contain(x => x.Key == "package_dimensions[width]")
-                         .And.Contain(x => x.Key == "price")
-                         .And.Contain(x => x.Key == "product");
+                .And.Contain(x => x.Key == "active")
+                .And.Contain(x => x.Key == "currency")
+                .And.Contain(x => x.Key == "image")
+                .And.Contain(x => x.Key == "inventory")
+                .And.Contain(x => x.Key == "metadata[key1]")
+                .And.Contain(x => x.Key == "metadata[key2]")
+                .And.Contain(x => x.Key == "package_dimensions[height]")
+                .And.Contain(x => x.Key == "package_dimensions[length]")
+                .And.Contain(x => x.Key == "package_dimensions[weight]")
+                .And.Contain(x => x.Key == "package_dimensions[width]")
+                .And.Contain(x => x.Key == "price")
+                .And.Contain(x => x.Key == "product");
         }
     }
 }

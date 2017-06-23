@@ -31,7 +31,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             // Arrange
             var id = "account-id";
             _stripe.Get(Arg.Is<StripeRequest<Account>>(a => a.UrlPath == "accounts/" + id), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Account>()));
+                .Returns(Task.FromResult(new StripeResponse<Account>()));
 
             // Act
             var response = await _client.GetAccount(id, _cancellationToken);
@@ -46,9 +46,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             // Arrange
             var filter = new AccountListFilter();
             _stripe.Get(
-                       Arg.Is<StripeRequest<AccountListFilter, Pagination<Account>>>(
-                           a => a.UrlPath == "accounts" && a.Model == filter), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Pagination<Account>>()));
+                    Arg.Is<StripeRequest<AccountListFilter, Pagination<Account>>>(
+                        a => a.UrlPath == "accounts" && a.Model == filter), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Pagination<Account>>()));
 
             // Act
             var response = await _client.GetAccounts(filter, _cancellationToken);
@@ -82,9 +82,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
                 AccountId = "account-id"
             };
             _stripe.Post(
-                       Arg.Is<StripeRequest<AccountUpdateArguments, Account>>(
-                           a => a.UrlPath == "accounts/" + args.AccountId && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Account>()));
+                    Arg.Is<StripeRequest<AccountUpdateArguments, Account>>(
+                        a => a.UrlPath == "accounts/" + args.AccountId && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Account>()));
 
             // Act
             var response = await _client.UpdateAccount(args, _cancellationToken);
@@ -103,9 +103,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
                 Reason = "fraud"
             };
             _stripe.Post(
-                       Arg.Is<StripeRequest<AccountRejectArguments, Account>>(
-                           a => a.UrlPath == $"accounts/{args.AccountId}/reject" && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Account>()));
+                    Arg.Is<StripeRequest<AccountRejectArguments, Account>>(
+                        a => a.UrlPath == $"accounts/{args.AccountId}/reject" && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Account>()));
 
             // Act
             var response = await _client.RejectAccount(args, _cancellationToken);
@@ -121,9 +121,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             var accountId = "account-id";
             var id = "bank-account-id";
             _stripe.Get(
-                       Arg.Is<StripeRequest<BankAccount>>(
-                           a => a.UrlPath == "accounts/" + accountId + "/external_accounts/" + id), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<BankAccount>()));
+                    Arg.Is<StripeRequest<BankAccount>>(
+                        a => a.UrlPath == "accounts/" + accountId + "/external_accounts/" + id), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<BankAccount>()));
 
             // Act
             var response = await _client.GetBankAccount(id, accountId, _cancellationToken);
@@ -278,7 +278,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             // Arrange
             var id = "account-id";
             _stripe.Delete(Arg.Is<StripeRequest<DeletedObject>>(a => a.UrlPath == "accounts/" + id), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
+                .Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
 
             // Act
             var response = await _client.DeleteAccount(id, _cancellationToken);

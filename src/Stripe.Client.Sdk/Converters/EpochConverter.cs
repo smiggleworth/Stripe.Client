@@ -26,6 +26,7 @@ namespace Stripe.Client.Sdk.Converters
                 var integerValue = (long)reader.Value;
                 return integerValue.ToDateTime();
             }
+
             return DateTime.Parse(reader.Value.ToString());
         }
     }

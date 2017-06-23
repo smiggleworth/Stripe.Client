@@ -15,8 +15,8 @@ namespace Stripe.Client.Autofac.Modules
             builder.RegisterType<HttpClient>().AsSelf().InstancePerDependency();
 
             builder.RegisterAssemblyTypes(sdk)
-                   .Where(t => t.Name.EndsWith("Client"))
-                   .AsImplementedInterfaces().InstancePerDependency();
+                .Where(t => t.Name.EndsWith("Client"))
+                .AsImplementedInterfaces().InstancePerDependency();
         }
     }
 }

@@ -20,10 +20,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(4)
-                         .And.Contain(x => x.Key == "height")
-                         .And.Contain(x => x.Key == "length")
-                         .And.Contain(x => x.Key == "weight")
-                         .And.Contain(x => x.Key == "width");
+                .And.Contain(x => x.Key == "height")
+                .And.Contain(x => x.Key == "length")
+                .And.Contain(x => x.Key == "weight")
+                .And.Contain(x => x.Key == "width");
         }
     }
 }

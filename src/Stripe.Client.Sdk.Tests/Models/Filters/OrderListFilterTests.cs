@@ -43,10 +43,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "created")
-                         .And.NotContain(x => x.Key == "created[gt]")
-                         .And.NotContain(x => x.Key == "created[gte]")
-                         .And.NotContain(x => x.Key == "created[lt]")
-                         .And.NotContain(x => x.Key == "created[lte]");
+                .And.NotContain(x => x.Key == "created[gt]")
+                .And.NotContain(x => x.Key == "created[gte]")
+                .And.NotContain(x => x.Key == "created[lt]")
+                .And.NotContain(x => x.Key == "created[lte]");
         }
 
         [TestMethod]
@@ -61,10 +61,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "created")
-                         .And.Contain(x => x.Key == "created[gt]")
-                         .And.Contain(x => x.Key == "created[gte]")
-                         .And.Contain(x => x.Key == "created[lt]")
-                         .And.Contain(x => x.Key == "created[lte]");
+                .And.Contain(x => x.Key == "created[gt]")
+                .And.Contain(x => x.Key == "created[gte]")
+                .And.Contain(x => x.Key == "created[lt]")
+                .And.Contain(x => x.Key == "created[lte]");
         }
 
         [TestMethod]
@@ -82,10 +82,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "status_transitions[cancelled]")
-                         .And.NotContain(x => x.Key == "status_transitions[cancelled][gt]")
-                         .And.NotContain(x => x.Key == "status_transitions[cancelled][gte]")
-                         .And.NotContain(x => x.Key == "status_transitions[cancelled][lt]")
-                         .And.NotContain(x => x.Key == "status_transitions[cancelled][lte]");
+                .And.NotContain(x => x.Key == "status_transitions[cancelled][gt]")
+                .And.NotContain(x => x.Key == "status_transitions[cancelled][gte]")
+                .And.NotContain(x => x.Key == "status_transitions[cancelled][lt]")
+                .And.NotContain(x => x.Key == "status_transitions[cancelled][lte]");
         }
 
         [TestMethod]
@@ -103,10 +103,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "status_transitions[cancelled]")
-                         .And.Contain(x => x.Key == "status_transitions[cancelled][gt]")
-                         .And.Contain(x => x.Key == "status_transitions[cancelled][gte]")
-                         .And.Contain(x => x.Key == "status_transitions[cancelled][lt]")
-                         .And.Contain(x => x.Key == "status_transitions[cancelled][lte]");
+                .And.Contain(x => x.Key == "status_transitions[cancelled][gt]")
+                .And.Contain(x => x.Key == "status_transitions[cancelled][gte]")
+                .And.Contain(x => x.Key == "status_transitions[cancelled][lt]")
+                .And.Contain(x => x.Key == "status_transitions[cancelled][lte]");
         }
 
         [TestMethod]
@@ -124,10 +124,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "status_transitions[fulfilled]")
-                         .And.NotContain(x => x.Key == "status_transitions[fulfilled][gt]")
-                         .And.NotContain(x => x.Key == "status_transitions[fulfilled][gte]")
-                         .And.NotContain(x => x.Key == "status_transitions[fulfilled][lt]")
-                         .And.NotContain(x => x.Key == "status_transitions[fulfilled][lte]");
+                .And.NotContain(x => x.Key == "status_transitions[fulfilled][gt]")
+                .And.NotContain(x => x.Key == "status_transitions[fulfilled][gte]")
+                .And.NotContain(x => x.Key == "status_transitions[fulfilled][lt]")
+                .And.NotContain(x => x.Key == "status_transitions[fulfilled][lte]");
         }
 
         [TestMethod]
@@ -145,10 +145,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "status_transitions[fulfilled]")
-                         .And.Contain(x => x.Key == "status_transitions[fulfilled][gt]")
-                         .And.Contain(x => x.Key == "status_transitions[fulfilled][gte]")
-                         .And.Contain(x => x.Key == "status_transitions[fulfilled][lt]")
-                         .And.Contain(x => x.Key == "status_transitions[fulfilled][lte]");
+                .And.Contain(x => x.Key == "status_transitions[fulfilled][gt]")
+                .And.Contain(x => x.Key == "status_transitions[fulfilled][gte]")
+                .And.Contain(x => x.Key == "status_transitions[fulfilled][lt]")
+                .And.Contain(x => x.Key == "status_transitions[fulfilled][lte]");
         }
 
         [TestMethod]
@@ -166,10 +166,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "status_transitions[paid]")
-                         .And.NotContain(x => x.Key == "status_transitions[paid][gt]")
-                         .And.NotContain(x => x.Key == "status_transitions[paid][gte]")
-                         .And.NotContain(x => x.Key == "status_transitions[paid][lt]")
-                         .And.NotContain(x => x.Key == "status_transitions[paid][lte]");
+                .And.NotContain(x => x.Key == "status_transitions[paid][gt]")
+                .And.NotContain(x => x.Key == "status_transitions[paid][gte]")
+                .And.NotContain(x => x.Key == "status_transitions[paid][lt]")
+                .And.NotContain(x => x.Key == "status_transitions[paid][lte]");
         }
 
         [TestMethod]
@@ -187,10 +187,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "status_transitions[paid]")
-                         .And.Contain(x => x.Key == "status_transitions[paid][gt]")
-                         .And.Contain(x => x.Key == "status_transitions[paid][gte]")
-                         .And.Contain(x => x.Key == "status_transitions[paid][lt]")
-                         .And.Contain(x => x.Key == "status_transitions[paid][lte]");
+                .And.Contain(x => x.Key == "status_transitions[paid][gt]")
+                .And.Contain(x => x.Key == "status_transitions[paid][gte]")
+                .And.Contain(x => x.Key == "status_transitions[paid][lt]")
+                .And.Contain(x => x.Key == "status_transitions[paid][lte]");
         }
 
         [TestMethod]
@@ -208,10 +208,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "status_transitions[returned]")
-                         .And.NotContain(x => x.Key == "status_transitions[returned][gt]")
-                         .And.NotContain(x => x.Key == "status_transitions[returned][gte]")
-                         .And.NotContain(x => x.Key == "status_transitions[returned][lt]")
-                         .And.NotContain(x => x.Key == "status_transitions[returned][lte]");
+                .And.NotContain(x => x.Key == "status_transitions[returned][gt]")
+                .And.NotContain(x => x.Key == "status_transitions[returned][gte]")
+                .And.NotContain(x => x.Key == "status_transitions[returned][lt]")
+                .And.NotContain(x => x.Key == "status_transitions[returned][lte]");
         }
 
         [TestMethod]
@@ -229,10 +229,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "status_transitions[returned]")
-                         .And.Contain(x => x.Key == "status_transitions[returned][gt]")
-                         .And.Contain(x => x.Key == "status_transitions[returned][gte]")
-                         .And.Contain(x => x.Key == "status_transitions[returned][lt]")
-                         .And.Contain(x => x.Key == "status_transitions[returned][lte]");
+                .And.Contain(x => x.Key == "status_transitions[returned][gt]")
+                .And.Contain(x => x.Key == "status_transitions[returned][gte]")
+                .And.Contain(x => x.Key == "status_transitions[returned][lt]")
+                .And.Contain(x => x.Key == "status_transitions[returned][lte]");
         }
 
         [TestMethod]
@@ -246,10 +246,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "customer")
-                         .And.Contain(x => x.Key == "ending_before")
-                         .And.Contain(x => x.Key == "starting_after")
-                         .And.Contain(x => x.Key == "limit")
-                         .And.HaveCount(4);
+                .And.Contain(x => x.Key == "ending_before")
+                .And.Contain(x => x.Key == "starting_after")
+                .And.Contain(x => x.Key == "limit")
+                .And.HaveCount(4);
         }
     }
 }

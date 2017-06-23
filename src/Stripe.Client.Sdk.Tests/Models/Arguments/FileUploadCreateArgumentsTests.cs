@@ -57,9 +57,9 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(0)
-                         .And.NotContain(x => x.Key == "id")
-                         .And.Contain(x => x.Key == "starting_after")
-                         .And.Contain(x => x.Key == "limit");
+                .And.NotContain(x => x.Key == "id")
+                .And.Contain(x => x.Key == "starting_after")
+                .And.Contain(x => x.Key == "limit");
         }
     }
 }

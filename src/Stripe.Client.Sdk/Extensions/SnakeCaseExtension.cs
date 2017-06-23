@@ -16,6 +16,7 @@ namespace Stripe.Client.Sdk.Extensions
                     }
                 }
             }
+
             return propertyName.ToLower();
         }
     }

@@ -1,6 +1,4 @@
 namespace Stripe.Client.Sdk.Models.Filters
 {
-    public class BankAccountListFilter : ListFilter
-    {
-    }
+    public class BankAccountListFilter : ListFilter { }
 }

@@ -49,14 +49,14 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "active")
-                         .And.Contain(x => x.Key == "in_stock")
-                         .And.Contain(x => x.Key == "product")
-                         .And.Contain(x => x.Key == "attributes[color]" && x.Value == "red")
-                         .And.Contain(x => x.Key == "attributes[size]" && x.Value == "medium")
-                         .And.Contain(x => x.Key == "ending_before")
-                         .And.Contain(x => x.Key == "starting_after")
-                         .And.Contain(x => x.Key == "limit")
-                         .And.HaveCount(8);
+                .And.Contain(x => x.Key == "in_stock")
+                .And.Contain(x => x.Key == "product")
+                .And.Contain(x => x.Key == "attributes[color]" && x.Value == "red")
+                .And.Contain(x => x.Key == "attributes[size]" && x.Value == "medium")
+                .And.Contain(x => x.Key == "ending_before")
+                .And.Contain(x => x.Key == "starting_after")
+                .And.Contain(x => x.Key == "limit")
+                .And.HaveCount(8);
         }
     }
 }

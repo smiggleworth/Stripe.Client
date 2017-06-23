@@ -44,13 +44,13 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().HaveCount(7, string.Join("\r\n", keyValuePairs.Select(x => x.Key + " : " + x.Value)))
-                         .And.Contain(x => x.Key == "currency")
-                         .And.Contain(x => x.Key == "source")
-                         .And.Contain(x => x.Key == "transfer")
-                         .And.Contain(x => x.Key == "type")
-                         .And.Contain(x => x.Key == "available_on")
-                         .And.Contain(x => x.Key == "ending_before")
-                         .And.Contain(x => x.Key == "starting_after");
+                .And.Contain(x => x.Key == "currency")
+                .And.Contain(x => x.Key == "source")
+                .And.Contain(x => x.Key == "transfer")
+                .And.Contain(x => x.Key == "type")
+                .And.Contain(x => x.Key == "available_on")
+                .And.Contain(x => x.Key == "ending_before")
+                .And.Contain(x => x.Key == "starting_after");
         }
 
         [TestMethod]
@@ -65,13 +65,13 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().HaveCount(7, string.Join("\r\n", keyValuePairs.Select(x => x.Key + " : " + x.Value)))
-                         .And.Contain(x => x.Key == "currency")
-                         .And.Contain(x => x.Key == "source")
-                         .And.Contain(x => x.Key == "transfer")
-                         .And.Contain(x => x.Key == "type")
-                         .And.Contain(x => x.Key == "created")
-                         .And.Contain(x => x.Key == "ending_before")
-                         .And.Contain(x => x.Key == "starting_after");
+                .And.Contain(x => x.Key == "currency")
+                .And.Contain(x => x.Key == "source")
+                .And.Contain(x => x.Key == "transfer")
+                .And.Contain(x => x.Key == "type")
+                .And.Contain(x => x.Key == "created")
+                .And.Contain(x => x.Key == "ending_before")
+                .And.Contain(x => x.Key == "starting_after");
         }
 
 
@@ -89,16 +89,16 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().HaveCount(11, string.Join("\r\n", keyValuePairs.Select(x => x.Key + " : " + x.Value)))
-                         .And.Contain(x => x.Key == "currency")
-                         .And.Contain(x => x.Key == "source")
-                         .And.Contain(x => x.Key == "transfer")
-                         .And.Contain(x => x.Key == "type")
-                         .And.Contain(x => x.Key == "available_on[gt]")
-                         .And.Contain(x => x.Key == "available_on[gte]")
-                         .And.Contain(x => x.Key == "available_on[lt]")
-                         .And.Contain(x => x.Key == "available_on[lte]")
-                         .And.Contain(x => x.Key == "ending_before")
-                         .And.Contain(x => x.Key == "starting_after");
+                .And.Contain(x => x.Key == "currency")
+                .And.Contain(x => x.Key == "source")
+                .And.Contain(x => x.Key == "transfer")
+                .And.Contain(x => x.Key == "type")
+                .And.Contain(x => x.Key == "available_on[gt]")
+                .And.Contain(x => x.Key == "available_on[gte]")
+                .And.Contain(x => x.Key == "available_on[lt]")
+                .And.Contain(x => x.Key == "available_on[lte]")
+                .And.Contain(x => x.Key == "ending_before")
+                .And.Contain(x => x.Key == "starting_after");
         }
     }
 }

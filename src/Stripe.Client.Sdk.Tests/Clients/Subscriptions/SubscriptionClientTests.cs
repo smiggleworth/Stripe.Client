@@ -33,9 +33,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
             var id = "subscription-id";
             var customerId = "customer-id";
             _stripe.Get(
-                       Arg.Is<StripeRequest<Subscription>>(
-                           a => a.UrlPath == $"subscriptions/{id}"), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Subscription>()));
+                    Arg.Is<StripeRequest<Subscription>>(
+                        a => a.UrlPath == $"subscriptions/{id}"), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Subscription>()));
 
             // Act
             var response = await _client.GetSubscription(id, customerId, _cancellationToken);
@@ -94,11 +94,11 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
                 CustomerId = "customer-id"
             };
             _stripe.Post(
-                       Arg.Is<StripeRequest<SubscriptionUpdateArguments, Subscription>>(
-                           a =>
-                               a.UrlPath == $"subscriptions/{args.SubscriptionId}" &&
-                               a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Subscription>()));
+                    Arg.Is<StripeRequest<SubscriptionUpdateArguments, Subscription>>(
+                        a =>
+                            a.UrlPath == $"subscriptions/{args.SubscriptionId}" &&
+                            a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Subscription>()));
 
             // Act
             var response = await _client.UpdateSubscription(args, _cancellationToken);
@@ -114,9 +114,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
             var args = GenFu.GenFu.New<SubscriptionCancelArguments>();
 
             _stripe.Delete(
-                       Arg.Is<StripeRequest<Subscription>>(
-                           a => a.UrlPath == $"subscriptions/{args.SubscriptionId}"), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Subscription>()));
+                    Arg.Is<StripeRequest<Subscription>>(
+                        a => a.UrlPath == $"subscriptions/{args.SubscriptionId}"), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Subscription>()));
 
             // Act
             var response = await _client.CancelSubscription(args, _cancellationToken);

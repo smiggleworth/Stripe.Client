@@ -59,7 +59,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "source")
-                         .And.Contain(x => x.Key == "source[object]" && x.Value == "bank_account");
+                .And.Contain(x => x.Key == "source[object]" && x.Value == "bank_account");
         }
 
         [TestMethod]
@@ -74,10 +74,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(4)
-                         .And.Contain(x => x.Key == "source")
-                         .And.Contain(x => x.Key == "default_for_currency")
-                         .And.Contain(x => x.Key == "metadata[key1]")
-                         .And.Contain(x => x.Key == "metadata[key2]");
+                .And.Contain(x => x.Key == "source")
+                .And.Contain(x => x.Key == "default_for_currency")
+                .And.Contain(x => x.Key == "metadata[key1]")
+                .And.Contain(x => x.Key == "metadata[key2]");
         }
     }
 }

@@ -86,16 +86,16 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(10)
-                         .And.Contain(x => x.Key == "amount")
-                         .And.Contain(x => x.Key == "currency")
-                         .And.Contain(x => x.Key == "id")
-                         .And.Contain(x => x.Key == "interval")
-                         .And.Contain(x => x.Key == "interval_count")
-                         .And.Contain(x => x.Key == "metadata[key1]")
-                         .And.Contain(x => x.Key == "metadata[key2]")
-                         .And.Contain(x => x.Key == "name")
-                         .And.Contain(x => x.Key == "statement_descriptor")
-                         .And.Contain(x => x.Key == "trial_period_days");
+                .And.Contain(x => x.Key == "amount")
+                .And.Contain(x => x.Key == "currency")
+                .And.Contain(x => x.Key == "id")
+                .And.Contain(x => x.Key == "interval")
+                .And.Contain(x => x.Key == "interval_count")
+                .And.Contain(x => x.Key == "metadata[key1]")
+                .And.Contain(x => x.Key == "metadata[key2]")
+                .And.Contain(x => x.Key == "name")
+                .And.Contain(x => x.Key == "statement_descriptor")
+                .And.Contain(x => x.Key == "trial_period_days");
         }
     }
 }

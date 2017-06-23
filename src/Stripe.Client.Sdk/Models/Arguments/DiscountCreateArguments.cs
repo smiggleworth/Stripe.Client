@@ -1,6 +1,4 @@
 namespace Stripe.Client.Sdk.Models.Arguments
 {
-    public class DiscountCreateArguments
-    {
-    }
+    public class DiscountCreateArguments { }
 }

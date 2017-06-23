@@ -31,7 +31,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
             // Arrange
             var id = "product-id";
             _stripe.Get(Arg.Is<StripeRequest<Product>>(a => a.UrlPath == "products/" + id), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Product>()));
+                .Returns(Task.FromResult(new StripeResponse<Product>()));
 
             // Act
             var response = await _client.GetProduct(id, _cancellationToken);
@@ -46,9 +46,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
             // Arrange
             var filter = new ProductListFilter();
             _stripe.Get(
-                       Arg.Is<StripeRequest<ProductListFilter, Pagination<Product>>>(
-                           a => a.UrlPath == "products" && a.Model == filter), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Pagination<Product>>()));
+                    Arg.Is<StripeRequest<ProductListFilter, Pagination<Product>>>(
+                        a => a.UrlPath == "products" && a.Model == filter), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Pagination<Product>>()));
 
             // Act
             var response = await _client.GetProducts(filter, _cancellationToken);
@@ -82,9 +82,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
                 ProductId = "product-id"
             };
             _stripe.Post(
-                       Arg.Is<StripeRequest<ProductUpdateArguments, Product>>(
-                           a => a.UrlPath == "products/" + args.ProductId && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Product>()));
+                    Arg.Is<StripeRequest<ProductUpdateArguments, Product>>(
+                        a => a.UrlPath == "products/" + args.ProductId && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Product>()));
 
             // Act
             var response = await _client.UpdateProduct(args, _cancellationToken);
@@ -99,7 +99,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
             // Arrange
             var id = "product-id";
             _stripe.Delete(Arg.Is<StripeRequest<DeletedObject>>(a => a.UrlPath == "products/" + id), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
+                .Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
 
             // Act
             var response = await _client.DeleteProduct(id, _cancellationToken);

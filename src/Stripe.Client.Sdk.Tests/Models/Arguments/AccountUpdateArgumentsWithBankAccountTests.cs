@@ -42,7 +42,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "external_account")
-                         .And.Contain(x => x.Key == "external_account[object]" && x.Value == "bank_account");
+                .And.Contain(x => x.Key == "external_account[object]" && x.Value == "bank_account");
         }
     }
 }

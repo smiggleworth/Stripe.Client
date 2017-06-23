@@ -70,13 +70,13 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(7)
-                         .And.Contain(x => x.Key == "object" && x.Value == "bank_account")
-                         .And.Contain(x => x.Key == "account_number")
-                         .And.Contain(x => x.Key == "country")
-                         .And.Contain(x => x.Key == "currency")
-                         .And.Contain(x => x.Key == "account_holder_name")
-                         .And.Contain(x => x.Key == "account_holder_type")
-                         .And.Contain(x => x.Key == "routing_number");
+                .And.Contain(x => x.Key == "object" && x.Value == "bank_account")
+                .And.Contain(x => x.Key == "account_number")
+                .And.Contain(x => x.Key == "country")
+                .And.Contain(x => x.Key == "currency")
+                .And.Contain(x => x.Key == "account_holder_name")
+                .And.Contain(x => x.Key == "account_holder_type")
+                .And.Contain(x => x.Key == "routing_number");
         }
     }
 }

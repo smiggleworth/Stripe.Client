@@ -57,9 +57,9 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(3)
-                         .And.Contain(x => x.Key == "country")
-                         .And.Contain(x => x.Key == "email")
-                         .And.Contain(x => x.Key == "type");
+                .And.Contain(x => x.Key == "country")
+                .And.Contain(x => x.Key == "email")
+                .And.Contain(x => x.Key == "type");
         }
     }
 }

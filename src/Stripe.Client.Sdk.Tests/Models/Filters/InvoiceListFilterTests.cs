@@ -43,10 +43,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "date")
-                         .And.NotContain(x => x.Key == "date[gt]")
-                         .And.NotContain(x => x.Key == "date[gte]")
-                         .And.NotContain(x => x.Key == "date[lt]")
-                         .And.NotContain(x => x.Key == "date[lte]");
+                .And.NotContain(x => x.Key == "date[gt]")
+                .And.NotContain(x => x.Key == "date[gte]")
+                .And.NotContain(x => x.Key == "date[lt]")
+                .And.NotContain(x => x.Key == "date[lte]");
         }
 
 
@@ -62,10 +62,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "date")
-                         .And.Contain(x => x.Key == "date[gt]")
-                         .And.Contain(x => x.Key == "date[gte]")
-                         .And.Contain(x => x.Key == "date[lt]")
-                         .And.Contain(x => x.Key == "date[lte]");
+                .And.Contain(x => x.Key == "date[gt]")
+                .And.Contain(x => x.Key == "date[gte]")
+                .And.Contain(x => x.Key == "date[lt]")
+                .And.Contain(x => x.Key == "date[lte]");
         }
 
         [TestMethod]
@@ -79,10 +79,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "customer")
-                         .And.Contain(x => x.Key == "ending_before")
-                         .And.Contain(x => x.Key == "starting_after")
-                         .And.Contain(x => x.Key == "limit")
-                         .And.HaveCount(4);
+                .And.Contain(x => x.Key == "ending_before")
+                .And.Contain(x => x.Key == "starting_after")
+                .And.Contain(x => x.Key == "limit")
+                .And.HaveCount(4);
         }
     }
 }

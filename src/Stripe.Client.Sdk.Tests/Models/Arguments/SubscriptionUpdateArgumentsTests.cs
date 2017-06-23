@@ -73,7 +73,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "source")
-                         .And.Contain(x => x.Key == "source[object]" && x.Value == "card");
+                .And.Contain(x => x.Key == "source[object]" && x.Value == "card");
         }
 
         [TestMethod]
@@ -92,17 +92,17 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(11)
-                         .And.Contain(x => x.Key == "application_fee_percent")
-                         .And.Contain(x => x.Key == "coupon")
-                         .And.Contain(x => x.Key == "prorate")
-                         .And.Contain(x => x.Key == "proration_date")
-                         .And.Contain(x => x.Key == "metadata[key1]")
-                         .And.Contain(x => x.Key == "metadata[key2]")
-                         .And.Contain(x => x.Key == "plan")
-                         .And.Contain(x => x.Key == "quantity")
-                         .And.Contain(x => x.Key == "source")
-                         .And.Contain(x => x.Key == "tax_percent")
-                         .And.Contain(x => x.Key == "trial_end");
+                .And.Contain(x => x.Key == "application_fee_percent")
+                .And.Contain(x => x.Key == "coupon")
+                .And.Contain(x => x.Key == "prorate")
+                .And.Contain(x => x.Key == "proration_date")
+                .And.Contain(x => x.Key == "metadata[key1]")
+                .And.Contain(x => x.Key == "metadata[key2]")
+                .And.Contain(x => x.Key == "plan")
+                .And.Contain(x => x.Key == "quantity")
+                .And.Contain(x => x.Key == "source")
+                .And.Contain(x => x.Key == "tax_percent")
+                .And.Contain(x => x.Key == "trial_end");
         }
     }
 }

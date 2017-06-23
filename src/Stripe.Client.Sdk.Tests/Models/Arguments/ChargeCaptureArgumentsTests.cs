@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(4)
-                         .And.Contain(x => x.Key == "amount")
-                         .And.Contain(x => x.Key == "application_fee")
-                         .And.Contain(x => x.Key == "receipt_email")
-                         .And.Contain(x => x.Key == "statement_descriptor");
+                .And.Contain(x => x.Key == "amount")
+                .And.Contain(x => x.Key == "application_fee")
+                .And.Contain(x => x.Key == "receipt_email")
+                .And.Contain(x => x.Key == "statement_descriptor");
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var id = "dispute-id";
             _stripe.Get(Arg.Is<StripeRequest<Dispute>>(a => a.UrlPath == "disputes/" + id), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Dispute>()));
+                .Returns(Task.FromResult(new StripeResponse<Dispute>()));
 
             // Act
             var response = await _client.GetDispute(id, _cancellationToken);
@@ -46,9 +46,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var filter = new DisputeListFilter();
             _stripe.Get(
-                       Arg.Is<StripeRequest<DisputeListFilter, Pagination<Dispute>>>(
-                           a => a.UrlPath == "disputes" && a.Model == filter), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Pagination<Dispute>>()));
+                    Arg.Is<StripeRequest<DisputeListFilter, Pagination<Dispute>>>(
+                        a => a.UrlPath == "disputes" && a.Model == filter), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Pagination<Dispute>>()));
 
             // Act
             var response = await _client.GetDisputes(filter, _cancellationToken);
@@ -66,9 +66,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 DisputeId = "dispute-id"
             };
             _stripe.Post(
-                       Arg.Is<StripeRequest<DisputeUpdateArguments, Dispute>>(
-                           a => a.UrlPath == "disputes/" + args.DisputeId && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Dispute>()));
+                    Arg.Is<StripeRequest<DisputeUpdateArguments, Dispute>>(
+                        a => a.UrlPath == "disputes/" + args.DisputeId && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Dispute>()));
 
             // Act
             var response = await _client.UpdateDispute(args, _cancellationToken);

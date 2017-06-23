@@ -30,7 +30,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
         {
             var id = "ID_VALUE";
             _stripe.Get(Arg.Is<StripeRequest<Charge>>(a => a.UrlPath == "charges/" + id), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Charge>()));
+                .Returns(Task.FromResult(new StripeResponse<Charge>()));
             var response = await _client.GetCharge(id, _cancellationToken);
             response.Should().NotBeNull();
         }
@@ -40,9 +40,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
         {
             var filter = new ChargeListFilter();
             _stripe.Get(
-                       Arg.Is<StripeRequest<ChargeListFilter, Pagination<Charge>>>(
-                           a => a.UrlPath == "charges" && a.Model == filter), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Pagination<Charge>>()));
+                    Arg.Is<StripeRequest<ChargeListFilter, Pagination<Charge>>>(
+                        a => a.UrlPath == "charges" && a.Model == filter), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Pagination<Charge>>()));
             var response = await _client.GetCharges(filter, _cancellationToken);
             response.Should().NotBeNull();
         }
@@ -66,9 +66,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 ChargeId = "some-value"
             };
             _stripe.Post(
-                       Arg.Is<StripeRequest<ChargeUpdateArguments, Charge>>(
-                           a => a.UrlPath == "charges/" + args.ChargeId && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Charge>()));
+                    Arg.Is<StripeRequest<ChargeUpdateArguments, Charge>>(
+                        a => a.UrlPath == "charges/" + args.ChargeId && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Charge>()));
             var response = await _client.UpdateCharge(args, _cancellationToken);
             response.Should().NotBeNull();
         }
@@ -81,9 +81,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 ChargeId = "some-value"
             };
             _stripe.Post(
-                       Arg.Is<StripeRequest<ChargeCaptureArguments, Charge>>(
-                           a => a.UrlPath == "charges/" + args.ChargeId + "/capture" && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Charge>()));
+                    Arg.Is<StripeRequest<ChargeCaptureArguments, Charge>>(
+                        a => a.UrlPath == "charges/" + args.ChargeId + "/capture" && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Charge>()));
             var response = await _client.CaptureCharge(args, _cancellationToken);
             response.Should().NotBeNull();
         }

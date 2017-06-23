@@ -86,20 +86,20 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(15)
-                         .And.Contain(x => x.Key == "external_account[address_city]")
-                         .And.Contain(x => x.Key == "external_account[address_line1]")
-                         .And.Contain(x => x.Key == "external_account[address_line2]")
-                         .And.Contain(x => x.Key == "external_account[address_state]")
-                         .And.Contain(x => x.Key == "external_account[address_zip]")
-                         .And.Contain(x => x.Key == "external_account[currency]")
-                         .And.Contain(x => x.Key == "external_account[cvc]")
-                         .And.Contain(x => x.Key == "external_account[exp_month]")
-                         .And.Contain(x => x.Key == "external_account[exp_year]")
-                         .And.Contain(x => x.Key == "external_account[metadata][key1]")
-                         .And.Contain(x => x.Key == "external_account[metadata][key2]")
-                         .And.Contain(x => x.Key == "external_account[name]")
-                         .And.Contain(x => x.Key == "external_account[number]")
-                         .And.Contain(x => x.Key == "external_account[object]");
+                .And.Contain(x => x.Key == "external_account[address_city]")
+                .And.Contain(x => x.Key == "external_account[address_line1]")
+                .And.Contain(x => x.Key == "external_account[address_line2]")
+                .And.Contain(x => x.Key == "external_account[address_state]")
+                .And.Contain(x => x.Key == "external_account[address_zip]")
+                .And.Contain(x => x.Key == "external_account[currency]")
+                .And.Contain(x => x.Key == "external_account[cvc]")
+                .And.Contain(x => x.Key == "external_account[exp_month]")
+                .And.Contain(x => x.Key == "external_account[exp_year]")
+                .And.Contain(x => x.Key == "external_account[metadata][key1]")
+                .And.Contain(x => x.Key == "external_account[metadata][key2]")
+                .And.Contain(x => x.Key == "external_account[name]")
+                .And.Contain(x => x.Key == "external_account[number]")
+                .And.Contain(x => x.Key == "external_account[object]");
         }
     }
 }

@@ -75,9 +75,9 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(3)
-                         .And.Contain(x => x.Key == "day")
-                         .And.Contain(x => x.Key == "month")
-                         .And.Contain(x => x.Key == "year");
+                .And.Contain(x => x.Key == "day")
+                .And.Contain(x => x.Key == "month")
+                .And.Contain(x => x.Key == "year");
         }
     }
 }

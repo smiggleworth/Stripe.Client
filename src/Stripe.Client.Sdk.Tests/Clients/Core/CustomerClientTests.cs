@@ -31,7 +31,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var id = "customer-id";
             _stripe.Get(Arg.Is<StripeRequest<Customer>>(a => a.UrlPath == "customers/" + id), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Customer>()));
+                .Returns(Task.FromResult(new StripeResponse<Customer>()));
 
             // Act
             var response = await _client.GetCustomer(id, _cancellationToken);
@@ -46,9 +46,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var filter = new CustomerListFilter();
             _stripe.Get(
-                       Arg.Is<StripeRequest<CustomerListFilter, Pagination<Customer>>>(
-                           a => a.UrlPath == "customers" && a.Model == filter), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Pagination<Customer>>()));
+                    Arg.Is<StripeRequest<CustomerListFilter, Pagination<Customer>>>(
+                        a => a.UrlPath == "customers" && a.Model == filter), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Pagination<Customer>>()));
 
             // Act
             var response = await _client.GetCustomers(filter, _cancellationToken);
@@ -63,9 +63,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var args = new CustomerCreateArguments();
             _stripe.Post(
-                       Arg.Is<StripeRequest<CustomerCreateArguments, Customer>>(
-                           a => a.UrlPath == "customers" && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Customer>()));
+                    Arg.Is<StripeRequest<CustomerCreateArguments, Customer>>(
+                        a => a.UrlPath == "customers" && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Customer>()));
 
             // Act
             var response = await _client.CreateCustomer(args, _cancellationToken);
@@ -83,9 +83,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 CustomerId = "customer-id"
             };
             _stripe.Post(
-                       Arg.Is<StripeRequest<CustomerUpdateArguments, Customer>>(
-                           a => a.UrlPath == "customers/" + args.CustomerId && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Customer>()));
+                    Arg.Is<StripeRequest<CustomerUpdateArguments, Customer>>(
+                        a => a.UrlPath == "customers/" + args.CustomerId && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Customer>()));
 
             // Act
             var response = await _client.UpdateCustomer(args, _cancellationToken);
@@ -100,7 +100,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var id = "customer-id";
             _stripe.Delete(Arg.Is<StripeRequest<DeletedObject>>(a => a.UrlPath == "customers/" + id), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
+                .Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
 
             // Act
             var response = await _client.DeleteCustomer(id, _cancellationToken);

@@ -28,7 +28,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
         public async Task GetBalanceTest()
         {
             _stripe.Get(Arg.Is<StripeRequest<Balance>>(a => a.UrlPath == "balance"), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Balance>()));
+                .Returns(Task.FromResult(new StripeResponse<Balance>()));
             var response = await _client.GetBalance(_cancellationToken);
             response.Should().NotBeNull();
         }
@@ -48,9 +48,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
         {
             var filter = new BalanceTransactionListFilter();
             _stripe.Get(
-                       Arg.Is<StripeRequest<BalanceTransactionListFilter, Pagination<BalanceTransaction>>>(
-                           a => a.UrlPath == "balance/history"), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Pagination<BalanceTransaction>>()));
+                    Arg.Is<StripeRequest<BalanceTransactionListFilter, Pagination<BalanceTransaction>>>(
+                        a => a.UrlPath == "balance/history"), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Pagination<BalanceTransaction>>()));
             var response = await _client.GetBalanceTranasactions(filter, _cancellationToken);
             response.Should().NotBeNull();
         }

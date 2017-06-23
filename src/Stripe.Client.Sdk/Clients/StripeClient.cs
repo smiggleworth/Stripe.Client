@@ -157,6 +157,7 @@ namespace Stripe.Client.Sdk.Clients
             {
                 return null;
             }
+
             var content = new FormUrlEncodedContent(keyValuePairs);
             return content;
         }
@@ -185,11 +186,13 @@ namespace Stripe.Client.Sdk.Clients
             {
                 return uriBuilder.Uri;
             }
+
             var content = GetFormUrlEncodedContent(model);
             if (content == null)
             {
                 return uriBuilder.Uri;
             }
+
             uriBuilder.Query = await content.ReadAsStringAsync();
             return uriBuilder.Uri;
         }
@@ -251,14 +254,18 @@ namespace Stripe.Client.Sdk.Clients
                                 {
                                     yield return child;
                                 }
+
                                 i++;
                             }
+
                             continue;
                         }
+
                         foreach (var child in GetModelKeyValuePairs(propertyValue, key))
                         {
                             yield return child;
                         }
+
                         continue;
                     }
                 }
@@ -271,6 +278,7 @@ namespace Stripe.Client.Sdk.Clients
                         var metadataKey = key + "[" + pair.Key + "]";
                         yield return new KeyValuePair<string, string>(metadataKey, pair.Value);
                     }
+
                     continue;
                 }
 
@@ -295,6 +303,7 @@ namespace Stripe.Client.Sdk.Clients
                     return dateTime?.ToEpoch().ToString() ?? string.Empty;
                 }
             }
+
             return propertyValue.ToString();
         }
 

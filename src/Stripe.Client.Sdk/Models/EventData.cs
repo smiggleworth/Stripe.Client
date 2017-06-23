@@ -47,11 +47,13 @@ namespace Stripe.Client.Sdk.Models
             {
                 return null;
             }
+
             var key = o["object"].ToString();
             if (string.IsNullOrWhiteSpace(key) || !_typeMap.ContainsKey(key))
             {
                 return null;
             }
+
             var type = _typeMap[key];
             return o.ToObject(type);
         }

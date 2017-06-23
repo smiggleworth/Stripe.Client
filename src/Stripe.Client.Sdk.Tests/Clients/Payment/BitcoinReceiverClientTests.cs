@@ -46,9 +46,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Payment
             // Arrange
             var filter = new BitcoinReceiverListFilter();
             _stripe.Get(
-                       Arg.Is<StripeRequest<BitcoinReceiverListFilter, Pagination<BitcoinReceiver>>>(
-                           a => a.UrlPath == "bitcoin/receivers" && a.Model == filter), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Pagination<BitcoinReceiver>>()));
+                    Arg.Is<StripeRequest<BitcoinReceiverListFilter, Pagination<BitcoinReceiver>>>(
+                        a => a.UrlPath == "bitcoin/receivers" && a.Model == filter), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Pagination<BitcoinReceiver>>()));
 
             // Act
             var response = await _client.GetBitcoinReceivers(filter, _cancellationToken);
@@ -63,9 +63,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Payment
             // Arrange
             var args = new BitcoinReceiverCreateArguments();
             _stripe.Post(
-                       Arg.Is<StripeRequest<BitcoinReceiverCreateArguments, BitcoinReceiver>>(
-                           a => a.UrlPath == "bitcoin/receivers" && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<BitcoinReceiver>()));
+                    Arg.Is<StripeRequest<BitcoinReceiverCreateArguments, BitcoinReceiver>>(
+                        a => a.UrlPath == "bitcoin/receivers" && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<BitcoinReceiver>()));
 
             // Act
             var response = await _client.CreateBitcoinReceiver(args, _cancellationToken);

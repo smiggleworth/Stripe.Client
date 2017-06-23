@@ -173,8 +173,14 @@ namespace Stripe.Client.Sdk.Tests.Clients
             TestChildString = "Hello Token",
             Children = new List<TestModel>
             {
-                new TestModel {BigName = "Big Child 1"},
-                new TestModel {BigName = "Big Child 2"}
+                new TestModel
+                {
+                    BigName = "Big Child 1"
+                },
+                new TestModel
+                {
+                    BigName = "Big Child 2"
+                }
             }
         };
 

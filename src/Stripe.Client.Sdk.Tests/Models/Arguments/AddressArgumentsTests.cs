@@ -41,12 +41,12 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "city")
-                         .And.Contain(x => x.Key == "country")
-                         .And.Contain(x => x.Key == "line1")
-                         .And.Contain(x => x.Key == "line2")
-                         .And.Contain(x => x.Key == "postal_code")
-                         .And.Contain(x => x.Key == "state")
-                         .And.Contain(x => x.Key == "town");
+                .And.Contain(x => x.Key == "country")
+                .And.Contain(x => x.Key == "line1")
+                .And.Contain(x => x.Key == "line2")
+                .And.Contain(x => x.Key == "postal_code")
+                .And.Contain(x => x.Key == "state")
+                .And.Contain(x => x.Key == "town");
         }
     }
 }

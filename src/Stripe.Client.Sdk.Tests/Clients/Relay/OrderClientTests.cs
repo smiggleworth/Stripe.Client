@@ -31,7 +31,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
             // Arrange
             var id = "order-id";
             _stripe.Get(Arg.Is<StripeRequest<Order>>(a => a.UrlPath == "orders/" + id), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Order>()));
+                .Returns(Task.FromResult(new StripeResponse<Order>()));
 
             // Act
             var response = await _client.GetOrder(id, _cancellationToken);
@@ -46,9 +46,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
             // Arrange
             var filter = new OrderListFilter();
             _stripe.Get(
-                       Arg.Is<StripeRequest<OrderListFilter, Pagination<Order>>>(
-                           a => a.UrlPath == "orders" && a.Model == filter), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Pagination<Order>>()));
+                    Arg.Is<StripeRequest<OrderListFilter, Pagination<Order>>>(
+                        a => a.UrlPath == "orders" && a.Model == filter), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Pagination<Order>>()));
 
             // Act
             var response = await _client.GetOrders(filter, _cancellationToken);
@@ -82,9 +82,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
                 OrderId = "order-id"
             };
             _stripe.Post(
-                       Arg.Is<StripeRequest<OrderUpdateArguments, Order>>(
-                           a => a.UrlPath == "orders/" + args.OrderId && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Order>()));
+                    Arg.Is<StripeRequest<OrderUpdateArguments, Order>>(
+                        a => a.UrlPath == "orders/" + args.OrderId && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Order>()));
 
             // Act
             var response = await _client.UpdateOrder(args, _cancellationToken);
@@ -102,9 +102,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
                 OrderId = "order-id"
             };
             _stripe.Post(
-                       Arg.Is<StripeRequest<OrderPayArguments, Order>>(
-                           a => a.UrlPath == "orders/" + args.OrderId + "/pay" && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Order>()));
+                    Arg.Is<StripeRequest<OrderPayArguments, Order>>(
+                        a => a.UrlPath == "orders/" + args.OrderId + "/pay" && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Order>()));
 
             // Act
             var response = await _client.PayOrder(args, _cancellationToken);

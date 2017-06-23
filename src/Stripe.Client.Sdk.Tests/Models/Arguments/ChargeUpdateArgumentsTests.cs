@@ -46,13 +46,13 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "shipping[address][city]")
-                         .And.Contain(x => x.Key == "shipping[address][country]")
-                         .And.Contain(x => x.Key == "shipping[address][line1]")
-                         .And.Contain(x => x.Key == "shipping[address][line2]")
-                         .And.Contain(x => x.Key == "shipping[address][postal_code]")
-                         .And.Contain(x => x.Key == "shipping[address][state]")
-                         .And.Contain(x => x.Key == "shipping[name]")
-                         .And.Contain(x => x.Key == "shipping[phone]");
+                .And.Contain(x => x.Key == "shipping[address][country]")
+                .And.Contain(x => x.Key == "shipping[address][line1]")
+                .And.Contain(x => x.Key == "shipping[address][line2]")
+                .And.Contain(x => x.Key == "shipping[address][postal_code]")
+                .And.Contain(x => x.Key == "shipping[address][state]")
+                .And.Contain(x => x.Key == "shipping[name]")
+                .And.Contain(x => x.Key == "shipping[phone]");
         }
 
         [TestMethod]
@@ -82,10 +82,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(4)
-                         .And.Contain(x => x.Key == "description")
-                         .And.Contain(x => x.Key == "metadata[key1]")
-                         .And.Contain(x => x.Key == "metadata[key2]")
-                         .And.Contain(x => x.Key == "receipt_email");
+                .And.Contain(x => x.Key == "description")
+                .And.Contain(x => x.Key == "metadata[key1]")
+                .And.Contain(x => x.Key == "metadata[key2]")
+                .And.Contain(x => x.Key == "receipt_email");
         }
     }
 }

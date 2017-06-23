@@ -43,10 +43,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "created")
-                         .And.NotContain(x => x.Key == "created[gt]")
-                         .And.NotContain(x => x.Key == "created[gte]")
-                         .And.NotContain(x => x.Key == "created[lt]")
-                         .And.NotContain(x => x.Key == "created[lte]");
+                .And.NotContain(x => x.Key == "created[gt]")
+                .And.NotContain(x => x.Key == "created[gte]")
+                .And.NotContain(x => x.Key == "created[lt]")
+                .And.NotContain(x => x.Key == "created[lte]");
         }
 
 
@@ -62,10 +62,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().NotContain(x => x.Key == "created")
-                         .And.Contain(x => x.Key == "created[gt]")
-                         .And.Contain(x => x.Key == "created[gte]")
-                         .And.Contain(x => x.Key == "created[lt]")
-                         .And.Contain(x => x.Key == "created[lte]");
+                .And.Contain(x => x.Key == "created[gt]")
+                .And.Contain(x => x.Key == "created[gte]")
+                .And.Contain(x => x.Key == "created[lt]")
+                .And.Contain(x => x.Key == "created[lte]");
         }
 
         [TestMethod]
@@ -79,10 +79,10 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
 
             // Assert
             keyValuePairs.Should().Contain(x => x.Key == "type")
-                         .And.Contain(x => x.Key == "ending_before")
-                         .And.Contain(x => x.Key == "starting_after")
-                         .And.Contain(x => x.Key == "limit")
-                         .And.HaveCount(4);
+                .And.Contain(x => x.Key == "ending_before")
+                .And.Contain(x => x.Key == "starting_after")
+                .And.Contain(x => x.Key == "limit")
+                .And.HaveCount(4);
         }
     }
 }

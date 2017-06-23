@@ -59,9 +59,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 ChargeId = "some-value"
             };
             _stripe.Post(
-                       Arg.Is<StripeRequest<RefundCreateArguments, Refund>>(
-                           a => a.UrlPath == "refunds" && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Refund>()));
+                    Arg.Is<StripeRequest<RefundCreateArguments, Refund>>(
+                        a => a.UrlPath == "refunds" && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Refund>()));
             var response = await _client.CreateRefund(args, _cancellationToken);
             response.Should().NotBeNull();
         }

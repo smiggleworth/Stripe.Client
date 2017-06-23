@@ -30,7 +30,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var id = "token-id";
             _stripe.Get(Arg.Is<StripeRequest<Token>>(a => a.UrlPath == "tokens/" + id), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Token>()));
+                .Returns(Task.FromResult(new StripeResponse<Token>()));
 
             // Act
             var response = await _client.GetToken(id, _cancellationToken);
@@ -61,9 +61,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var args = new BankAccountTokenCreateArguments();
             _stripe.Post(
-                       Arg.Is<StripeRequest<BankAccountTokenCreateArguments, Token>>(
-                           a => a.UrlPath == "tokens" && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Token>()));
+                    Arg.Is<StripeRequest<BankAccountTokenCreateArguments, Token>>(
+                        a => a.UrlPath == "tokens" && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Token>()));
 
             // Act
             var response = await _client.CreateBankAccountToken(args, _cancellationToken);
@@ -78,9 +78,9 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var args = new PiiTokenCreateArguments();
             _stripe.Post(
-                       Arg.Is<StripeRequest<PiiTokenCreateArguments, Token>>(
-                           a => a.UrlPath == "tokens" && a.Model == args), _cancellationToken)
-                   .Returns(Task.FromResult(new StripeResponse<Token>()));
+                    Arg.Is<StripeRequest<PiiTokenCreateArguments, Token>>(
+                        a => a.UrlPath == "tokens" && a.Model == args), _cancellationToken)
+                .Returns(Task.FromResult(new StripeResponse<Token>()));
 
             // Act
             var response = await _client.CreatePiiToken(args, _cancellationToken);

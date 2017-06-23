@@ -47,12 +47,12 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(6)
-                         .And.Contain(x => x.Key == "amount")
-                         .And.Contain(x => x.Key == "metadata[key1]")
-                         .And.Contain(x => x.Key == "metadata[key2]")
-                         .And.Contain(x => x.Key == "reason")
-                         .And.Contain(x => x.Key == "refund_application_fee")
-                         .And.Contain(x => x.Key == "reverse_transfer");
+                .And.Contain(x => x.Key == "amount")
+                .And.Contain(x => x.Key == "metadata[key1]")
+                .And.Contain(x => x.Key == "metadata[key2]")
+                .And.Contain(x => x.Key == "reason")
+                .And.Contain(x => x.Key == "refund_application_fee")
+                .And.Contain(x => x.Key == "reverse_transfer");
         }
     }
 }

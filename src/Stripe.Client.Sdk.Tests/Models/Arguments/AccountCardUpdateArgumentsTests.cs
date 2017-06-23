@@ -59,17 +59,17 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
             // Assert
             keyValuePairs.Should().HaveCount(12)
-                         .And.Contain(x => x.Key == "default_for_currency")
-                         .And.Contain(x => x.Key == "metadata[key1]")
-                         .And.Contain(x => x.Key == "metadata[key2]")
-                         .And.Contain(x => x.Key == "address_city")
-                         .And.Contain(x => x.Key == "address_line1")
-                         .And.Contain(x => x.Key == "address_line2")
-                         .And.Contain(x => x.Key == "address_state")
-                         .And.Contain(x => x.Key == "address_zip")
-                         .And.Contain(x => x.Key == "exp_month")
-                         .And.Contain(x => x.Key == "exp_year")
-                         .And.Contain(x => x.Key == "name");
+                .And.Contain(x => x.Key == "default_for_currency")
+                .And.Contain(x => x.Key == "metadata[key1]")
+                .And.Contain(x => x.Key == "metadata[key2]")
+                .And.Contain(x => x.Key == "address_city")
+                .And.Contain(x => x.Key == "address_line1")
+                .And.Contain(x => x.Key == "address_line2")
+                .And.Contain(x => x.Key == "address_state")
+                .And.Contain(x => x.Key == "address_zip")
+                .And.Contain(x => x.Key == "exp_month")
+                .And.Contain(x => x.Key == "exp_year")
+                .And.Contain(x => x.Key == "name");
         }
     }
 }
