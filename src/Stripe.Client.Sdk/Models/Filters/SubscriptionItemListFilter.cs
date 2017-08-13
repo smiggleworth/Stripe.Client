@@ -8,6 +8,6 @@ namespace Stripe.Client.Sdk.Models.Filters
         ///     The ID of the subscription whose items will be retrieved.
         /// </summary>
         [Required]
-        public string subscription { get; set; }
+        public string Subscription { get; set; }
     }
 }

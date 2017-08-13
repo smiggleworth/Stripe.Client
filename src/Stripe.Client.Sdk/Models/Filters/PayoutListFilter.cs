@@ -24,5 +24,9 @@ namespace Stripe.Client.Sdk.Models.Filters
 
         [ChildModel]
         public object Created => CreatedDateTime.HasValue ? (object)CreatedDateTime.Value.ToEpoch() : CreatedFilter;
+
+        public string Destination { get; set; }
+
+        public string Status { get; set; }
     }
 }

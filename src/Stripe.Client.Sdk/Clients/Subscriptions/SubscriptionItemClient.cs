@@ -21,7 +21,8 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
             _client.Expandables = Expandables = new List<string>();
         }
 
-        public async Task<StripeResponse<SubscriptionItem>> GetSubscriptionItem(string id, string customerId,
+        public async Task<StripeResponse<SubscriptionItem>> GetSubscriptionItem(
+            string id,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var request = new StripeRequest<SubscriptionItem>
@@ -32,7 +33,8 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         }
 
         public async Task<StripeResponse<Pagination<SubscriptionItem>>> GetSubscriptionItems(
-            SubscriptionItemListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
+            SubscriptionItemListFilter filter,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             var request = new StripeRequest<SubscriptionItemListFilter, Pagination<SubscriptionItem>>
             {
@@ -42,7 +44,8 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
             return await _client.Get(request, cancellationToken);
         }
 
-        public async Task<StripeResponse<SubscriptionItem>> CreateSubscriptionItem(SubscriptionItemCreateArguments arguments,
+        public async Task<StripeResponse<SubscriptionItem>> CreateSubscriptionItem(
+            SubscriptionItemCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var request = new StripeRequest<SubscriptionItemCreateArguments, SubscriptionItem>
@@ -53,7 +56,8 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
             return await _client.Post(request, cancellationToken);
         }
 
-        public async Task<StripeResponse<SubscriptionItem>> UpdateSubscriptionItem(SubscriptionItemUpdateArguments arguments,
+        public async Task<StripeResponse<SubscriptionItem>> UpdateSubscriptionItem(
+            SubscriptionItemUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var request = new StripeRequest<SubscriptionItemUpdateArguments, SubscriptionItem>
@@ -66,7 +70,8 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         }
 
 
-        public async Task<StripeResponse<DeletedObject>> DeleteSubscriptionItem(SubscriptionItemDeleteArguments arguments,
+        public async Task<StripeResponse<DeletedObject>> DeleteSubscriptionItem(
+            SubscriptionItemDeleteArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var request = new StripeRequest<SubscriptionItemDeleteArguments, DeletedObject>

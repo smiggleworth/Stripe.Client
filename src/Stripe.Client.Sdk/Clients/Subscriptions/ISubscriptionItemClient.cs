@@ -8,8 +8,7 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
 {
     public interface ISubscriptionItemClient
     {
-        Task<StripeResponse<SubscriptionItem>> GetSubscriptionItem(string id, string customerId,
-            CancellationToken cancellationToken = default(CancellationToken));
+        Task<StripeResponse<SubscriptionItem>> GetSubscriptionItem(string id,CancellationToken cancellationToken = default(CancellationToken));
 
         Task<StripeResponse<Pagination<SubscriptionItem>>> GetSubscriptionItems(
             SubscriptionItemListFilter filter, CancellationToken cancellationToken = default(CancellationToken));
