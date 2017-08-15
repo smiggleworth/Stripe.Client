@@ -7,7 +7,6 @@ namespace Stripe.Client.Sdk.Models
         /// </summary>
         public Address Address { get; set; }
 
-
         /// <summary>
         ///     Owner’s email address.
         /// </summary>

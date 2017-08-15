@@ -8,6 +8,8 @@ namespace Stripe.Client.Sdk.Models
 
         public string UrlPath { get; set; }
 
+        public object Data { get; set; }
+
         public StripeRequest()
         {
             IdempotencyKey = Guid.NewGuid();

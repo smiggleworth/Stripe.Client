@@ -45,10 +45,20 @@ namespace Stripe.Client.Sdk.Models
             set { Expandable<Customer>.Deserialize(value, s => CustomerId = s, o => CustomerModel = o); }
         }
 
+        /// <summary>
+        ///     Hash describing the plan the customer is subscribed to
+        /// </summary>
         public Plan Plan { get; set; }
 
+        /// <summary>
+        ///     The quantity of the plan to which the customer should be subscribed. For example, if your plan is $10/user/month,
+        ///     and your customer has 5 users, you could pass 5 as the quantity to have the customer charged $50 (5 x $10) monthly.
+        /// </summary>
         public int Quantity { get; set; }
 
+        /// <summary>
+        ///     Date the most recent update to this subscription started.
+        /// </summary>
         [JsonConverter(typeof(EpochConverter))]
         public DateTime? Start { get; set; }
 
@@ -69,6 +79,10 @@ namespace Stripe.Client.Sdk.Models
         /// </summary>
         public decimal? ApplicationFeePercent { get; set; }
 
+        /// <summary>
+        ///     If provided, each invoice created by this subscription will apply the tax rate, increasing the amount billed to the
+        ///     customer.
+        /// </summary>
         public decimal? TaxPercent { get; set; }
 
 
@@ -104,9 +118,15 @@ namespace Stripe.Client.Sdk.Models
         /// </summary>
         public Dictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        ///     If the subscription has a trial, the end of that trial.
+        /// </summary>
         [JsonConverter(typeof(EpochConverter))]
         public DateTime? TrialEnd { get; set; }
 
+        /// <summary>
+        ///     If the subscription has a trial, the beginning of that trial.
+        /// </summary>
         [JsonConverter(typeof(EpochConverter))]
         public DateTime? TrialStart { get; set; }
 

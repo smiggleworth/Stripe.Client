@@ -43,7 +43,10 @@ namespace Stripe.Client.Sdk.Models
 
         public object BalanceTransaction
         {
-            set { Expandable<BalanceTransaction>.Deserialize(value, s => BalanceTransactionId = s, o => BalanceTransactionModel = o); }
+            set
+            {
+                Expandable<BalanceTransaction>.Deserialize(value, s => BalanceTransactionId = s, o => BalanceTransactionModel = o);
+            }
         }
 
         /// <summary>

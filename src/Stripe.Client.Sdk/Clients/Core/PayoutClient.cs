@@ -21,12 +21,11 @@ namespace Stripe.Client.Sdk.Clients.Core
             _client.Expandables = Expandables = new List<string>();
         }
 
-        public async Task<StripeResponse<Payout>> GetPayout(string subscriptionId, string customerId,
-            CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<StripeResponse<Payout>> GetPayout(string id, CancellationToken cancellationToken = default(CancellationToken))
         {
             var request = new StripeRequest<Payout>
             {
-                UrlPath = PathHelper.GetPath(Paths.Payouts, subscriptionId)
+                UrlPath = PathHelper.GetPath(Paths.Payouts, id)
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -69,9 +68,9 @@ namespace Stripe.Client.Sdk.Clients.Core
         {
             var request = new StripeRequest<Payout>
             {
-                UrlPath = PathHelper.GetPath(Paths.Payouts, id)
+                UrlPath = PathHelper.GetPath(Paths.Payouts, id, Paths.Cancel)
             };
-            return await _client.Delete(request, cancellationToken);
+            return await _client.Post(request, cancellationToken);
         }
     }
 }

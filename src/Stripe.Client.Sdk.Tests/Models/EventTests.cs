@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using Stripe.Client.Sdk.Clients;
 using Stripe.Client.Sdk.Models;
 
 namespace Stripe.Client.Sdk.Tests.Models
@@ -19,7 +20,7 @@ namespace Stripe.Client.Sdk.Tests.Models
             var json = File.ReadAllText("JSON/event.json");
 
             // Act
-            var obj = JsonConvert.DeserializeObject<Event>(json);
+            var obj = StripeClient.Deserialize<Event>(json);
 
             // Assert
             obj.Should().BeAssignableTo<Event>();

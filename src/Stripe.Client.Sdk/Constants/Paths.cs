@@ -6,6 +6,7 @@
         public const string ApplicationFees = "application_fees";
         public const string Balance = "balance";
         public const string Bitcoin = "bitcoin";
+        public const string Cancel = "cancel";
         public const string Capture = "capture";
         public const string Cards = "cards";
         public const string Charges = "charges";
