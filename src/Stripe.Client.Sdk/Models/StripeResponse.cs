@@ -1,8 +1,8 @@
 ﻿namespace Stripe.Client.Sdk.Models
 {
-    public class StripeResponse<TModel>
+    public class StripeResponse<T>
     {
-        public TModel Model { get; set; }
+        public T Model { get; set; }
 
         public StripeError Error { get; set; }
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Stripe.Client.Sdk.Models;
-using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Clients
 {
@@ -11,16 +10,16 @@ namespace Stripe.Client.Sdk.Clients
     {
         List<string> Expandables { get; set; }
 
-        Task<StripeResponse<TResponse>> Get<TResponse>(StripeRequest<TResponse> stripeRequest,
+        Task<StripeResponse<T>> Get<T>(StripeRequest<T> stripeRequest,
             CancellationToken cancellationToken);
 
-        Task<StripeResponse<TResponse>> Post<TResponse>(StripeRequest<TResponse> stripeRequest,
+        Task<StripeResponse<T>> Post<T>(StripeRequest<T> stripeRequest,
             CancellationToken cancellationToken);
 
-        Task<StripeResponse<TResponse>> Upload<TResponse>(StripeRequest<TResponse> stripeRequest,
+        Task<StripeResponse<T>> Upload<T>(StripeRequest<T> stripeRequest,
             CancellationToken cancellationToken);
 
-        Task<StripeResponse<TResponse>> Delete<TResponse>(StripeRequest<TResponse> stripeRequest,
+        Task<StripeResponse<T>> Delete<T>(StripeRequest<T> stripeRequest,
             CancellationToken cancellationToken);
     }
 }
