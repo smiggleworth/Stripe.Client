@@ -46,8 +46,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
             // Arrange
             var filter = new CouponListFilter();
             _stripe.Get(
-                    Arg.Is<StripeRequest<CouponListFilter, Pagination<Coupon>>>(
-                        a => a.UrlPath == "coupons" && a.Model == filter), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<Coupon>>>(
+                        a => a.UrlPath == "coupons" && a.Data == filter), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<Coupon>>()));
 
             // Act
@@ -63,7 +63,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
             // Arrange
             var args = new CouponCreateArguments();
             _stripe.Post(
-                Arg.Is<StripeRequest<CouponCreateArguments, Coupon>>(a => a.UrlPath == "coupons" && a.Model == args),
+                Arg.Is<StripeRequest<Coupon>>(a => a.UrlPath == "coupons" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Coupon>()));
 
             // Act
@@ -82,8 +82,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
                 CouponId = "coupon-id"
             };
             _stripe.Post(
-                    Arg.Is<StripeRequest<CouponUpdateArguments, Coupon>>(
-                        a => a.UrlPath == "coupons/" + args.CouponId && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Coupon>>(
+                        a => a.UrlPath == "coupons/" + args.CouponId && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Coupon>()));
 
             // Act

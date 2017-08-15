@@ -24,7 +24,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter.ArrivalDateTime = DateTime.UtcNow;
 
             // Act
-            var keyValuePairs = StripeClient.GetModelKeyValuePairs<PayoutListFilter>(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(7)

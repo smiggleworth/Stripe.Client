@@ -46,8 +46,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var filter = new TransferListFilter();
             _stripe.Get(
-                    Arg.Is<StripeRequest<TransferListFilter, Pagination<Transfer>>>(
-                        a => a.UrlPath == "transfers" && a.Model == filter), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<Transfer>>>(
+                        a => a.UrlPath == "transfers" && a.Data == filter), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<Transfer>>()));
 
             // Act
@@ -63,8 +63,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var args = new TransferCreateArguments();
             _stripe.Post(
-                    Arg.Is<StripeRequest<TransferCreateArguments, Transfer>>(
-                        a => a.UrlPath == "transfers" && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Transfer>>(
+                        a => a.UrlPath == "transfers" && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Transfer>()));
 
             // Act
@@ -83,8 +83,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 TransferId = "transfer-id"
             };
             _stripe.Post(
-                    Arg.Is<StripeRequest<TransferUpdateArguments, Transfer>>(
-                        a => a.UrlPath == "transfers/" + args.TransferId && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Transfer>>(
+                        a => a.UrlPath == "transfers/" + args.TransferId && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Transfer>()));
 
             // Act
@@ -120,8 +120,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 TransferId = "transfer-id"
             };
             _stripe.Get(
-                Arg.Is<StripeRequest<TransferReversalListFilter, Pagination<TransferReversal>>>(
-                    a => a.UrlPath == "transfers/" + filter.TransferId + "/reversals" && a.Model == filter),
+                Arg.Is<StripeRequest<Pagination<TransferReversal>>>(
+                    a => a.UrlPath == "transfers/" + filter.TransferId + "/reversals" && a.Data == filter),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Pagination<TransferReversal>>()));
 
             // Act
@@ -140,8 +140,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 TransferId = "transfer-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<TransferReversalCreateArguments, TransferReversal>>(
-                    a => a.UrlPath == "transfers/" + args.TransferId + "/reversals" && a.Model == args),
+                Arg.Is<StripeRequest<TransferReversal>>(
+                    a => a.UrlPath == "transfers/" + args.TransferId + "/reversals" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<TransferReversal>()));
 
             // Act
@@ -161,8 +161,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 TransferId = "transfer-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<TransferReversalUpdateArguments, TransferReversal>>(
-                    a => a.UrlPath == "transfers/" + args.TransferId + "/reversals/" + args.TransferReversalId && a.Model == args),
+                Arg.Is<StripeRequest<TransferReversal>>(
+                    a => a.UrlPath == "transfers/" + args.TransferId + "/reversals/" + args.TransferReversalId && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<TransferReversal>()));
 
             // Act

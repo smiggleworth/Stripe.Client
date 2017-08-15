@@ -33,10 +33,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Pagination<Payout>>> GetPayouts(
             PayoutListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<PayoutListFilter, Pagination<Payout>>
+            var request = new StripeRequest<Pagination<Payout>>
             {
                 UrlPath = PathHelper.GetPath(Paths.Payouts),
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -44,10 +44,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Payout>> CreatePayout(PayoutCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<PayoutCreateArguments, Payout>
+            var request = new StripeRequest<Payout>
             {
                 UrlPath = PathHelper.GetPath(Paths.Payouts),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -55,11 +55,11 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Payout>> UpdatePayout(PayoutUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<PayoutUpdateArguments, Payout>
+            var request = new StripeRequest<Payout>
             {
                 UrlPath =
                     PathHelper.GetPath(Paths.Payouts, arguments.Id),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

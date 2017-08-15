@@ -46,8 +46,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
             // Arrange
             var filter = new OrderListFilter();
             _stripe.Get(
-                    Arg.Is<StripeRequest<OrderListFilter, Pagination<Order>>>(
-                        a => a.UrlPath == "orders" && a.Model == filter), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<Order>>>(
+                        a => a.UrlPath == "orders" && a.Data == filter), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<Order>>()));
 
             // Act
@@ -63,7 +63,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
             // Arrange
             var args = new OrderCreateArguments();
             _stripe.Post(
-                Arg.Is<StripeRequest<OrderCreateArguments, Order>>(a => a.UrlPath == "orders" && a.Model == args),
+                Arg.Is<StripeRequest<Order>>(a => a.UrlPath == "orders" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Order>()));
 
             // Act
@@ -82,8 +82,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
                 OrderId = "order-id"
             };
             _stripe.Post(
-                    Arg.Is<StripeRequest<OrderUpdateArguments, Order>>(
-                        a => a.UrlPath == "orders/" + args.OrderId && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Order>>(
+                        a => a.UrlPath == "orders/" + args.OrderId && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Order>()));
 
             // Act
@@ -102,8 +102,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
                 OrderId = "order-id"
             };
             _stripe.Post(
-                    Arg.Is<StripeRequest<OrderPayArguments, Order>>(
-                        a => a.UrlPath == "orders/" + args.OrderId + "/pay" && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Order>>(
+                        a => a.UrlPath == "orders/" + args.OrderId + "/pay" && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Order>()));
 
             // Act

@@ -45,8 +45,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Payment
             // Arrange
             var args = new SourceCreateArguments();
             _stripe.Post(
-                    Arg.Is<StripeRequest<SourceCreateArguments, Source>>(
-                        a => a.UrlPath == "sources" && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Source>>(
+                        a => a.UrlPath == "sources" && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Source>()));
 
             // Act
@@ -64,7 +64,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Payment
             {
                 Id = "source-id"
             };
-            _stripe.Post(Arg.Any<StripeRequest<SourceUpdateArguments, Source>>(), _cancellationToken)
+            _stripe.Post(Arg.Any<StripeRequest<Source>>(), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Source>()));
 
             // Act
@@ -74,8 +74,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Payment
             response.Should().NotBeNull();
 
             await _stripe.Received().Post(
-                Arg.Is<StripeRequest<SourceUpdateArguments, Source>>(
-                    a => a.UrlPath == $"sources/{args.Id}" && a.Model == args), _cancellationToken);
+                Arg.Is<StripeRequest<Source>>(
+                    a => a.UrlPath == $"sources/{args.Id}" && a.Data == args), _cancellationToken);
         }
     }
 }

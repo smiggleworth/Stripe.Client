@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<Pagination<Invoice>>> GetInvoices(InvoiceListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<InvoiceListFilter, Pagination<Invoice>>
+            var request = new StripeRequest<Pagination<Invoice>>
             {
                 UrlPath = Paths.Invoices,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<Pagination<InvoiceLineItem>>> GetInvoiceLineItems(
             InvoiceLineItemListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<InvoiceLineItemListFilter, Pagination<InvoiceLineItem>>
+            var request = new StripeRequest<Pagination<InvoiceLineItem>>
             {
                 UrlPath = PathHelper.GetPath(Paths.Invoices, filter.InvoiceId, Paths.Lines),
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -56,10 +56,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<Invoice>> GetUpcomingInvoices(UpcomingInvoiceArguments filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<UpcomingInvoiceArguments, Invoice>
+            var request = new StripeRequest<Invoice>
             {
                 UrlPath = PathHelper.GetPath(Paths.Invoices, Paths.Upcoming),
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -67,10 +67,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<Invoice>> CreateInvoice(InvoiceCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<InvoiceCreateArguments, Invoice>
+            var request = new StripeRequest<Invoice>
             {
                 UrlPath = Paths.Invoices,
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -78,10 +78,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<Invoice>> UpdateInvoice(InvoiceUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<InvoiceUpdateArguments, Invoice>
+            var request = new StripeRequest<Invoice>
             {
                 UrlPath = PathHelper.GetPath(Paths.Invoices, arguments.InvoiceId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

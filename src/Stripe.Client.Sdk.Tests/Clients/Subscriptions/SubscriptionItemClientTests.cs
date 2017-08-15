@@ -52,8 +52,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
                 Subscription = "subscription-id"
             };
             _stripe.Get(
-                Arg.Is<StripeRequest<SubscriptionItemListFilter, Pagination<SubscriptionItem>>>(
-                    a => a.UrlPath == "subscription_items" && a.Model == filter),
+                Arg.Is<StripeRequest<Pagination<SubscriptionItem>>>(
+                    a => a.UrlPath == "subscription_items" && a.Data == filter),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Pagination<SubscriptionItem>>()));
 
             // Act
@@ -72,8 +72,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
                 Subscription = "subscription-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<SubscriptionItemCreateArguments, SubscriptionItem>>(
-                    a => a.UrlPath == "subscription_items" && a.Model == args),
+                Arg.Is<StripeRequest<SubscriptionItem>>(
+                    a => a.UrlPath == "subscription_items" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<SubscriptionItem>()));
 
             // Act
@@ -93,10 +93,10 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
                 Subscription = "subscription-id"
             };
             _stripe.Post(
-                    Arg.Is<StripeRequest<SubscriptionItemUpdateArguments, SubscriptionItem>>(
+                    Arg.Is<StripeRequest<SubscriptionItem>>(
                         a =>
                             a.UrlPath == $"subscription_items/{args.Id}" &&
-                            a.Model == args), _cancellationToken)
+                            a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<SubscriptionItem>()));
 
             // Act
@@ -110,7 +110,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
         public async Task DeleteSubscriptionItemTest()
         {
             // Arrange
-            var args = new SubscriptionItemDeleteArguments {Id = "subscription-item-id"};
+            var args = new SubscriptionItemDeleteArguments { Id = "subscription-item-id" };
             _stripe.Delete(Arg.Is<StripeRequest<DeletedObject>>(a => a.UrlPath == $"subscription_items/{args.Id}"),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<DeletedObject>()));
 

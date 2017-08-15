@@ -40,8 +40,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
         {
             var filter = new RecipientListFilter();
             _stripe.Get(
-                    Arg.Is<StripeRequest<RecipientListFilter, Pagination<Recipient>>>(
-                        a => a.UrlPath == "recipients" && a.Model == filter), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<Recipient>>>(
+                        a => a.UrlPath == "recipients" && a.Data == filter), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<Recipient>>()));
             var response = await _client.GetRecipients(filter, _cancellationToken);
             response.Should().NotBeNull();
@@ -52,8 +52,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
         {
             var args = new RecipientCreateArguments();
             _stripe.Post(
-                    Arg.Is<StripeRequest<RecipientCreateArguments, Recipient>>(
-                        a => a.UrlPath == "recipients" && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Recipient>>(
+                        a => a.UrlPath == "recipients" && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Recipient>()));
             var response = await _client.CreateRecipient(args, _cancellationToken);
             response.Should().NotBeNull();
@@ -67,8 +67,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
                 Id = "some-value"
             };
             _stripe.Post(
-                    Arg.Is<StripeRequest<RecipientUpdateArguments, Recipient>>(
-                        a => a.UrlPath == "recipients/" + args.Id && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Recipient>>(
+                        a => a.UrlPath == "recipients/" + args.Id && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Recipient>()));
             var response = await _client.UpdateRecipient(args, _cancellationToken);
             response.Should().NotBeNull();
@@ -106,8 +106,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
                 RecipientId = "recipient-id"
             };
             _stripe.Get(
-                Arg.Is<StripeRequest<RecipientCardListFilter, Pagination<Card>>>(
-                    a => a.UrlPath == "recipients/" + filter.RecipientId + "/cards" && a.Model == filter),
+                Arg.Is<StripeRequest<Pagination<Card>>>(
+                    a => a.UrlPath == "recipients/" + filter.RecipientId + "/cards" && a.Data == filter),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Pagination<Card>>()));
             var response = await _client.GetCards(filter, _cancellationToken);
             response.Should().NotBeNull();
@@ -121,8 +121,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
                 RecipientId = "recipient-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<RecipientCardCreateArguments, Card>>(
-                    a => a.UrlPath == "recipients/" + args.RecipientId + "/cards" && a.Model == args),
+                Arg.Is<StripeRequest<Card>>(
+                    a => a.UrlPath == "recipients/" + args.RecipientId + "/cards" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Card>()));
             var response = await _client.CreateCard(args, _cancellationToken);
             response.Should().NotBeNull();
@@ -137,8 +137,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
                 RecipientId = "parent-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<RecipientCardUpdateArguments, Card>>(
-                    a => a.UrlPath == "recipients/" + args.RecipientId + "/cards/" + args.CardId && a.Model == args),
+                Arg.Is<StripeRequest<Card>>(
+                    a => a.UrlPath == "recipients/" + args.RecipientId + "/cards/" + args.CardId && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Card>()));
             var response = await _client.UpdateCard(args, _cancellationToken);
             response.Should().NotBeNull();

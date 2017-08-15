@@ -14,19 +14,11 @@ namespace Stripe.Client.Sdk.Clients
         Task<StripeResponse<TResponse>> Get<TResponse>(StripeRequest<TResponse> stripeRequest,
             CancellationToken cancellationToken);
 
-        Task<StripeResponse<TResponse>> Get<TRequest, TResponse>(StripeRequest<TRequest, TResponse> stripeRequest,
-            CancellationToken cancellationToken);
-
         Task<StripeResponse<TResponse>> Post<TResponse>(StripeRequest<TResponse> stripeRequest,
             CancellationToken cancellationToken);
 
-        Task<StripeResponse<TResponse>> Post<TRequest, TResponse>(StripeRequest<TRequest, TResponse> stripeRequest,
+        Task<StripeResponse<TResponse>> Upload<TResponse>(StripeRequest<TResponse> stripeRequest,
             CancellationToken cancellationToken);
-
-
-        Task<StripeResponse<TResponse>> Upload<TRequest, TResponse>(StripeRequest<TRequest, TResponse> stripeRequest,
-            CancellationToken cancellationToken)
-            where TRequest : IFileUpload;
 
         Task<StripeResponse<TResponse>> Delete<TResponse>(StripeRequest<TResponse> stripeRequest,
             CancellationToken cancellationToken);

@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stripe.Client.Sdk.Attributes;
 using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Configuration;
 using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Models;
 
@@ -85,7 +87,6 @@ namespace Stripe.Client.Sdk.Tests.Clients
             keyValuePairs.Should().HaveCount(5);
         }
 
-
         [TestMethod]
         public void DeserializeErrorTest()
         {
@@ -117,7 +118,7 @@ namespace Stripe.Client.Sdk.Tests.Clients
             };
 
             // Act
-            var keys = stripeClient.GetAllKeyValuePairs<object>(null);
+            var keys = stripeClient.GetAllKeyValuePairs(null);
 
             // Assert
             keys.Should()
@@ -125,7 +126,6 @@ namespace Stripe.Client.Sdk.Tests.Clients
                 .And.Contain(x => x.Key == "expand[]" && x.Value == "customer")
                 .And.Contain(x => x.Key == "expand[]" && x.Value == "charge");
         }
-
 
         [TestMethod]
         public void DeserializeExpandable()
@@ -135,7 +135,6 @@ namespace Stripe.Client.Sdk.Tests.Clients
 
             // Act
             var obj = StripeClient.Deserialize<Customer>(json);
-
 
             obj.Should().NotBeNull();
             obj.DefaultCard.Should().NotBeNull();

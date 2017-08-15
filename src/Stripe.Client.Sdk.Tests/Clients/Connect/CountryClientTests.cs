@@ -45,8 +45,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             // Arrange
             var filter = new CountrySpecListFilter();
             _stripe.Get(
-                    Arg.Is<StripeRequest<CountrySpecListFilter, Pagination<CountrySpec>>>(
-                        a => a.UrlPath == "country_specs" && a.Model == filter), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<CountrySpec>>>(
+                        a => a.UrlPath == "country_specs" && a.Data == filter), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<CountrySpec>>()));
 
             // Act

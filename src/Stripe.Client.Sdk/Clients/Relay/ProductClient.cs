@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Relay
         public async Task<StripeResponse<Pagination<Product>>> GetProducts(ProductListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<ProductListFilter, Pagination<Product>>
+            var request = new StripeRequest<Pagination<Product>>
             {
                 UrlPath = Paths.Products,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Relay
         public async Task<StripeResponse<Product>> CreateProduct(ProductCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<ProductCreateArguments, Product>
+            var request = new StripeRequest<Product>
             {
                 UrlPath = Paths.Products,
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -56,10 +56,10 @@ namespace Stripe.Client.Sdk.Clients.Relay
         public async Task<StripeResponse<Product>> UpdateProduct(ProductUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<ProductUpdateArguments, Product>
+            var request = new StripeRequest<Product>
             {
                 UrlPath = PathHelper.GetPath(Paths.Products, arguments.ProductId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<Pagination<ApplicationFee>>> GetApplicationFees(
             ApplicationFeeListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<ApplicationFeeListFilter, Pagination<ApplicationFee>>
+            var request = new StripeRequest<Pagination<ApplicationFee>>
             {
                 UrlPath = Paths.ApplicationFees,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -55,10 +55,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<Pagination<ApplicationFeeRefund>>> GetApplicationFeeRefunds(
             ApplicationFeeRefundListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<ApplicationFeeRefundListFilter, Pagination<ApplicationFeeRefund>>
+            var request = new StripeRequest<Pagination<ApplicationFeeRefund>>
             {
                 UrlPath = PathHelper.GetPath(Paths.ApplicationFees, filter.ApplicationFeeId, Paths.Refunds),
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -67,10 +67,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
             ApplicationFeeRefundCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<ApplicationFeeRefundCreateArguments, ApplicationFeeRefund>
+            var request = new StripeRequest<ApplicationFeeRefund>
             {
                 UrlPath = PathHelper.GetPath(Paths.ApplicationFees, arguments.ApplicationFeeId, Paths.Refunds),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -79,11 +79,11 @@ namespace Stripe.Client.Sdk.Clients.Connect
             ApplicationFeeRefundUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<ApplicationFeeRefundUpdateArguments, ApplicationFeeRefund>
+            var request = new StripeRequest<ApplicationFeeRefund>
             {
                 UrlPath =
                     PathHelper.GetPath(Paths.ApplicationFees, arguments.ApplicationFeeId, Paths.Refunds, arguments.ApplicationFeeRefundId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Pagination<Dispute>>> GetDisputes(DisputeListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<DisputeListFilter, Pagination<Dispute>>
+            var request = new StripeRequest<Pagination<Dispute>>
             {
                 UrlPath = Paths.Disputes,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Dispute>> UpdateDispute(DisputeUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<DisputeUpdateArguments, Dispute>
+            var request = new StripeRequest<Dispute>
             {
                 UrlPath = PathHelper.GetPath(Paths.Disputes, arguments.DisputeId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

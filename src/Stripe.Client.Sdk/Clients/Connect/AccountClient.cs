@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<Pagination<Account>>> GetAccounts(AccountListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<AccountListFilter, Pagination<Account>>
+            var request = new StripeRequest<Pagination<Account>>
             {
                 UrlPath = Paths.Accounts,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<Account>> CreateAccount(AccountCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<AccountCreateArguments, Account>
+            var request = new StripeRequest<Account>
             {
                 UrlPath = Paths.Accounts,
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -56,10 +56,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<Account>> UpdateAccount(AccountUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<AccountUpdateArguments, Account>
+            var request = new StripeRequest<Account>
             {
                 UrlPath = PathHelper.GetPath(Paths.Accounts, arguments.AccountId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -67,10 +67,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<Account>> RejectAccount(AccountRejectArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<AccountRejectArguments, Account>
+            var request = new StripeRequest<Account>
             {
                 UrlPath = PathHelper.GetPath(Paths.Accounts, arguments.AccountId, Paths.Reject),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -88,10 +88,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<Pagination<BankAccount>>> GetBankAccounts(AccountBankAccountListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<AccountBankAccountListFilter, Pagination<BankAccount>>
+            var request = new StripeRequest<Pagination<BankAccount>>
             {
                 UrlPath = PathHelper.GetPath(Paths.Accounts, filter.AccountId, Paths.ExternalAccounts),
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -99,10 +99,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<BankAccount>> CreateBankAccount(AccountBankAccountCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<AccountBankAccountCreateArguments, BankAccount>
+            var request = new StripeRequest<BankAccount>
             {
                 UrlPath = PathHelper.GetPath(Paths.Accounts, arguments.AccountId, Paths.ExternalAccounts),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -110,10 +110,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<BankAccount>> UpdateBankAccount(AccountBankAccountUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<AccountBankAccountUpdateArguments, BankAccount>
+            var request = new StripeRequest<BankAccount>
             {
                 UrlPath = PathHelper.GetPath(Paths.Accounts, arguments.AccountId, Paths.ExternalAccounts, arguments.BankAccountId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -131,10 +131,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<Pagination<Card>>> GetCards(AccountCardListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<AccountCardListFilter, Pagination<Card>>
+            var request = new StripeRequest<Pagination<Card>>
             {
                 UrlPath = PathHelper.GetPath(Paths.Accounts, filter.AccountId, Paths.ExternalAccounts),
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -142,10 +142,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<Card>> CreateCard(AccountCardCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<AccountCardCreateArguments, Card>
+            var request = new StripeRequest<Card>
             {
                 UrlPath = PathHelper.GetPath(Paths.Accounts, arguments.AccountId, Paths.ExternalAccounts),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -153,10 +153,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<Card>> UpdateCard(AccountCardUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<AccountCardUpdateArguments, Card>
+            var request = new StripeRequest<Card>
             {
                 UrlPath = PathHelper.GetPath(Paths.Accounts, arguments.AccountId, Paths.ExternalAccounts, arguments.CardId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

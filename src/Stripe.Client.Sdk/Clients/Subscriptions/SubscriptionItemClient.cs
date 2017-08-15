@@ -36,10 +36,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
             SubscriptionItemListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<SubscriptionItemListFilter, Pagination<SubscriptionItem>>
+            var request = new StripeRequest<Pagination<SubscriptionItem>>
             {
                 UrlPath = PathHelper.GetPath(Paths.SubscriptionItems),
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -48,10 +48,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
             SubscriptionItemCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<SubscriptionItemCreateArguments, SubscriptionItem>
+            var request = new StripeRequest<SubscriptionItem>
             {
                 UrlPath = PathHelper.GetPath(Paths.SubscriptionItems),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -60,11 +60,11 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
             SubscriptionItemUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<SubscriptionItemUpdateArguments, SubscriptionItem>
+            var request = new StripeRequest<SubscriptionItem>
             {
                 UrlPath =
                     PathHelper.GetPath(Paths.SubscriptionItems, arguments.Id),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -74,10 +74,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
             SubscriptionItemDeleteArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<SubscriptionItemDeleteArguments, DeletedObject>
+            var request = new StripeRequest<DeletedObject>
             {
                 UrlPath = PathHelper.GetPath(Paths.SubscriptionItems, arguments.Id),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Delete(request, cancellationToken);
         }

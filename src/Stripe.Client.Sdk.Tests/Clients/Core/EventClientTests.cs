@@ -45,8 +45,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var filter = new EventListFilter();
             _stripe.Get(
-                    Arg.Is<StripeRequest<EventListFilter, Pagination<Event>>>(
-                        a => a.UrlPath == "events" && a.Model == filter), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<Event>>>(
+                        a => a.UrlPath == "events" && a.Data == filter), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<Event>>()));
 
             // Act

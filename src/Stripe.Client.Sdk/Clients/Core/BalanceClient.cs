@@ -43,10 +43,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Pagination<BalanceTransaction>>> GetBalanceTranasactions(
             BalanceTransactionListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<BalanceTransactionListFilter, Pagination<BalanceTransaction>>
+            var request = new StripeRequest<Pagination<BalanceTransaction>>
             {
                 UrlPath = PathHelper.GetPath(Paths.Balance, Paths.History),
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }

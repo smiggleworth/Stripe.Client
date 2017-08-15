@@ -48,7 +48,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
         {
             var filter = new BalanceTransactionListFilter();
             _stripe.Get(
-                    Arg.Is<StripeRequest<BalanceTransactionListFilter, Pagination<BalanceTransaction>>>(
+                    Arg.Is<StripeRequest<Pagination<BalanceTransaction>>>(
                         a => a.UrlPath == "balance/history"), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<BalanceTransaction>>()));
             var response = await _client.GetBalanceTranasactions(filter, _cancellationToken);

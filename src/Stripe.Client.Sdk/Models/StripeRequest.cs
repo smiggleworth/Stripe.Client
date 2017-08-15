@@ -16,8 +16,5 @@ namespace Stripe.Client.Sdk.Models
         }
     }
 
-    public class StripeRequest<TRequest, TResponse> : StripeRequest<TResponse>
-    {
-        public TRequest Model { get; set; }
-    }
+
 }

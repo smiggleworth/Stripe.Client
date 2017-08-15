@@ -46,8 +46,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var filter = new PayoutListFilter();
             _stripe.Get(
-                    Arg.Is<StripeRequest<PayoutListFilter, Pagination<Payout>>>(
-                        a => a.UrlPath == "payouts" && a.Model == filter), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<Payout>>>(
+                        a => a.UrlPath == "payouts" && a.Data == filter), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<Payout>>()));
 
             // Act
@@ -66,8 +66,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 Id = "payout-id"
             };
             _stripe.Post(
-                    Arg.Is<StripeRequest<PayoutUpdateArguments, Payout>>(
-                        a => a.UrlPath == "payouts/" + args.Id && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Payout>>(
+                        a => a.UrlPath == "payouts/" + args.Id && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Payout>()));
 
             // Act

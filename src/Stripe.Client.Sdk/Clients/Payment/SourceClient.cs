@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Payment
         public async Task<StripeResponse<Source>> CreateSource(
             SourceCreateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<SourceCreateArguments, Source>
+            var request = new StripeRequest<Source>
             {
                 UrlPath = PathHelper.GetPath(Paths.Sources),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Payment
         public async Task<StripeResponse<Source>> UpdateSource(
             SourceUpdateArguments arguments, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<SourceUpdateArguments, Source>
+            var request = new StripeRequest<Source>
             {
                 UrlPath = PathHelper.GetPath(Paths.Sources, arguments.Id),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<Pagination<Subscription>>> GetSubscriptions(
             SubscriptionListFilter filter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<SubscriptionListFilter, Pagination<Subscription>>
+            var request = new StripeRequest<Pagination<Subscription>>
             {
                 UrlPath = PathHelper.GetPath(Paths.Subscriptions),
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<Subscription>> CreateSubscription(SubscriptionCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<SubscriptionCreateArguments, Subscription>
+            var request = new StripeRequest<Subscription>
             {
                 UrlPath = PathHelper.GetPath(Paths.Subscriptions),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -56,11 +56,11 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<Subscription>> UpdateSubscription(SubscriptionUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<SubscriptionUpdateArguments, Subscription>
+            var request = new StripeRequest<Subscription>
             {
                 UrlPath =
                     PathHelper.GetPath(Paths.Subscriptions, arguments.SubscriptionId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

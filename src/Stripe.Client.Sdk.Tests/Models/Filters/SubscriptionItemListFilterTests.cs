@@ -24,7 +24,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
             _filter.Limit = 10;
 
             // Act
-            var keyValuePairs = StripeClient.GetModelKeyValuePairs<SubscriptionItemListFilter>(_filter).ToList();
+            var keyValuePairs = StripeClient.GetModelKeyValuePairs(_filter).ToList();
 
             // Assert
             keyValuePairs.Should().HaveCount(4)

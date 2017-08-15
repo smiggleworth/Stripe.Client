@@ -53,8 +53,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
                 Customer = "customer-id"
             };
             _stripe.Get(
-                Arg.Is<StripeRequest<SubscriptionListFilter, Pagination<Subscription>>>(
-                    a => a.UrlPath == "subscriptions" && a.Model == filter),
+                Arg.Is<StripeRequest<Pagination<Subscription>>>(
+                    a => a.UrlPath == "subscriptions" && a.Data == filter),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Pagination<Subscription>>()));
 
             // Act
@@ -73,8 +73,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
                 CustomerId = "customer-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<SubscriptionCreateArguments, Subscription>>(
-                    a => a.UrlPath == "subscriptions" && a.Model == args),
+                Arg.Is<StripeRequest<Subscription>>(
+                    a => a.UrlPath == "subscriptions" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Subscription>()));
 
             // Act
@@ -94,10 +94,10 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
                 CustomerId = "customer-id"
             };
             _stripe.Post(
-                    Arg.Is<StripeRequest<SubscriptionUpdateArguments, Subscription>>(
+                    Arg.Is<StripeRequest<Subscription>>(
                         a =>
                             a.UrlPath == $"subscriptions/{args.SubscriptionId}" &&
-                            a.Model == args), _cancellationToken)
+                            a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Subscription>()));
 
             // Act

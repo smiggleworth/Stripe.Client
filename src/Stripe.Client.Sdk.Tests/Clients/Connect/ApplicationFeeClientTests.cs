@@ -46,7 +46,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             // Arrange
             var filter = new ApplicationFeeListFilter();
             _stripe.Get(
-                    Arg.Is<StripeRequest<ApplicationFeeListFilter, Pagination<ApplicationFee>>>(
+                    Arg.Is<StripeRequest<Pagination<ApplicationFee>>>(
                         a => a.UrlPath == "application_fees"), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<ApplicationFee>>()));
 
@@ -84,7 +84,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
                 ApplicationFeeId = "application-fee-id"
             };
             _stripe.Get(
-                    Arg.Is<StripeRequest<ApplicationFeeRefundListFilter, Pagination<ApplicationFeeRefund>>>(
+                    Arg.Is<StripeRequest<Pagination<ApplicationFeeRefund>>>(
                         a => a.UrlPath == "application_fees/" + filter.ApplicationFeeId + "/refunds"), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<ApplicationFeeRefund>>()));
 
@@ -105,7 +105,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             };
 
             _stripe.Post(
-                    Arg.Is<StripeRequest<ApplicationFeeRefundCreateArguments, ApplicationFeeRefund>>(
+                    Arg.Is<StripeRequest<ApplicationFeeRefund>>(
                         a => a.UrlPath == "application_fees/" + args.ApplicationFeeId + "/refunds"), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<ApplicationFeeRefund>()));
 
@@ -127,7 +127,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Connect
             };
 
             _stripe.Post(
-                Arg.Is<StripeRequest<ApplicationFeeRefundUpdateArguments, ApplicationFeeRefund>>(
+                Arg.Is<StripeRequest<ApplicationFeeRefund>>(
                     a => a.UrlPath == "application_fees/" + args.ApplicationFeeId + "/refunds/" + args.ApplicationFeeRefundId),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<ApplicationFeeRefund>()));
 

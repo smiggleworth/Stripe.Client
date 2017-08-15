@@ -33,10 +33,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Pagination<Event>>> GetEvents(EventListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<EventListFilter, Pagination<Event>>
+            var request = new StripeRequest<Pagination<Event>>
             {
                 UrlPath = Paths.Events,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }

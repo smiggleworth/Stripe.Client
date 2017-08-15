@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<Pagination<InvoiceItem>>> GetInvoiceItems(InvoiceItemListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<InvoiceItemListFilter, Pagination<InvoiceItem>>
+            var request = new StripeRequest<Pagination<InvoiceItem>>
             {
                 UrlPath = Paths.InvoiceItems,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<InvoiceItem>> CreateInvoiceItem(InvoiceItemCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<InvoiceItemCreateArguments, InvoiceItem>
+            var request = new StripeRequest<InvoiceItem>
             {
                 UrlPath = Paths.InvoiceItems,
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -56,10 +56,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<InvoiceItem>> UpdateInvoiceItem(InvoiceItemUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<InvoiceItemUpdateArguments, InvoiceItem>
+            var request = new StripeRequest<InvoiceItem>
             {
                 UrlPath = PathHelper.GetPath(Paths.InvoiceItems, arguments.InvoiceItemId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

@@ -29,10 +29,10 @@ namespace Stripe.Client.Sdk.Clients.Connect
         public async Task<StripeResponse<Pagination<CountrySpec>>> GetCountrySpecs(CountrySpecListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<CountrySpecListFilter, Pagination<CountrySpec>>
+            var request = new StripeRequest<Pagination<CountrySpec>>
             {
                 UrlPath = Paths.CountrySpecs,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
