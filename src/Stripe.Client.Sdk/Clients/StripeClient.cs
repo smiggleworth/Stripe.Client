@@ -38,27 +38,27 @@ namespace Stripe.Client.Sdk.Clients
 
         public List<string> Expandables { get; set; }
 
-        public async Task<StripeResponse<TResponse>> Get<TResponse>(StripeRequest<TResponse> stripeRequest,
+        public async Task<StripeResponse<T>> Get<T>(StripeRequest<T> stripeRequest,
             CancellationToken cancellationToken)
         {
             var uri = await GetUri(stripeRequest.UrlPath, stripeRequest.Data);
             var message = GetHttpRequestMessage(uri, HttpMethod.Get);
-            var response = await GetStripeResponse<TResponse>(message, cancellationToken);
+            var response = await GetStripeResponse<T>(message, cancellationToken);
             return response;
         }
 
-        public async Task<StripeResponse<TResponse>> Post<TResponse>(
-            StripeRequest<TResponse> stripeRequest, CancellationToken cancellationToken)
+        public async Task<StripeResponse<T>> Post<T>(
+            StripeRequest<T> stripeRequest, CancellationToken cancellationToken)
         {
             var uri = await GetUri(stripeRequest.UrlPath);
             var content = stripeRequest.Data != null ? GetFormUrlEncodedContent(stripeRequest.Data) : null;
             var message = GetHttpRequestMessage(uri, HttpMethod.Post, content, stripeRequest.IdempotencyKey);
-            var response = await GetStripeResponse<TResponse>(message, cancellationToken);
+            var response = await GetStripeResponse<T>(message, cancellationToken);
             return response;
         }
 
-        public Task<StripeResponse<TResponse>> Upload<TResponse>(
-            StripeRequest<TResponse> stripeRequest, CancellationToken cancellationToken)
+        public Task<StripeResponse<T>> Upload<T>(
+            StripeRequest<T> stripeRequest, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
 
@@ -69,12 +69,12 @@ namespace Stripe.Client.Sdk.Clients
             //            return response;
         }
 
-        public async Task<StripeResponse<TResponse>> Delete<TResponse>(
-            StripeRequest<TResponse> stripeRequest, CancellationToken cancellationToken)
+        public async Task<StripeResponse<T>> Delete<T>(
+            StripeRequest<T> stripeRequest, CancellationToken cancellationToken)
         {
             var uri = await GetUri(stripeRequest.UrlPath);
             var message = GetHttpRequestMessage(uri, HttpMethod.Delete);
-            var response = await GetStripeResponse<TResponse>(message, cancellationToken);
+            var response = await GetStripeResponse<T>(message, cancellationToken);
             return response;
         }
 
