@@ -1,10 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stripe.Client.Sdk.Clients;
 using Stripe.Client.Sdk.Models.Filters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Stripe.Client.Sdk.Tests.Models.Filters
 {
@@ -49,4 +49,3 @@ namespace Stripe.Client.Sdk.Tests.Models.Filters
         }
     }
 }
-

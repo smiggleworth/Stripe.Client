@@ -1,6 +1,6 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
@@ -17,6 +17,5 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public string SelectedShippingMethod { get; set; }
 
         public string Status { get; set; }
-
     }
 }

@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Subscriptions;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
 {
@@ -46,8 +46,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
             // Arrange
             var filter = new InvoiceItemListFilter();
             _stripe.Get(
-                Arg.Is<StripeRequest<InvoiceItemListFilter, Pagination<InvoiceItem>>>(
-                    a => a.UrlPath == "invoiceitems" && a.Model == filter), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<InvoiceItem>>>(
+                        a => a.UrlPath == "invoiceitems" && a.Data == filter), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<InvoiceItem>>()));
 
             // Act
@@ -63,7 +63,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
             // Arrange
             var args = new InvoiceItemCreateArguments();
             _stripe.Post(
-                Arg.Is<StripeRequest<InvoiceItemCreateArguments, InvoiceItem>>(a => a.UrlPath == "invoiceitems" && a.Model == args),
+                Arg.Is<StripeRequest<InvoiceItem>>(a => a.UrlPath == "invoiceitems" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<InvoiceItem>()));
 
             // Act
@@ -82,8 +82,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
                 InvoiceItemId = "invoiceitem-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<InvoiceItemUpdateArguments, InvoiceItem>>(
-                    a => a.UrlPath == "invoiceitems/" + args.InvoiceItemId && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<InvoiceItem>>(
+                        a => a.UrlPath == "invoiceitems/" + args.InvoiceItemId && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<InvoiceItem>()));
 
             // Act

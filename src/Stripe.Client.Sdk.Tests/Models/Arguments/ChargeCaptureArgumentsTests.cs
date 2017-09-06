@@ -1,11 +1,11 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -24,7 +24,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
         public void ChargeCaptureArguments_ChargeIdIsRequired()
         {
             // Arrange 
-             _args.ChargeId = null;
+            _args.ChargeId = null;
 
             // Act
             Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(_args);

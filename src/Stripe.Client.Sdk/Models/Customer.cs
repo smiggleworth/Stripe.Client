@@ -1,15 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
 using Stripe.Client.Sdk.Helpers;
-using System;
-using System.Collections.Generic;
 
 namespace Stripe.Client.Sdk.Models
 {
     public class Customer : IStripeModel
     {
-        public string Id { get; set; }
-
         public string Object { get; set; }
 
         public bool LiveMode { get; set; }
@@ -29,10 +27,7 @@ namespace Stripe.Client.Sdk.Models
 
         public object DefaultSource
         {
-            set
-            {
-                Expandable<Card>.Deserialize(value, s => DefaultCardId = s, o => DefaultCard = o);
-            }
+            set { Expandable<Card>.Deserialize(value, s => DefaultCardId = s, o => DefaultCard = o); }
         }
 
         public bool Delinquent { get; set; }
@@ -50,5 +45,6 @@ namespace Stripe.Client.Sdk.Models
         public Pagination<Subscription> Subscriptions { get; set; }
 
         public bool? Deleted { get; set; }
+        public string Id { get; set; }
     }
 }

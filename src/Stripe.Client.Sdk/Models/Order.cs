@@ -1,6 +1,4 @@
 namespace Stripe.Client.Sdk.Models
 {
-    public class Order
-    {
-    }
+    public class Order { }
 }

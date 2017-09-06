@@ -1,1 +1,3 @@
-﻿[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Stripe.Client.Sdk.Tests")]
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("Stripe.Client.Sdk.Tests")]

@@ -1,18 +1,18 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
     [TestClass]
     public class DateOfBirthArgumentsTests
     {
-        private DateOfBirthArguments _args = new DateOfBirthArguments();
+        private readonly DateOfBirthArguments _args = new DateOfBirthArguments();
 
         [TestMethod]
         public void DateOfBirthArguments_YearIsRequired()
@@ -34,6 +34,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
         {
             // Arrange 
             _args.Year = 1978;
+
             //_args.Month = 10;
             _args.Day = 21;
 
@@ -50,6 +51,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             // Arrange 
             _args.Year = 1978;
             _args.Month = 10;
+
             //_args.Day = 21;
 
             // Act
@@ -58,7 +60,6 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             // Assert
             func.Enumerating().ShouldThrow<ValidationException>();
         }
-
 
 
         [TestMethod]

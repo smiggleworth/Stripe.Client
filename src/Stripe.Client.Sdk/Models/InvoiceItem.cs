@@ -1,13 +1,12 @@
-using Newtonsoft.Json;
-using Stripe.Client.Sdk.Converters;
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Converters;
 
 namespace Stripe.Client.Sdk.Models
 {
     public class InvoiceItem
     {
-
         public string Id { get; set; }
 
         public string Object => "invoiceitem";

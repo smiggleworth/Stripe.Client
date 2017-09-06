@@ -1,13 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net451</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="JSON\charge.json" />
     <None Remove="JSON\error.json" />
     <None Remove="JSON\event.json" />
     <None Remove="JSON\expandable.json" />
+    <None Remove="JSON\payout.json" />
+    <None Remove="JSON\payouts.json" />
+    <None Remove="JSON\subscription.json" />
+    <None Remove="JSON\subscriptions.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="JSON\charges.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JSON\charge.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="JSON\error.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -17,12 +28,24 @@
     <Content Include="JSON\expandable.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="JSON\payout.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JSON\payouts.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JSON\subscription.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JSON\subscriptions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="4.19.2" />
-    <PackageReference Include="GenFu" Version="1.2.1" />
-    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="1.1.2" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+    <PackageReference Include="FluentAssertions" Version="4.19.4" />
+    <PackageReference Include="GenFu" Version="1.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0-preview-20170810-02" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.1.18" />
     <PackageReference Include="MSTest.TestFramework" Version="1.1.18" />
     <PackageReference Include="NSubstitute" Version="2.0.3" />

@@ -1,11 +1,11 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -25,7 +25,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
         public void SkuUpdateArguments_SkuIdIsRequired()
         {
             // Arrange 
-             _args.SkuId = null;
+            _args.SkuId = null;
 
             // Act
             Func<IEnumerable<KeyValuePair<string, string>>> func = () => StripeClient.GetModelKeyValuePairs(_args);

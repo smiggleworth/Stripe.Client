@@ -7,7 +7,7 @@ namespace Stripe.Client.Sdk.Models.Filters
         public bool? Active { get; set; }
 
         /// <summary>
-        /// List of Sku Ids
+        ///     List of Sku Ids
         /// </summary>
         public List<string> Ids { get; set; }
 
@@ -16,7 +16,7 @@ namespace Stripe.Client.Sdk.Models.Filters
         public bool? InStock { get; set; }
 
         /// <summary>
-        /// The OrderId of the product whose SKUs will be retrieved.
+        ///     The OrderId of the product whose SKUs will be retrieved.
         /// </summary>
         public string Product { get; set; }
     }

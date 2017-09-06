@@ -6,11 +6,17 @@ namespace Stripe.Client.Sdk.Extensions
         {
             for (var i = propertyName.Length - 1; i > 0; i--)
             {
-                if (i > 0 && char.IsUpper(propertyName[i]))
+                if (i > 0)
                 {
-                    propertyName = propertyName.Insert(i, "_");
+                    var c = propertyName[i];
+                    var p = propertyName[i - 1];
+                    if (char.IsUpper(c) && !char.IsUpper(p))
+                    {
+                        propertyName = propertyName.Insert(i, "_");
+                    }
                 }
             }
+
             return propertyName.ToLower();
         }
     }

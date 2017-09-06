@@ -1,15 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
 using Stripe.Client.Sdk.Helpers;
-using System;
-using System.Collections.Generic;
 
 namespace Stripe.Client.Sdk.Models
 {
     public class Dispute : IStripeModel
     {
-        public string Id { get; set; }
-
         public string Object { get; set; }
 
         public bool LiveMode { get; set; }
@@ -41,5 +39,6 @@ namespace Stripe.Client.Sdk.Models
         public bool IsChargeRefundable { get; set; }
 
         public Dictionary<string, string> Metadata { get; set; }
+        public string Id { get; set; }
     }
 }

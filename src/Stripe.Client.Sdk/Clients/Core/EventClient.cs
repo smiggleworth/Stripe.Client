@@ -1,10 +1,10 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Helpers;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Core
 {
@@ -33,10 +33,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Pagination<Event>>> GetEvents(EventListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<EventListFilter, Pagination<Event>>
+            var request = new StripeRequest<Pagination<Event>>
             {
                 UrlPath = Paths.Events,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }

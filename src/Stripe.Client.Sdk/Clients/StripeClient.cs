@@ -1,12 +1,4 @@
-﻿using Newtonsoft.Json;
-using Stripe.Client.Sdk.Attributes;
-using Stripe.Client.Sdk.Configuration;
-using Stripe.Client.Sdk.Converters;
-using Stripe.Client.Sdk.Extensions;
-using Stripe.Client.Sdk.Models;
-using Stripe.Client.Sdk.Models.Arguments;
-using Stripe.Client.Sdk.Resolvers;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,6 +9,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Attributes;
+using Stripe.Client.Sdk.Configuration;
+using Stripe.Client.Sdk.Converters;
+using Stripe.Client.Sdk.Extensions;
+using Stripe.Client.Sdk.Models;
+using Stripe.Client.Sdk.Models.Arguments;
+using Stripe.Client.Sdk.Resolvers;
 
 namespace Stripe.Client.Sdk.Clients
 {
@@ -28,9 +28,7 @@ namespace Stripe.Client.Sdk.Clients
         private readonly IStripeConfiguration _configuration;
 
         private readonly HttpClient _httpClient;
-        private readonly string _stripeVersion = "2016-02-29";
-
-        public List<string> Expandables { get; set; }
+        private readonly string _stripeVersion = "2017-06-05";
 
         public StripeClient(HttpClient httpClient, IStripeConfiguration configuration)
         {
@@ -38,69 +36,51 @@ namespace Stripe.Client.Sdk.Clients
             _httpClient = httpClient;
         }
 
-        public async Task<StripeResponse<TResponse>> Get<TResponse>(StripeRequest<TResponse> stripeRequest,
+        public List<string> Expandables { get; set; }
+
+        public async Task<StripeResponse<T>> Get<T>(StripeRequest<T> stripeRequest,
             CancellationToken cancellationToken)
         {
-            var uri = await GetUri(stripeRequest.UrlPath);
+            var uri = await GetUri(stripeRequest.UrlPath, stripeRequest.Data);
             var message = GetHttpRequestMessage(uri, HttpMethod.Get);
-            var response = await GetStripeResponse<TResponse>(message, cancellationToken);
+            var response = await GetStripeResponse<T>(message, cancellationToken);
             return response;
         }
 
-        public async Task<StripeResponse<TResponse>> Get<TRequest, TResponse>(
-            StripeRequest<TRequest, TResponse> stripeRequest, CancellationToken cancellationToken)
-        {
-            var uri = await GetUri(stripeRequest.UrlPath, stripeRequest.Model);
-            var message = GetHttpRequestMessage(uri, HttpMethod.Get);
-            var response = await GetStripeResponse<TResponse>(message, cancellationToken);
-            return response;
-        }
-
-        public async Task<StripeResponse<TResponse>> Post<TResponse>(
-            StripeRequest<TResponse> stripeRequest, CancellationToken cancellationToken)
+        public async Task<StripeResponse<T>> Post<T>(
+            StripeRequest<T> stripeRequest, CancellationToken cancellationToken)
         {
             var uri = await GetUri(stripeRequest.UrlPath);
-            var message = GetHttpRequestMessage(uri, HttpMethod.Post, null, stripeRequest.IdempotencyKey);
-            var response = await GetStripeResponse<TResponse>(message, cancellationToken);
-            return response;
-        }
-
-        public async Task<StripeResponse<TResponse>> Post<TRequest, TResponse>(
-            StripeRequest<TRequest, TResponse> stripeRequest, CancellationToken cancellationToken)
-        {
-            var uri = await GetUri(stripeRequest.UrlPath);
-            var content = GetFormUrlEncodedContent(stripeRequest.Model);
+            var content = stripeRequest.Data != null ? GetFormUrlEncodedContent(stripeRequest.Data) : null;
             var message = GetHttpRequestMessage(uri, HttpMethod.Post, content, stripeRequest.IdempotencyKey);
-            var response = await GetStripeResponse<TResponse>(message, cancellationToken);
+            var response = await GetStripeResponse<T>(message, cancellationToken);
             return response;
         }
 
-        public async Task<StripeResponse<TResponse>> Upload<TRequest, TResponse>(
-            StripeRequest<TRequest, TResponse> stripeRequest, CancellationToken cancellationToken)
-            where TRequest : IFileUpload
+        public Task<StripeResponse<T>> Upload<T>(
+            StripeRequest<T> stripeRequest, CancellationToken cancellationToken)
         {
-            var uri = await GetUri(stripeRequest.UrlPath);
-            var content = GetMultipartFormDataContent(stripeRequest.Model);
-            var message = GetHttpRequestMessage(uri, HttpMethod.Post, content, stripeRequest.IdempotencyKey);
-            var response = await GetStripeResponse<TResponse>(message, cancellationToken);
-            return response;
+            throw new NotImplementedException();
+
+            //            var uri = await GetUri(stripeRequest.UrlPath);
+            //            var content = GetMultipartFormDataContent(stripeRequest.Model);
+            //            var message = GetHttpRequestMessage(uri, HttpMethod.Post, content, stripeRequest.IdempotencyKey);
+            //            var response = await GetStripeResponse<TResponse>(message, cancellationToken);
+            //            return response;
         }
 
-        public async Task<StripeResponse<TResponse>> Delete<TResponse>(
-            StripeRequest<TResponse> stripeRequest, CancellationToken cancellationToken)
+        public async Task<StripeResponse<T>> Delete<T>(
+            StripeRequest<T> stripeRequest, CancellationToken cancellationToken)
         {
             var uri = await GetUri(stripeRequest.UrlPath);
             var message = GetHttpRequestMessage(uri, HttpMethod.Delete);
-            var response = await GetStripeResponse<TResponse>(message, cancellationToken);
+            var response = await GetStripeResponse<T>(message, cancellationToken);
             return response;
         }
 
         public void Dispose()
         {
-            if (_httpClient != null)
-            {
-                _httpClient.Dispose();
-            }
+            _httpClient?.Dispose();
         }
 
         internal async Task<StripeResponse<T>> GetStripeResponse<T>(HttpRequestMessage httpRequestMessage,
@@ -146,20 +126,21 @@ namespace Stripe.Client.Sdk.Clients
                 request.Headers.Add("Idempotency-Key", idempotencyKey.Value.ToString());
             }
 
-            var version = StripeClientVersion.ToString();
+            var version = StripeClientVersion;
             request.Headers.UserAgent.Add(new ProductInfoHeaderValue("Stripe-Client", version));
             request.Headers.Add("Stripe-Version", _stripeVersion);
 
             return request;
         }
 
-        internal FormUrlEncodedContent GetFormUrlEncodedContent<T>(T model)
+        internal FormUrlEncodedContent GetFormUrlEncodedContent(object data)
         {
-            var keyValuePairs = GetAllKeyValuePairs(model).ToList();
+            var keyValuePairs = GetAllKeyValuePairs(data).ToList();
             if (!keyValuePairs.Any())
             {
                 return null;
             }
+
             var content = new FormUrlEncodedContent(keyValuePairs);
             return content;
         }
@@ -167,38 +148,36 @@ namespace Stripe.Client.Sdk.Clients
         internal MultipartFormDataContent GetMultipartFormDataContent<T>(T model) where T : IFileUpload
         {
             throw new NotImplementedException();
+
             //            var content = new MultipartFormDataContent();
             //            var byteConent = new ByteArrayContent(model.Content);
             //            content.Add(byteConent);
         }
 
-        internal async Task<Uri> GetUri(string urlPath)
-        {
-            return await GetUri<object>(urlPath, null);
-        }
-
-        internal async Task<Uri> GetUri<T>(string urlPath, T model)
+        internal async Task<Uri> GetUri(string urlPath, object data = null)
         {
             var uriBuilder = new UriBuilder(_apiEndpoint)
             {
                 Path = "v1/" + urlPath
             };
-            if (model == null && !Expandables.Any())
+            if (data == null && !Expandables.Any())
             {
                 return uriBuilder.Uri;
             }
-            var content = GetFormUrlEncodedContent(model);
+
+            var content = GetFormUrlEncodedContent(data);
             if (content == null)
             {
                 return uriBuilder.Uri;
             }
+
             uriBuilder.Query = await content.ReadAsStringAsync();
             return uriBuilder.Uri;
         }
 
-        internal IEnumerable<KeyValuePair<string, string>> GetAllKeyValuePairs<T>(T model)
+        internal IEnumerable<KeyValuePair<string, string>> GetAllKeyValuePairs(object data)
         {
-            return model == null ? GetExpandableKeyValue() : GetModelKeyValuePairs(model).Union(GetExpandableKeyValue());
+            return data == null ? GetExpandableKeyValue() : GetModelKeyValuePairs(data).Union(GetExpandableKeyValue());
         }
 
         internal IEnumerable<KeyValuePair<string, string>> GetExpandableKeyValue()
@@ -212,15 +191,15 @@ namespace Stripe.Client.Sdk.Clients
             }
         }
 
-        internal static IEnumerable<KeyValuePair<string, string>> GetModelKeyValuePairs<T>(T model, string parent = null)
+        internal static IEnumerable<KeyValuePair<string, string>> GetModelKeyValuePairs(object data, string parent = null)
         {
             // At this point data should be validated by the calling business layer
             // If validation fails just let it blow up
-            Validator.ValidateObject(model, new ValidationContext(model), true);
+            Validator.ValidateObject(data, new ValidationContext(data), true);
 
             var hasParent = !string.IsNullOrWhiteSpace(parent);
 
-            foreach (var propertyInfo in model.GetType().GetRuntimeProperties())
+            foreach (var propertyInfo in data.GetType().GetRuntimeProperties())
             {
                 var attributes = propertyInfo.GetCustomAttributes().ToList();
                 if (attributes.OfType<JsonIgnoreAttribute>().Any())
@@ -228,13 +207,14 @@ namespace Stripe.Client.Sdk.Clients
                     continue;
                 }
 
-                var propertyValue = propertyInfo.GetValue(model);
+                var propertyValue = propertyInfo.GetValue(data);
                 if (propertyValue == null)
                 {
                     continue;
                 }
 
-                var propertyName = propertyInfo.Name.ToSnakeCase();
+                var jsonProperty = attributes.OfType<JsonPropertyAttribute>().FirstOrDefault();
+                var propertyName = jsonProperty != null ? jsonProperty.PropertyName : propertyInfo.Name.ToSnakeCase();
                 var key = hasParent ? parent + "[" + propertyName + "]" : propertyName;
 
                 if (attributes.OfType<ChildModelAttribute>().Any())
@@ -252,14 +232,18 @@ namespace Stripe.Client.Sdk.Clients
                                 {
                                     yield return child;
                                 }
+
                                 i++;
                             }
+
                             continue;
                         }
+
                         foreach (var child in GetModelKeyValuePairs(propertyValue, key))
                         {
                             yield return child;
                         }
+
                         continue;
                     }
                 }
@@ -272,6 +256,7 @@ namespace Stripe.Client.Sdk.Clients
                         var metadataKey = key + "[" + pair.Key + "]";
                         yield return new KeyValuePair<string, string>(metadataKey, pair.Value);
                     }
+
                     continue;
                 }
 
@@ -296,6 +281,7 @@ namespace Stripe.Client.Sdk.Clients
                     return dateTime?.ToEpoch().ToString() ?? string.Empty;
                 }
             }
+
             return propertyValue.ToString();
         }
 

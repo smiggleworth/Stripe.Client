@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using Stripe.Client.Sdk.Attributes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Attributes;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
@@ -24,7 +24,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
         [ChildModel]
         public object BankAccount => !string.IsNullOrWhiteSpace(BankAccountToken)
             ? BankAccountToken
-            : (object) RecipientBankAccountArguments;
+            : (object)RecipientBankAccountArguments;
 
         [JsonIgnore]
         public string CardToken { get; set; }
@@ -33,7 +33,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public CardCreateArguments CardCreateArguments { get; set; }
 
         [ChildModel]
-        public object Card => !string.IsNullOrWhiteSpace(CardToken) ? CardToken : (object) CardCreateArguments;
+        public object Card => !string.IsNullOrWhiteSpace(CardToken) ? CardToken : (object)CardCreateArguments;
 
         public string Email { get; set; }
 

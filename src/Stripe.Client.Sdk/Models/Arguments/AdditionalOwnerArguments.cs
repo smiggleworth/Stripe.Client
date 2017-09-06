@@ -15,7 +15,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public string LastName { get; set; }
 
         /// <summary>
-        /// An Id returned by a file upload with the purpose
+        ///     An Id returned by a file upload with the purpose
         /// </summary>
         public string Verification { get; set; }
     }

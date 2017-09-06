@@ -1,5 +1,5 @@
-using Stripe.Client.Sdk.Attributes;
 using System.ComponentModel.DataAnnotations;
+using Stripe.Client.Sdk.Attributes;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
@@ -13,6 +13,5 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public string Name { get; set; }
 
         public string Phone { get; set; }
-
     }
 }

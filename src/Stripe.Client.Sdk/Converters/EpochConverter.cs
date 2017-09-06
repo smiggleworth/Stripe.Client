@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Stripe.Client.Sdk.Extensions;
-using System;
 
 namespace Stripe.Client.Sdk.Converters
 {
@@ -26,6 +26,7 @@ namespace Stripe.Client.Sdk.Converters
                 var integerValue = (long)reader.Value;
                 return integerValue.ToDateTime();
             }
+
             return DateTime.Parse(reader.Value.ToString());
         }
     }

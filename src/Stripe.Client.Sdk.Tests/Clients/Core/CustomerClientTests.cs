@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Core;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Core
 {
@@ -46,8 +46,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var filter = new CustomerListFilter();
             _stripe.Get(
-                Arg.Is<StripeRequest<CustomerListFilter, Pagination<Customer>>>(
-                    a => a.UrlPath == "customers" && a.Model == filter), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<Customer>>>(
+                        a => a.UrlPath == "customers" && a.Data == filter), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<Customer>>()));
 
             // Act
@@ -63,8 +63,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var args = new CustomerCreateArguments();
             _stripe.Post(
-                Arg.Is<StripeRequest<CustomerCreateArguments, Customer>>(
-                    a => a.UrlPath == "customers" && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Customer>>(
+                        a => a.UrlPath == "customers" && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Customer>()));
 
             // Act
@@ -83,8 +83,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 CustomerId = "customer-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<CustomerUpdateArguments, Customer>>(
-                    a => a.UrlPath == "customers/" + args.CustomerId && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Customer>>(
+                        a => a.UrlPath == "customers/" + args.CustomerId && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Customer>()));
 
             // Act
@@ -135,8 +135,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 CustomerId = "customer-id"
             };
             _stripe.Get(
-                Arg.Is<StripeRequest<CustomerBankAccountListFilter, Pagination<BankAccount>>>(
-                    a => a.UrlPath == "customers/" + filter.CustomerId + "/sources" && a.Model == filter),
+                Arg.Is<StripeRequest<Pagination<BankAccount>>>(
+                    a => a.UrlPath == "customers/" + filter.CustomerId + "/sources" && a.Data == filter),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Pagination<BankAccount>>()));
 
             // Act
@@ -155,8 +155,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 CustomerId = "customer-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<CustomerBankAccountCreateArguments, BankAccount>>(
-                    a => a.UrlPath == "customers/" + args.CustomerId + "/sources" && a.Model == args),
+                Arg.Is<StripeRequest<BankAccount>>(
+                    a => a.UrlPath == "customers/" + args.CustomerId + "/sources" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<BankAccount>()));
 
             // Act
@@ -176,8 +176,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 CustomerId = "customer-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<CustomerBankAccountUpdateArguments, BankAccount>>(
-                    a => a.UrlPath == "customers/" + args.CustomerId + "/sources/" + args.BankAccountId && a.Model == args),
+                Arg.Is<StripeRequest<BankAccount>>(
+                    a => a.UrlPath == "customers/" + args.CustomerId + "/sources/" + args.BankAccountId && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<BankAccount>()));
 
             // Act
@@ -212,8 +212,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 CustomerId = "customer-id"
             };
             _stripe.Get(
-                Arg.Is<StripeRequest<CustomerCardListFilter, Pagination<Card>>>(
-                    a => a.UrlPath == "customers/" + filter.CustomerId + "/sources" && a.Model == filter),
+                Arg.Is<StripeRequest<Pagination<Card>>>(
+                    a => a.UrlPath == "customers/" + filter.CustomerId + "/sources" && a.Data == filter),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Pagination<Card>>()));
 
             // Act
@@ -232,8 +232,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 CustomerId = "customer-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<CustomerCardCreateArguments, Card>>(
-                    a => a.UrlPath == "customers/" + args.CustomerId + "/sources" && a.Model == args),
+                Arg.Is<StripeRequest<Card>>(
+                    a => a.UrlPath == "customers/" + args.CustomerId + "/sources" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Card>()));
 
             // Act
@@ -253,8 +253,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 CustomerId = "customer-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<CustomerCardUpdateArguments, Card>>(
-                    a => a.UrlPath == "customers/" + args.CustomerId + "/sources/" + args.CardId && a.Model == args),
+                Arg.Is<StripeRequest<Card>>(
+                    a => a.UrlPath == "customers/" + args.CustomerId + "/sources/" + args.CardId && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Card>()));
 
             // Act
@@ -279,106 +279,6 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Assert
             response.Should().NotBeNull();
         }
-
-        [TestMethod]
-        public async Task GetSubscriptionTest()
-        {
-            // Arrange
-            var id = "subscription-id";
-            var customerId = "customer-id";
-            _stripe.Get(
-                Arg.Is<StripeRequest<Sdk.Models.Subscription>>(
-                    a => a.UrlPath == "customers/" + customerId + "/subscriptions/" + id), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Sdk.Models.Subscription>()));
-
-            // Act
-            var response = await _client.GetSubscription(id, customerId, _cancellationToken);
-
-            // Assert
-            response.Should().NotBeNull();
-        }
-
-        [TestMethod]
-        public async Task GetActiveSubscriptionsTest()
-        {
-            // Arrange
-            var filter = new ActiveSubscriptionListFilter
-            {
-                CustomerId = "customer-id"
-            };
-            _stripe.Get(
-                Arg.Is<StripeRequest<ActiveSubscriptionListFilter, Pagination<Sdk.Models.Subscription>>>(
-                    a => a.UrlPath == "customers/" + filter.CustomerId + "/subscriptions" && a.Model == filter),
-                _cancellationToken).Returns(Task.FromResult(new StripeResponse<Pagination<Sdk.Models.Subscription>>()));
-
-            // Act
-            var response = await _client.GetActiveSubscriptions(filter, _cancellationToken);
-
-            // Assert
-            response.Should().NotBeNull();
-        }
-
-        [TestMethod]
-        public async Task CreateSubscriptionTest()
-        {
-            // Arrange
-            var args = new SubscriptionCreateArguments
-            {
-                CustomerId = "customer-id"
-            };
-            _stripe.Post(
-                Arg.Is<StripeRequest<SubscriptionCreateArguments, Sdk.Models.Subscription>>(
-                    a => a.UrlPath == "customers/" + args.CustomerId + "/subscriptions" && a.Model == args),
-                _cancellationToken).Returns(Task.FromResult(new StripeResponse<Sdk.Models.Subscription>()));
-
-            // Act
-            var response = await _client.CreateSubscription(args, _cancellationToken);
-
-            // Assert
-            response.Should().NotBeNull();
-        }
-
-        [TestMethod]
-        public async Task UpdateSubscriptionTest()
-        {
-            // Arrange
-            var args = new SubscriptionUpdateArguments
-            {
-                SubscriptionId = "subscription-id",
-                CustomerId = "customer-id"
-            };
-            _stripe.Post(
-                Arg.Is<StripeRequest<SubscriptionUpdateArguments, Sdk.Models.Subscription>>(
-                    a =>
-                        a.UrlPath == "customers/" + args.CustomerId + "/subscriptions/" + args.SubscriptionId &&
-                        a.Model == args), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Sdk.Models.Subscription>()));
-
-            // Act
-            var response = await _client.UpdateSubscription(args, _cancellationToken);
-
-            // Assert
-            response.Should().NotBeNull();
-        }
-
-        [TestMethod]
-        public async Task CancelSubscriptionTest()
-        {
-            // Arrange
-            var args = GenFu.GenFu.New<SubscriptionCancelArguments>();
-
-            _stripe.Delete(
-                Arg.Is<StripeRequest<Sdk.Models.Subscription>>(
-                    a => a.UrlPath == "customers/" + args.CustomerId + "/subscriptions/" + args.SubscriptionId), _cancellationToken)
-                .Returns(Task.FromResult(new StripeResponse<Sdk.Models.Subscription>()));
-
-            // Act
-            var response = await _client.CancelSubscription(args, _cancellationToken);
-
-            // Assert
-            response.Should().NotBeNull();
-        }
-
 
         [TestMethod]
         public async Task DeleteDiscountTest()

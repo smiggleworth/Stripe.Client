@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Core
 {
@@ -23,10 +23,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<FileUpload>> GetFileUpload(string id,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<string, FileUpload>
+            var request = new StripeRequest<FileUpload>
             {
                 UrlPath = _path + "/" + id,
-                Model = id
+                Data = id
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Pagination<FileUpload>>> GetFileUploads(FileUploadListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<FileUploadListFilter, Pagination<FileUpload>>
+            var request = new StripeRequest<Pagination<FileUpload>>
             {
                 UrlPath = _path,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<FileUpload>> CreateFileUpload(FileUploadCreateArguments upload,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<FileUploadCreateArguments, FileUpload>
+            var request = new StripeRequest<FileUpload>
             {
                 UrlPath = _path,
-                Model = upload
+                Data = upload
             };
 
             return await _client.Upload(request, cancellationToken);

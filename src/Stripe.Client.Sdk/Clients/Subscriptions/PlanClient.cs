@@ -1,11 +1,11 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Helpers;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Subscriptions
 {
@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<Pagination<Plan>>> GetPlans(PlanListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<PlanListFilter, Pagination<Plan>>
+            var request = new StripeRequest<Pagination<Plan>>
             {
                 UrlPath = Paths.Plans,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<Plan>> CreatePlan(PlanCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<PlanCreateArguments, Plan>
+            var request = new StripeRequest<Plan>
             {
                 UrlPath = Paths.Plans,
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -56,10 +56,10 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         public async Task<StripeResponse<Plan>> UpdatePlan(PlanUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<PlanUpdateArguments, Plan>
+            var request = new StripeRequest<Plan>
             {
                 UrlPath = PathHelper.GetPath(Paths.Plans, arguments.PlanId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

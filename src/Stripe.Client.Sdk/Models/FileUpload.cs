@@ -1,16 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
-using System;
 
 namespace Stripe.Client.Sdk.Models
 {
     public class FileUpload : IStripeModel
     {
-        public string Id { get; set; }
-
         public string Object { get; set; }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime Created { get; set; }
 
         public string Purpose { get; set; }
@@ -20,5 +18,6 @@ namespace Stripe.Client.Sdk.Models
         public string Type { get; set; }
 
         public string Url { get; set; }
+        public string Id { get; set; }
     }
 }

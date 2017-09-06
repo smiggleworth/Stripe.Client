@@ -1,11 +1,11 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Helpers;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Core
 {
@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Pagination<Refund>>> GetRefunds(RefundListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<RefundListFilter, Pagination<Refund>>
+            var request = new StripeRequest<Pagination<Refund>>
             {
                 UrlPath = Paths.Refunds,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Refund>> CreateRefund(RefundCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<RefundCreateArguments, Refund>
+            var request = new StripeRequest<Refund>
             {
                 UrlPath = Paths.Refunds,
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -56,10 +56,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Refund>> UpdateRefund(RefundUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<RefundUpdateArguments, Refund>
+            var request = new StripeRequest<Refund>
             {
                 UrlPath = PathHelper.GetPath(Paths.Refunds, arguments.RefundId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

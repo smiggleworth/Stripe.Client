@@ -1,12 +1,12 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
 using Stripe.Client.Sdk.Clients.Core;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Core
 {
@@ -48,8 +48,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
         {
             var filter = new BalanceTransactionListFilter();
             _stripe.Get(
-                Arg.Is<StripeRequest<BalanceTransactionListFilter, Pagination<BalanceTransaction>>>(
-                    a => a.UrlPath == "balance/history"), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<BalanceTransaction>>>(
+                        a => a.UrlPath == "balance/history"), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<BalanceTransaction>>()));
             var response = await _client.GetBalanceTranasactions(filter, _cancellationToken);
             response.Should().NotBeNull();

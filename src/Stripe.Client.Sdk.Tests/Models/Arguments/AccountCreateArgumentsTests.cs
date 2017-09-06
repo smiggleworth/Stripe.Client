@@ -1,11 +1,11 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
@@ -35,7 +35,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
         [Ignore]
         [TestMethod]
-        public void CrateAccountArguments_RequiresValidEmail()
+        public void AccountCreateArguments_RequiresValidEmail()
         {
             var args = new AccountCreateArguments
             {
@@ -50,7 +50,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
         public void AccountCreateArguments_GetAllKeys()
         {
             // Arrange 
-            _args.Managed = false;
+            _args.Type = "standard";
 
             // Act
             var keyValuePairs = StripeClient.GetModelKeyValuePairs(_args).ToList();
@@ -59,7 +59,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             keyValuePairs.Should().HaveCount(3)
                 .And.Contain(x => x.Key == "country")
                 .And.Contain(x => x.Key == "email")
-                .And.Contain(x => x.Key == "managed");
+                .And.Contain(x => x.Key == "type");
         }
     }
 }

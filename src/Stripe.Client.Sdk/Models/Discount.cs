@@ -1,14 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
 using Stripe.Client.Sdk.Helpers;
-using System;
 
 namespace Stripe.Client.Sdk.Models
 {
     public class Discount : IStripeModel
     {
-        public string Id { get; set; }
-
         public string Object { get; set; }
 
         public Coupon Coupon { get; set; }
@@ -29,5 +27,7 @@ namespace Stripe.Client.Sdk.Models
 
         [JsonConverter(typeof(EpochConverter))]
         public DateTime? End { get; set; }
+
+        public string Id { get; set; }
     }
 }

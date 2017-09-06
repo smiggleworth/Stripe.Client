@@ -16,8 +16,6 @@ namespace Stripe.Client.Sdk.Models
 
         public string Country { get; set; }
 
-        public string[] CurrenciesSupported { get; set; }
-
         public bool DebitNegativeBalances { get; set; }
 
         public DeclineChargeOn DeclineChargeOn { get; set; }

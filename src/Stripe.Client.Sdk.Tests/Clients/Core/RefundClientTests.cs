@@ -1,3 +1,5 @@
+using System.Threading;
+using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Core;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Core
 {
@@ -44,8 +44,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 Charge = "charge-id"
             };
             _stripe.Get(
-                Arg.Is<StripeRequest<RefundListFilter, Pagination<Refund>>>(
-                    a => a.UrlPath == "refunds" && a.Model == filter),
+                Arg.Is<StripeRequest<Pagination<Refund>>>(
+                    a => a.UrlPath == "refunds" && a.Data == filter),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Pagination<Refund>>()));
             var response = await _client.GetRefunds(filter, _cancellationToken);
             response.Should().NotBeNull();
@@ -59,8 +59,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 ChargeId = "some-value"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<RefundCreateArguments, Refund>>(
-                    a => a.UrlPath ==  "refunds" && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Refund>>(
+                        a => a.UrlPath == "refunds" && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Refund>()));
             var response = await _client.CreateRefund(args, _cancellationToken);
             response.Should().NotBeNull();
@@ -75,8 +75,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 ChargeId = "some-value"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<RefundUpdateArguments, Refund>>(
-                    a => a.UrlPath == "refunds/" + args.RefundId && a.Model == args),
+                Arg.Is<StripeRequest<Refund>>(
+                    a => a.UrlPath == "refunds/" + args.RefundId && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Refund>()));
             var response = await _client.UpdateRefund(args, _cancellationToken);
             response.Should().NotBeNull();

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Connect
 {
@@ -45,6 +45,12 @@ namespace Stripe.Client.Sdk.Clients.Connect
             CancellationToken cancellationToken = default(CancellationToken));
 
         Task<StripeResponse<Card>> UpdateCard(AccountCardUpdateArguments arguments,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        Task<StripeResponse<DeletedObject>> DeleteAccount(string id,
+            CancellationToken cancellationToken = default(CancellationToken));
+
+        Task<StripeResponse<Account>> RejectAccount(AccountRejectArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken));
     }
 }

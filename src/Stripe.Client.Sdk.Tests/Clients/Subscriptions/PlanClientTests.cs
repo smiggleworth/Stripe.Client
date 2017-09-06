@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Subscriptions;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
 {
@@ -46,7 +46,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
             // Arrange
             var filter = new PlanListFilter();
             _stripe.Get(
-                Arg.Is<StripeRequest<PlanListFilter, Pagination<Plan>>>(a => a.UrlPath == "plans" && a.Model == filter),
+                Arg.Is<StripeRequest<Pagination<Plan>>>(a => a.UrlPath == "plans" && a.Data == filter),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Pagination<Plan>>()));
 
             // Act
@@ -62,7 +62,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
             // Arrange
             var args = new PlanCreateArguments();
             _stripe.Post(
-                Arg.Is<StripeRequest<PlanCreateArguments, Plan>>(a => a.UrlPath == "plans" && a.Model == args),
+                Arg.Is<StripeRequest<Plan>>(a => a.UrlPath == "plans" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Plan>()));
 
             // Act
@@ -81,8 +81,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Subscriptions
                 PlanId = "plan-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<PlanUpdateArguments, Plan>>(
-                    a => a.UrlPath == "plans/" + args.PlanId && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Plan>>(
+                        a => a.UrlPath == "plans/" + args.PlanId && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Plan>()));
 
             // Act

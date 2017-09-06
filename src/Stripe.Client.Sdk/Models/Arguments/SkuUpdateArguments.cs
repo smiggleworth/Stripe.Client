@@ -1,7 +1,7 @@
-using Newtonsoft.Json;
-using Stripe.Client.Sdk.Attributes;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Attributes;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
@@ -14,7 +14,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public string Currency { get; set; }
 
         /// <summary>
-        /// Inventory Description
+        ///     Inventory Description
         /// </summary>
         public string Inventory { get; set; }
 
@@ -27,7 +27,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public Dictionary<string, string> Attributes { get; set; }
 
         /// <summary>
-        /// The URL of an image for this SKU, meant to be displayable to the customer.
+        ///     The URL of an image for this SKU, meant to be displayable to the customer.
         /// </summary>
         public string Image { get; set; }
 

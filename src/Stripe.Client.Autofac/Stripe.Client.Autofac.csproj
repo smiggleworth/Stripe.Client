@@ -15,13 +15,13 @@
     <Company>smiggleworth</Company>
     <Authors>smiggleworth</Authors>
     <Description>Autofac module for Stripe.Client.Sdk</Description>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
 
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.0.0" />
+    <PackageReference Include="Autofac" Version="4.6.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="NETStandard.Library" Version="1.6.1" />
+    <PackageReference Update="NETStandard.Library" Version="2.0.0" />
   </ItemGroup>
 
 </Project>

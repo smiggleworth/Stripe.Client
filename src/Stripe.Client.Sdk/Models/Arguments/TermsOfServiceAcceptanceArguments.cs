@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Converters;
-using System;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {

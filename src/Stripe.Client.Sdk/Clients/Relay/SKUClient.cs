@@ -1,11 +1,11 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Helpers;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Relay
 {
@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Relay
         public async Task<StripeResponse<Pagination<Sku>>> GetSkus(SkuListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<SkuListFilter, Pagination<Sku>>
+            var request = new StripeRequest<Pagination<Sku>>
             {
                 UrlPath = Paths.Skus,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Relay
         public async Task<StripeResponse<Sku>> CreateSku(SkuCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<SkuCreateArguments, Sku>
+            var request = new StripeRequest<Sku>
             {
                 UrlPath = Paths.Skus,
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -56,10 +56,10 @@ namespace Stripe.Client.Sdk.Clients.Relay
         public async Task<StripeResponse<Sku>> UpdateSku(SkuUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<SkuUpdateArguments, Sku>
+            var request = new StripeRequest<Sku>
             {
                 UrlPath = PathHelper.GetPath(Paths.Skus, arguments.SkuId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

@@ -1,0 +1,75 @@
+﻿{
+  "object": "list",
+  "url": "/v1/subscriptions",
+  "has_more": false,
+  "data": [
+    {
+      "id": "sub_AHqpku1ywVSpkL",
+      "object": "subscription",
+      "application_fee_percent": null,
+      "cancel_at_period_end": false,
+      "canceled_at": 1489503617,
+      "created": 1489503614,
+      "current_period_end": 1521039614,
+      "current_period_start": 1489503614,
+      "customer": "cus_AHqpPMOMwJLp0j",
+      "discount": null,
+      "ended_at": 1489503617,
+      "items": {
+        "object": "list",
+        "data": [
+          {
+            "id": "si_19xH8E2eZvKYlo2CR1u1heAY",
+            "object": "subscription_item",
+            "created": 1489503614,
+            "metadata": {
+            },
+            "plan": {
+              "id": "44bbf6da-0b63-4f54-bb2a-7988a6fbeeb6",
+              "object": "plan",
+              "amount": 665830,
+              "created": 1489503611,
+              "currency": "chf",
+              "interval": "year",
+              "interval_count": 1,
+              "livemode": false,
+              "metadata": {
+              },
+              "name": "test plan",
+              "statement_descriptor": null,
+              "trial_period_days": null
+            },
+            "quantity": 1
+          }
+        ],
+        "has_more": false,
+        "total_count": 1,
+        "url": "/v1/subscription_items?subscription=sub_AHqpku1ywVSpkL"
+      },
+      "livemode": false,
+      "metadata": {
+      },
+      "plan": {
+        "id": "44bbf6da-0b63-4f54-bb2a-7988a6fbeeb6",
+        "object": "plan",
+        "amount": 665830,
+        "created": 1489503611,
+        "currency": "chf",
+        "interval": "year",
+        "interval_count": 1,
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "test plan",
+        "statement_descriptor": null,
+        "trial_period_days": null
+      },
+      "quantity": 1,
+      "start": 1489503614,
+      "status": "canceled",
+      "tax_percent": null,
+      "trial_end": null,
+      "trial_start": null
+    }
+  ]
+}

@@ -1,6 +1,6 @@
-﻿using Stripe.Client.Sdk.Models.Filters;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Stripe.Client.Sdk.Models.Filters;
 
 namespace Stripe.Client.Sdk.Tests
 {
@@ -9,13 +9,13 @@ namespace Stripe.Client.Sdk.Tests
         public static Dictionary<string, string> Metadata = new Dictionary<string, string>
         {
             {"key1", "value 1"},
-            {"key2", "value 2"},
+            {"key2", "value 2"}
         };
 
         public static Dictionary<string, string> Attributes = new Dictionary<string, string>
         {
             {"size", "medium"},
-            {"color", "green"},
+            {"color", "green"}
         };
 
         public static DateFilter DateFilter = new DateFilter

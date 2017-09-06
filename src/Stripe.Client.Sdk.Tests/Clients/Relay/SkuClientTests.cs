@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Relay;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Relay
 {
@@ -46,7 +46,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
             // Arrange
             var filter = new SkuListFilter();
             _stripe.Get(
-                Arg.Is<StripeRequest<SkuListFilter, Pagination<Sku>>>(a => a.UrlPath == "skus" && a.Model == filter),
+                Arg.Is<StripeRequest<Pagination<Sku>>>(a => a.UrlPath == "skus" && a.Data == filter),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Pagination<Sku>>()));
 
             // Act
@@ -61,7 +61,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
         {
             // Arrange
             var args = new SkuCreateArguments();
-            _stripe.Post(Arg.Is<StripeRequest<SkuCreateArguments, Sku>>(a => a.UrlPath == "skus" && a.Model == args),
+            _stripe.Post(Arg.Is<StripeRequest<Sku>>(a => a.UrlPath == "skus" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Sku>()));
 
             // Act
@@ -80,7 +80,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
                 SkuId = "sku-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<SkuUpdateArguments, Sku>>(a => a.UrlPath == "skus/" + args.SkuId && a.Model == args),
+                Arg.Is<StripeRequest<Sku>>(a => a.UrlPath == "skus/" + args.SkuId && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Sku>()));
 
             // Act

@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Attributes;
 using Stripe.Client.Sdk.Extensions;
-using System;
 
 namespace Stripe.Client.Sdk.Models.Filters
 {
@@ -26,17 +26,17 @@ namespace Stripe.Client.Sdk.Models.Filters
         public object Date => TransferDateTime.HasValue ? (object)TransferDateTime.Value.ToEpoch() : TransferDateFilter;
 
         /// <summary>
-        /// Only return transfers for the destination specified by this account OrderId.
+        ///     Only return transfers for the destination specified by this account OrderId.
         /// </summary>
         public string Destination { get; set; }
 
         /// <summary>
-        /// Only return transfers for the recipient specified by this recipient OrderId.
+        ///     Only return transfers for the recipient specified by this recipient OrderId.
         /// </summary>
         public string Recipient { get; set; }
 
         /// <summary>
-        /// Only return transfers that have the given status: pending, paid, failed, in_transit, or canceled.
+        ///     Only return transfers that have the given status: pending, paid, failed, in_transit, or canceled.
         /// </summary>
         public string Status { get; set; }
     }

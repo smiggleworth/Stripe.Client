@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using Stripe.Client.Sdk.Converters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Converters;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
@@ -26,7 +26,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
 
         public decimal? TaxPercent { get; set; }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime? TrialEnd { get; set; }
 
         public int? Quantity { get; set; }

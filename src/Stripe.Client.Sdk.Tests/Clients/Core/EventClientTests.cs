@@ -1,12 +1,12 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
 using Stripe.Client.Sdk.Clients.Core;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Core
 {
@@ -45,8 +45,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var filter = new EventListFilter();
             _stripe.Get(
-                Arg.Is<StripeRequest<EventListFilter, Pagination<Event>>>(
-                    a => a.UrlPath == "events" && a.Model == filter), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<Event>>>(
+                        a => a.UrlPath == "events" && a.Data == filter), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<Event>>()));
 
             // Act

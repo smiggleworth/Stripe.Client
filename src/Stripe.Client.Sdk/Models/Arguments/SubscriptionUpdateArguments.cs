@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using Stripe.Client.Sdk.Attributes;
-using Stripe.Client.Sdk.Converters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Attributes;
+using Stripe.Client.Sdk.Converters;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {

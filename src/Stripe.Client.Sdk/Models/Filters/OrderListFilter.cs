@@ -1,8 +1,8 @@
+using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Stripe.Client.Sdk.Attributes;
 using Stripe.Client.Sdk.Extensions;
-using System;
-using System.Collections.Generic;
 
 namespace Stripe.Client.Sdk.Models.Filters
 {
@@ -21,10 +21,10 @@ namespace Stripe.Client.Sdk.Models.Filters
         public string Customer { get; set; }
 
         /// <summary>
-        /// Gets or sets the Order Ids.
+        ///     Gets or sets the Order Ids.
         /// </summary>
         /// <value>
-        /// The ids.
+        ///     The ids.
         /// </value>
         public List<string> Ids { get; set; }
 

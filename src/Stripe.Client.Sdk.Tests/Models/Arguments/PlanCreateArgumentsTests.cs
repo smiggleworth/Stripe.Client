@@ -1,18 +1,18 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Stripe.Client.Sdk.Clients;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Stripe.Client.Sdk.Clients;
+using Stripe.Client.Sdk.Models.Arguments;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
     [TestClass]
     public class PlanCreateArgumentsTests
     {
-        private PlanCreateArguments _args = new PlanCreateArguments();
+        private readonly PlanCreateArguments _args = new PlanCreateArguments();
 
         [TestMethod]
         public void PlanCreateArguments_IdIsRequired()
@@ -39,6 +39,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Amount = 1;
             _args.Currency = "USD";
             _args.Interval = "month";
+
             //_args.Name = "Generic Plan";
 
             // Act
@@ -55,6 +56,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
             _args.Id = "Plan Id";
             _args.Amount = 1;
             _args.Currency = "USD";
+
             //_args.Interval = "month";
             _args.Name = "Generic Plan";
 

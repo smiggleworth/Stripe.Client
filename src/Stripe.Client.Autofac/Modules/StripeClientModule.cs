@@ -1,7 +1,7 @@
-﻿using Autofac;
-using Stripe.Client.Sdk.Clients;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Reflection;
+using Autofac;
+using Stripe.Client.Sdk.Clients;
 using Module = Autofac.Module;
 
 namespace Stripe.Client.Autofac.Modules

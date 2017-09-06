@@ -1,7 +1,7 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stripe.Client.Sdk.Extensions;
-using System;
 
 namespace Stripe.Client.Sdk.Tests.Extensions
 {

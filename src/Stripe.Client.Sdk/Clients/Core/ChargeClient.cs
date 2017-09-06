@@ -1,11 +1,11 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Helpers;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Core
 {
@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Pagination<Charge>>> GetCharges(ChargeListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<ChargeListFilter, Pagination<Charge>>
+            var request = new StripeRequest<Pagination<Charge>>
             {
                 UrlPath = Paths.Charges,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Charge>> CreateCharge(ChargeCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<ChargeCreateArguments, Charge>
+            var request = new StripeRequest<Charge>
             {
                 UrlPath = Paths.Charges,
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -56,10 +56,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Charge>> UpdateCharge(ChargeUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<ChargeUpdateArguments, Charge>
+            var request = new StripeRequest<Charge>
             {
                 UrlPath = PathHelper.GetPath(Paths.Charges, arguments.ChargeId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -67,10 +67,10 @@ namespace Stripe.Client.Sdk.Clients.Core
         public async Task<StripeResponse<Charge>> CaptureCharge(ChargeCaptureArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<ChargeCaptureArguments, Charge>
+            var request = new StripeRequest<Charge>
             {
                 UrlPath = PathHelper.GetPath(Paths.Charges, arguments.ChargeId, Paths.Capture),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

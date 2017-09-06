@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Subscriptions
 {
@@ -14,7 +14,7 @@ namespace Stripe.Client.Sdk.Clients.Subscriptions
         Task<StripeResponse<Invoice>> GetInvoice(string invoiceId,
             CancellationToken cancellationToken = default(CancellationToken));
 
-        Task<StripeResponse<Pagination<Invoice>>> GetInvoices(InvoiceListFilter filter, 
+        Task<StripeResponse<Pagination<Invoice>>> GetInvoices(InvoiceListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken));
 
         Task<StripeResponse<Pagination<InvoiceLineItem>>> GetInvoiceLineItems(

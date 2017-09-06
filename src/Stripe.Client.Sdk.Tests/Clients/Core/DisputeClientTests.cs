@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Core;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Core
 {
@@ -46,8 +46,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var filter = new DisputeListFilter();
             _stripe.Get(
-                Arg.Is<StripeRequest<DisputeListFilter, Pagination<Dispute>>>(
-                    a => a.UrlPath == "disputes" && a.Model == filter), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<Dispute>>>(
+                        a => a.UrlPath == "disputes" && a.Data == filter), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<Dispute>>()));
 
             // Act
@@ -66,8 +66,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
                 DisputeId = "dispute-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<DisputeUpdateArguments, Dispute>>(
-                    a => a.UrlPath == "disputes/" + args.DisputeId && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Dispute>>(
+                        a => a.UrlPath == "disputes/" + args.DisputeId && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Dispute>()));
 
             // Act

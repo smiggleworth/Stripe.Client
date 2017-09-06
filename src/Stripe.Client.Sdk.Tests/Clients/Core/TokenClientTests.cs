@@ -1,12 +1,12 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
 using Stripe.Client.Sdk.Clients.Core;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Core
 {
@@ -45,7 +45,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var args = new CardTokenCreateArguments();
             _stripe.Post(
-                Arg.Is<StripeRequest<CardTokenCreateArguments, Token>>(a => a.UrlPath == "tokens" && a.Model == args),
+                Arg.Is<StripeRequest<Token>>(a => a.UrlPath == "tokens" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Token>()));
 
             // Act
@@ -61,8 +61,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var args = new BankAccountTokenCreateArguments();
             _stripe.Post(
-                Arg.Is<StripeRequest<BankAccountTokenCreateArguments, Token>>(
-                    a => a.UrlPath == "tokens" && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Token>>(
+                        a => a.UrlPath == "tokens" && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Token>()));
 
             // Act
@@ -78,8 +78,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Core
             // Arrange
             var args = new PiiTokenCreateArguments();
             _stripe.Post(
-                Arg.Is<StripeRequest<PiiTokenCreateArguments, Token>>(
-                    a => a.UrlPath == "tokens" && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Token>>(
+                        a => a.UrlPath == "tokens" && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Token>()));
 
             // Act

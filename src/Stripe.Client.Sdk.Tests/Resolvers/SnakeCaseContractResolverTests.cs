@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using Stripe.Client.Sdk.Extensions;
 using Stripe.Client.Sdk.Resolvers;
 
 namespace Stripe.Client.Sdk.Tests.Resolvers
@@ -8,6 +9,20 @@ namespace Stripe.Client.Sdk.Tests.Resolvers
     [TestClass]
     public class SnakeCaseContractResolverTests
     {
+        [DataTestMethod]
+        [DataRow("Last4", "last4")]
+        [DataRow("Hello", "hello")]
+        [DataRow("HelloWorld", "hello_world")]
+        public void ResolveTest(string input, string output)
+        {
+            // Arrange
+            var result = input.ToSnakeCase();
+
+            // Assert
+            result.Should().Be(output, "the string should be formatted with underscores.");
+        }
+
+
         [TestMethod]
         public void ResolvePropertyName_ShouldSerialize()
         {
@@ -30,7 +45,7 @@ namespace Stripe.Client.Sdk.Tests.Resolvers
         public void ResolvePropertyName_ShouldDeserialize()
         {
             // Arrange
-            var json = "{\"a\":\"It's always...\", \"some_prop\":\"Marsha!\",\"prop_with_number1\":\"Marsha!!\",\"justprop\":\"Marsha!!!\"}";
+            var json = "{\"a\":\"It's always...\", \"some_prop\":\"Marcia!\",\"prop_with_number1\":\"Marcia!!\",\"justprop\":\"Marcia!!!\"}";
 
             // Act
             var model = JsonConvert.DeserializeObject<Sample>(json, new JsonSerializerSettings
@@ -40,9 +55,9 @@ namespace Stripe.Client.Sdk.Tests.Resolvers
 
             // Assert
             model.A.Should().Be("It's always...");
-            model.SomeProp.Should().Be("Marsha!");
-            model.PropWithNumber1.Should().Be("Marsha!!");
-            model.Justprop.Should().Be("Marsha!!!");
+            model.SomeProp.Should().Be("Marcia!");
+            model.PropWithNumber1.Should().Be("Marcia!!");
+            model.Justprop.Should().Be("Marcia!!!");
         }
 
         private class Sample

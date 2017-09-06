@@ -9,7 +9,7 @@
         public string Description { get; set; }
 
         /// <summary>
-        /// The OrderId of the SKU being ordered.
+        ///     The OrderId of the SKU being ordered.
         /// </summary>
         public string Parent { get; set; }
 

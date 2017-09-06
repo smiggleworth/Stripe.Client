@@ -1,13 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using Stripe.Client.Sdk.Helpers;
-using System.Collections.Generic;
 
 namespace Stripe.Client.Sdk.Models
 {
     public class Card : IStripeModel
     {
-        public string Id { get; set; }
-
         public string Object { get; set; }
 
         public string Brand { get; set; }
@@ -86,5 +84,6 @@ namespace Stripe.Client.Sdk.Models
         public string Currency { get; set; }
 
         public bool DefaultForCurrency { get; set; }
+        public string Id { get; set; }
     }
 }

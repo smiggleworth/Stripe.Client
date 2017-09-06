@@ -1,11 +1,11 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Stripe.Client.Sdk.Constants;
 using Stripe.Client.Sdk.Helpers;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Clients.Relay
 {
@@ -34,10 +34,10 @@ namespace Stripe.Client.Sdk.Clients.Relay
         public async Task<StripeResponse<Pagination<Order>>> GetOrders(OrderListFilter filter,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<OrderListFilter, Pagination<Order>>
+            var request = new StripeRequest<Pagination<Order>>
             {
                 UrlPath = Paths.Orders,
-                Model = filter
+                Data = filter
             };
             return await _client.Get(request, cancellationToken);
         }
@@ -45,10 +45,10 @@ namespace Stripe.Client.Sdk.Clients.Relay
         public async Task<StripeResponse<Order>> CreateOrder(OrderCreateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<OrderCreateArguments, Order>
+            var request = new StripeRequest<Order>
             {
                 UrlPath = Paths.Orders,
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -56,10 +56,10 @@ namespace Stripe.Client.Sdk.Clients.Relay
         public async Task<StripeResponse<Order>> UpdateOrder(OrderUpdateArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<OrderUpdateArguments, Order>
+            var request = new StripeRequest<Order>
             {
                 UrlPath = PathHelper.GetPath(Paths.Orders, arguments.OrderId),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }
@@ -67,10 +67,10 @@ namespace Stripe.Client.Sdk.Clients.Relay
         public async Task<StripeResponse<Order>> PayOrder(OrderPayArguments arguments,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            var request = new StripeRequest<OrderPayArguments, Order>
+            var request = new StripeRequest<Order>
             {
                 UrlPath = PathHelper.GetPath(Paths.Orders, arguments.OrderId, Paths.Pay),
-                Model = arguments
+                Data = arguments
             };
             return await _client.Post(request, cancellationToken);
         }

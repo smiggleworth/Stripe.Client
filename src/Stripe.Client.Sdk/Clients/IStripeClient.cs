@@ -1,9 +1,8 @@
-using Stripe.Client.Sdk.Models;
-using Stripe.Client.Sdk.Models.Arguments;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Stripe.Client.Sdk.Models;
 
 namespace Stripe.Client.Sdk.Clients
 {
@@ -11,24 +10,16 @@ namespace Stripe.Client.Sdk.Clients
     {
         List<string> Expandables { get; set; }
 
-        Task<StripeResponse<TResponse>> Get<TResponse>(StripeRequest<TResponse> stripeRequest,
+        Task<StripeResponse<T>> Get<T>(StripeRequest<T> stripeRequest,
             CancellationToken cancellationToken);
 
-        Task<StripeResponse<TResponse>> Get<TRequest, TResponse>(StripeRequest<TRequest, TResponse> stripeRequest,
+        Task<StripeResponse<T>> Post<T>(StripeRequest<T> stripeRequest,
             CancellationToken cancellationToken);
 
-        Task<StripeResponse<TResponse>> Post<TResponse>(StripeRequest<TResponse> stripeRequest,
+        Task<StripeResponse<T>> Upload<T>(StripeRequest<T> stripeRequest,
             CancellationToken cancellationToken);
 
-        Task<StripeResponse<TResponse>> Post<TRequest, TResponse>(StripeRequest<TRequest, TResponse> stripeRequest,
-            CancellationToken cancellationToken);
-
-
-        Task<StripeResponse<TResponse>> Upload<TRequest, TResponse>(StripeRequest<TRequest, TResponse> stripeRequest,
-            CancellationToken cancellationToken)
-            where TRequest : IFileUpload;
-
-        Task<StripeResponse<TResponse>> Delete<TResponse>(StripeRequest<TResponse> stripeRequest,
+        Task<StripeResponse<T>> Delete<T>(StripeRequest<T> stripeRequest,
             CancellationToken cancellationToken);
     }
 }

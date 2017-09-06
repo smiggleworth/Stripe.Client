@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using Stripe.Client.Sdk.Attributes;
-using Stripe.Client.Sdk.Converters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using Stripe.Client.Sdk.Attributes;
+using Stripe.Client.Sdk.Converters;
 
 namespace Stripe.Client.Sdk.Models.Arguments
 {
@@ -18,7 +18,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
 
         public string Coupon { get; set; }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime? TrialEnd { get; set; }
 
         [JsonIgnore]
@@ -28,7 +28,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
         public CardCreateArguments CardCreateArguments { get; set; }
 
         [ChildModel]
-        public object Source => !string.IsNullOrWhiteSpace(CardToken) ? CardToken : (object) CardCreateArguments;
+        public object Source => !string.IsNullOrWhiteSpace(CardToken) ? CardToken : (object)CardCreateArguments;
 
         public int? Quantity { get; set; }
 
@@ -36,7 +36,7 @@ namespace Stripe.Client.Sdk.Models.Arguments
 
         public decimal? TaxPercent { get; set; }
 
-        [JsonConverter(typeof (EpochConverter))]
+        [JsonConverter(typeof(EpochConverter))]
         public DateTime? BillingCycleAnchor { get; set; }
 
         public Dictionary<string, string> Metadata { get; set; }

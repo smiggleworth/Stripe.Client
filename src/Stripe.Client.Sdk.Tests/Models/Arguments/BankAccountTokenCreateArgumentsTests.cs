@@ -1,15 +1,14 @@
+using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stripe.Client.Sdk.Clients;
 using Stripe.Client.Sdk.Models.Arguments;
-using System.Linq;
 
 namespace Stripe.Client.Sdk.Tests.Models.Arguments
 {
     [TestClass]
     public class BankAccountTokenCreateArgumentsTests
     {
-
         private BankAccountTokenCreateArguments _args;
 
         [TestInitialize]

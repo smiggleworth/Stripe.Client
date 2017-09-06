@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Stripe.Client.Sdk.Clients;
@@ -6,8 +8,6 @@ using Stripe.Client.Sdk.Clients.Relay;
 using Stripe.Client.Sdk.Models;
 using Stripe.Client.Sdk.Models.Arguments;
 using Stripe.Client.Sdk.Models.Filters;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Stripe.Client.Sdk.Tests.Clients.Relay
 {
@@ -46,8 +46,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
             // Arrange
             var filter = new ProductListFilter();
             _stripe.Get(
-                Arg.Is<StripeRequest<ProductListFilter, Pagination<Product>>>(
-                    a => a.UrlPath == "products" && a.Model == filter), _cancellationToken)
+                    Arg.Is<StripeRequest<Pagination<Product>>>(
+                        a => a.UrlPath == "products" && a.Data == filter), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Pagination<Product>>()));
 
             // Act
@@ -63,7 +63,7 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
             // Arrange
             var args = new ProductCreateArguments();
             _stripe.Post(
-                Arg.Is<StripeRequest<ProductCreateArguments, Product>>(a => a.UrlPath == "products" && a.Model == args),
+                Arg.Is<StripeRequest<Product>>(a => a.UrlPath == "products" && a.Data == args),
                 _cancellationToken).Returns(Task.FromResult(new StripeResponse<Product>()));
 
             // Act
@@ -82,8 +82,8 @@ namespace Stripe.Client.Sdk.Tests.Clients.Relay
                 ProductId = "product-id"
             };
             _stripe.Post(
-                Arg.Is<StripeRequest<ProductUpdateArguments, Product>>(
-                    a => a.UrlPath == "products/" + args.ProductId && a.Model == args), _cancellationToken)
+                    Arg.Is<StripeRequest<Product>>(
+                        a => a.UrlPath == "products/" + args.ProductId && a.Data == args), _cancellationToken)
                 .Returns(Task.FromResult(new StripeResponse<Product>()));
 
             // Act
