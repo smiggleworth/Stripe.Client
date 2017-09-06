@@ -15,7 +15,7 @@
     <Company>smiggleworth</Company>
     <Authors>smiggleworth</Authors>
     <Description>Autofac module for Stripe.Client.Sdk</Description>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
 

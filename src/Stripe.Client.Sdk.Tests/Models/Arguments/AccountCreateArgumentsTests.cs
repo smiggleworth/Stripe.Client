@@ -35,7 +35,7 @@ namespace Stripe.Client.Sdk.Tests.Models.Arguments
 
         [Ignore]
         [TestMethod]
-        public void CrateAccountArguments_RequiresValidEmail()
+        public void AccountCreateArguments_RequiresValidEmail()
         {
             var args = new AccountCreateArguments
             {

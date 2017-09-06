@@ -13,7 +13,7 @@
     <Company>smiggleworth</Company>
     <Description>Async Stripe Clients For .NET</Description>
     <RepositoryUrl>https://github.com/smiggleworth/stripe.client</RepositoryUrl>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
